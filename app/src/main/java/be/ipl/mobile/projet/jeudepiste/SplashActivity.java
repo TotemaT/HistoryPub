@@ -21,6 +21,7 @@ package be.ipl.mobile.projet.jeudepiste;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,27 +36,29 @@ import java.io.IOException;
 public class SplashActivity extends AppCompatActivity {
 
     private static final String PREF_DERNIERE_ETAPE_REUSSIE = "derniere_etape_reussie";
-    private static final int SPLASH_TIMEOUT = 3000;
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        new Handler().postDelayed(new Runnable() {
+        new AsyncTask<Void, Void, Intent>() {
+
             @Override
-            public void run() {
+            protected Intent doInBackground(Void... voids) {
                 Intent intent = new Intent(SplashActivity.this, ListeEpreuveActivity.class);
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 intent.putExtra(Config.EXTRA_ETAPE, pref.getInt(PREF_DERNIERE_ETAPE_REUSSIE, 0));
 
-                /* Initialise les étapes selon le XML */
                 GestionEtapes.getInstance(SplashActivity.this);
+                return intent;
+            }
 
+            @Override
+            protected void onPostExecute(Intent intent) {
                 startActivity(intent);
                 finish();
             }
-        }, SPLASH_TIMEOUT);
+        }.execute();
     }
 }
