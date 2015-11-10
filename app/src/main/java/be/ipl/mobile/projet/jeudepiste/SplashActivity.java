@@ -28,6 +28,7 @@ import android.os.Bundle;
 public class SplashActivity extends AppCompatActivity {
 
     private static final String PREF_DERNIERE_ETAPE_REUSSIE = "derniere_etape_reussie";
+    private static final int SPLASH_TIMEOUT = 3000;
 
 
     @Override
@@ -42,10 +43,10 @@ public class SplashActivity extends AppCompatActivity {
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 intent.putExtra(Config.EXTRA_ETAPE, pref.getInt(PREF_DERNIERE_ETAPE_REUSSIE, 0));
 
-                getPreferences(MODE_PRIVATE).edit().putInt(PREF_DERNIERE_ETAPE_REUSSIE, 3);
+                getPreferences(MODE_PRIVATE).edit().putInt(PREF_DERNIERE_ETAPE_REUSSIE, 0);
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, SPLASH_TIMEOUT);
     }
 }
