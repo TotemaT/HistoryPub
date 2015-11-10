@@ -40,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, ListeEpreuveActivity.class);
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
-                intent.putExtra(ListeEpreuveActivity.EXTRA_ETAPE, pref.getInt(PREF_DERNIERE_ETAPE_REUSSIE, 0));
+                intent.putExtra(Config.EXTRA_ETAPE, pref.getInt(PREF_DERNIERE_ETAPE_REUSSIE, 0));
 
                 getPreferences(MODE_PRIVATE).edit().putInt(PREF_DERNIERE_ETAPE_REUSSIE, 3);
                 startActivity(intent);

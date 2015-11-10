@@ -23,5 +23,6 @@ package be.ipl.mobile.projet.jeudepiste;
  * Interface contenant les différentes constantes utilisée dans le programme.
  */
 public interface Config {
-
+    String EXTRA_ETAPE = "etape";
+    String EXTRA_EPREUVE = "epreuve";
 }

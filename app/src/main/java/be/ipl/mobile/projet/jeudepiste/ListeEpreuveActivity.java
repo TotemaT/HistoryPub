@@ -28,8 +28,6 @@ import android.util.Log;
  */
 public class ListeEpreuveActivity extends AppCompatActivity {
     private static final String TAG = "ListeEpreuveActivity";
-
-    public static final String EXTRA_ETAPE = "etape";
     private static final String PREF_DERNIERE_EPREUVE_REUSSIE = "derniere_epreuve_reussie";
 
 
@@ -37,6 +35,6 @@ public class ListeEpreuveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.d(TAG, "Dernière épreuve réussie : " + getIntent().getIntExtra(EXTRA_ETAPE, -1));
+        Log.d(TAG, "Dernière épreuve réussie : " + getIntent().getIntExtra(Config.EXTRA_ETAPE, -1));
     }
 }
