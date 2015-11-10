@@ -27,7 +27,7 @@ proguard/
 *.log
 
 # Android Studio
-./idea/*
+.idea
 *.iml
 
 # OSX
