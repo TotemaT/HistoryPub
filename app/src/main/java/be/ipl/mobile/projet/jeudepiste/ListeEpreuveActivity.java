@@ -23,12 +23,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.IOException;
+
 /**
  *
  */
 public class ListeEpreuveActivity extends AppCompatActivity {
     private static final String TAG = "ListeEpreuveActivity";
     private static final String PREF_DERNIERE_EPREUVE_REUSSIE = "derniere_epreuve_reussie";
+
 
 
     @Override

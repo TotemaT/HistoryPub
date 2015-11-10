@@ -25,4 +25,6 @@ package be.ipl.mobile.projet.jeudepiste;
 public interface Config {
     String EXTRA_ETAPE = "etape";
     String EXTRA_EPREUVE = "epreuve";
+    // Pas d'espace dans les noms en xml
+    String NAMESPACE = null;
 }
