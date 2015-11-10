@@ -50,30 +50,9 @@ public class SplashActivity extends AppCompatActivity {
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 intent.putExtra(Config.EXTRA_ETAPE, pref.getInt(PREF_DERNIERE_ETAPE_REUSSIE, 0));
 
-                //Lecture fichier xml
-                XmlPullParser parser;
-                try {
-                    parser = XmlPullParserFactory.newInstance().newPullParser();
-                    parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-                    parser.setInput(getAssets().open("CampusAlma.xml"), null);
-                    parser.nextTag();
+                /* Initialise les étapes selon le XML */
+                GestionEtapes.getInstance(SplashActivity.this);
 
-
-                    parser.require(XmlPullParser.START_TAG, Config.NAMESPACE, "Jeu");
-                    while (parser.next() != XmlPullParser.END_DOCUMENT) {
-                        if (parser.getEventType() != XmlPullParser.START_TAG) {
-                            continue;
-                        }
-                        //Faudra donner le fichier html ici. Là je m'amuse juste à loger les nom de balise
-                        Log.i("XmlFile", parser.getName());
-                    }
-                } catch (XmlPullParserException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                getPreferences(MODE_PRIVATE).edit().putInt(PREF_DERNIERE_ETAPE_REUSSIE, 0);
                 startActivity(intent);
                 finish();
             }
