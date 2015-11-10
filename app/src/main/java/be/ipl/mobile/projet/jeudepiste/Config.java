@@ -19,24 +19,9 @@
 
 package be.ipl.mobile.projet.jeudepiste;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
 /**
- *
+ * Interface contenant les différentes constantes utilisée dans le programme.
  */
-public class ListeEpreuveActivity extends AppCompatActivity {
-    private static final String TAG = "ListeEpreuveActivity";
+public interface Config {
 
-    public static final String EXTRA_ETAPE = "etape";
-    private static final String PREF_DERNIERE_EPREUVE_REUSSIE = "derniere_epreuve_reussie";
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        Log.d(TAG, "Dernière épreuve réussie : " + getIntent().getIntExtra(EXTRA_ETAPE, -1));
-    }
 }
