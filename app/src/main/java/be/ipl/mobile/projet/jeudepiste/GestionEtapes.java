@@ -17,6 +17,7 @@ import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.EpreuveATrou;
 import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.EpreuvePhoto;
 import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.EpreuveQCM;
+import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.ReponseQCM;
 
 /**
  * Created by matt on 10/11/15.
@@ -94,11 +95,9 @@ public class GestionEtapes {
         }
 
         Etape e = new Etape(num,url,zone);
-        Log.i("NOMBRE EPREUVES",list.size()+"");
-        for(Epreuve ep: list) {
+        for(Epreuve ep: list)
             e.addEpreuve(ep);
-            Log.i("EPREUVE_NUM"+ep.getNum(),"Question: "+ep.getQuestion()+" type:"+ep.getType());
-        }
+
         return e;
     }
 
@@ -144,6 +143,7 @@ public class GestionEtapes {
         String question="";
         Zone zone = null;
         List<String> mots = new ArrayList<String>();
+        List<ReponseQCM> reponses = new ArrayList<ReponseQCM>();
 
         while(parser.next() != XmlPullParser.END_TAG){
             if(parser.getEventType() != XmlPullParser.START_TAG)
@@ -156,7 +156,7 @@ public class GestionEtapes {
             else if(name.equals("Reponse")){
                 boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE,"bonne"));
                 String rep = parser.nextText();
-                //TODO comment je rajoute ça si jamais je ne sais pas instancier l'epreuve QCM avant?
+                reponses.add(new ReponseQCM(rep,isTrue));
             } else if(name.equals("Mot")){
                 mots.add(parser.nextText());
             }
@@ -165,8 +165,10 @@ public class GestionEtapes {
         type = type.toUpperCase();
         switch (type){
             case "QCM":
-                //TODO ajouter les reponses ici
-                return new EpreuveQCM(num,question,uri,points);
+                EpreuveQCM e1 = new EpreuveQCM(num,question,uri,points);
+                for(ReponseQCM rep: reponses)
+                    e1.addReponse(rep);
+                return e1;
             case "PHOTO":
                 return new EpreuvePhoto(num,question,uri,points,zone);
             case "ATROU":

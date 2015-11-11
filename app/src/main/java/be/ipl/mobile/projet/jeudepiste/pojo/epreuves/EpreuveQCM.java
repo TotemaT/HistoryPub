@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class EpreuveQCM extends Epreuve {
 
-    public List<Reponse> reponses;
+    public List<ReponseQCM> reponses;
 
     public EpreuveQCM(int num, String question, String uri, int points) {
         super(num, question, uri, Type.QCM, points);
@@ -16,26 +16,14 @@ public class EpreuveQCM extends Epreuve {
     }
 
     public void addReponse(String reponse, boolean bonne) {
-        reponses.add(new Reponse(reponse, bonne));
+        reponses.add(new ReponseQCM(reponse, bonne));
+    }
+
+    public void addReponse(ReponseQCM reponse){
+        reponses.add(reponse);
     }
 
     public boolean estReponseCorrecte(int numero) {
         return reponses.get(numero).estBonne();
     }
-
-
-    class Reponse {
-        public String reponse;
-        public boolean bonne;
-
-        public Reponse(String reponse, boolean bonne) {
-            this.reponse = reponse;
-            this.bonne = bonne;
-        }
-
-        public boolean estBonne() {
-            return bonne;
-        }
-    }
-
 }

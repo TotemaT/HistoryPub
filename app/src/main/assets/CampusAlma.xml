@@ -1,4 +1,4 @@
-<Jeu>
+<Jeu name="Campus Alma">
 	<Etape num="1" url="file://etape1.html" >
 		<!-- L'url référence un fichier présent dans les assets -->
 		<Zone> <!-- Zone dans laquelle se déroule cette étape -->
