@@ -18,7 +18,27 @@ public abstract class Epreuve {
         this.points = points;
     }
 
-    enum Type {
+    public enum Type {
         QCM, PHOTO, ATROU;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public int getPoints() {
+        return points;
     }
 }

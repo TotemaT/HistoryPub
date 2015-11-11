@@ -8,7 +8,7 @@
 		</Zone>
 		<Epreuves>
 			
-			<Epreuve uri="http://epreuve1.jeux-piste.mobile.ipl.be" type="QCM" points="5">
+			<Epreuve num="1" uri="http://epreuve1.jeux-piste.mobile.ipl.be" type="QCM" points="5">
 				<!-- l'uri sera utilisée un hyperlien dans la page html -->
 				<Question>Où se situe le campus Alma?</Question>
 				<Reponse bonne="false">Louvain-La-Neuve</Reponse>
@@ -16,13 +16,21 @@
 				<Reponse bonne="true">Woluwe-Saint-Lambert</Reponse>
 			</Epreuve>
 
-			<Epreuve uri="http://epreuve2.jeux-piste.mobile.ipl.be" type="Photo" points="6">
+			<Epreuve num="2" uri="http://epreuve2.jeux-piste.mobile.ipl.be" type="Photo" points="6">
 				<Question>Prenez en photo l'entrée principale de l'ipl</Question>
 				<Zone>
 					<Latitude>50.8494611</Latitude>
 					<Longitude>4.4507495</Longitude> 
 					<Rayon>10</Rayon> <!-- Zone de tolérance en m -->
 				</Zone>
+			</Epreuve>
+
+			<Epreuve num="3" uri="http://epreuve3.jeux-piste.mobile.ipl.be" type="atrou" points="6">
+				<Question>La station de métro la plus proche de l'entrée de l'IPL est la station ??? et
+				l'école la plus proche de l'IPL est ???.
+				</Question>
+				<Mot>Alma</Mot>
+				<Mot>ISEI</Mot>
 			</Epreuve>
 		</Epreuves>
 	</Etape>

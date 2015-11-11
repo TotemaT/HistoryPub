@@ -10,8 +10,8 @@ public class EpreuveATrou extends Epreuve {
 
     private List<String> mots;
 
-    public EpreuveATrou(int num, String question, String uri, Type type, int points) {
-        super(num, question, uri, type, points);
+    public EpreuveATrou(int num, String question, String uri, int points) {
+        super(num, question, uri, Type.ATROU, points);
         mots = new ArrayList<>();
     }
 
