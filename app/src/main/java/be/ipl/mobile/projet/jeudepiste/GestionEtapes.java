@@ -9,6 +9,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import be.ipl.mobile.projet.jeudepiste.pojo.Etape;
@@ -25,13 +26,13 @@ import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.ReponseQCM;
 public class GestionEtapes {
     /*TODO il reste a faire:
         - Fermer le fichier CampusAlma.xml une fois le traitement effectué
-        - Ajouter les réponses pour les questions à choix multiple
         - Traiter tout ce qui est relatif à l'uri (Quand on clique on arrive sur la bonne épreuve/etape <=> Trouver le bon fichier html
     */
     private static final String TAG = "GestionEtapes";
 
     private List<Etape> etapes;
     private Context context;
+    private int currentEtape;
 
     private static GestionEtapes instance;
 
@@ -55,7 +56,7 @@ public class GestionEtapes {
         try {
             parser = XmlPullParserFactory.newInstance().newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-            parser.setInput(context.getAssets().open("CampusAlma.xml"), null);
+            parser.setInput(context.getAssets().open(Config.FICHIER_ALMA), null);
             parser.nextTag();
 
             parser.require(XmlPullParser.START_TAG, Config.NAMESPACE, "Jeu");
@@ -128,8 +129,11 @@ public class GestionEtapes {
             if(parser.getEventType() != XmlPullParser.START_TAG)
                 continue;
             String name = parser.getName();
-            if(name.equals("Epreuve"))
-                list.add(readEpreuve(parser));
+            if(name.equals("Epreuve")) {
+                Epreuve e = readEpreuve(parser);
+                if(e!=null)
+                    list.add(e);
+            }
         }
         return list;
     }

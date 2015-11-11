@@ -27,4 +27,5 @@ public interface Config {
     String EXTRA_EPREUVE = "epreuve";
     // Pas d'espace dans les noms en xml
     String NAMESPACE = null;
+    String FICHIER_ALMA="CampusAlma.xml";
 }

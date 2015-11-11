@@ -26,9 +26,7 @@
 			</Epreuve>
 
 			<Epreuve num="3" uri="http://epreuve3.jeux-piste.mobile.ipl.be" type="atrou" points="6">
-				<Question>La station de métro la plus proche de l'entrée de l'IPL est la station ??? et
-				l'école la plus proche de l'IPL est ???.
-				</Question>
+				<Question>La station de métro la plus proche de l'entrée de l'IPL est la station ??? et l'école la plus proche de l'IPL est ???.</Question>
 				<Mot>Alma</Mot>
 				<Mot>ISEI</Mot>
 			</Epreuve>
