@@ -47,11 +47,17 @@ public class EtapeActivity extends AppCompatActivity {
     }
 
     private void lanceEpreuveCorrespondante(String url) {
+        Log.i("ET",mEtape.toString());
+        Log.i("NB_EP",mEtape.getNombreEpreuves()+"");
         Type type = mEtape.getEpreuve(url).getType();
         Intent intent;
         /* QCM par défaut, si pas ce type là, on passe dans les if et bla bla bla */
-        intent = new Intent(EtapeActivity.this, QcmActivity.class);
-
+        if(type.equals(Type.QCM))
+            intent = new Intent(EtapeActivity.this, QcmActivity.class);
+        else if (type.equals(Type.OUVERTE))
+            intent = new Intent(EtapeActivity.this, QuestionOuverteActivity.class);
+        else
+            intent = new Intent(EtapeActivity.this, QuestionOuverteActivity.class);//TODO Temporaire, à remplacer par autre chose
         intent.putExtra(Config.EXTRA_EPREUVE, url);
         intent.putExtra(Config.EXTRA_ETAPE_COURANTE, mEtape.getNum());
 

@@ -15,15 +15,4 @@ public class EpreuveOuverte extends Epreuve{
     public boolean estReponseCorrecte(Reponse reponse){
         return this.reponse.equals(reponse);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof EpreuveOuverte)) return false;
-
-        EpreuveOuverte that = (EpreuveOuverte) o;
-
-        return reponse.equals(that.reponse);
-
-    }
 }

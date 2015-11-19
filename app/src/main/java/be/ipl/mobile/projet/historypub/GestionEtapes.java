@@ -33,7 +33,6 @@ public class GestionEtapes {
 
     private List<Etape> etapes;
     private Context context;
-    private int currentEtape;
 
     private static GestionEtapes instance;
 
