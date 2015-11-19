@@ -45,6 +45,7 @@ public class QuestionOuverteActivity extends AppCompatActivity {
                     Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();
                 }
                 Utils.chargerEpreuveOuEtapeSuivante(QuestionOuverteActivity.this, mEtape, mEpreuve);
+                finish();
             }
         });
     }
