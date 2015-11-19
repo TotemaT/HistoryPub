@@ -15,8 +15,10 @@ import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.Zone;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveATrou;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveOuverte;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuvePhoto;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.Reponse;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
 
 /**
@@ -148,7 +150,7 @@ public class GestionEtapes {
         String question = "";
         Zone zone = null;
         List<String> mots = new ArrayList<String>();
-        List<ReponseQCM> reponses = new ArrayList<ReponseQCM>();
+        List<Reponse> reponses = new ArrayList<Reponse>();
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG)
@@ -159,8 +161,10 @@ public class GestionEtapes {
             else if (name.equals("Zone"))
                 zone = readZone(parser);
             else if (name.equals("Reponse")) {
-                boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE, "bonne"));
                 String rep = parser.nextText();
+                if(parser.getAttributeValue(Config.NAMESPACE, "bonne")==null)
+                    reponses.add(new Reponse(rep));
+                boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE, "bonne"));
                 reponses.add(new ReponseQCM(rep, isTrue));
             } else if (name.equals("Mot")) {
                 mots.add(parser.nextText());
@@ -171,8 +175,8 @@ public class GestionEtapes {
         switch (type) {
             case "QCM":
                 EpreuveQCM e1 = new EpreuveQCM(num, question, uri, points);
-                for (ReponseQCM rep : reponses)
-                    e1.addReponse(rep);
+                for (Reponse rep : reponses)
+                    e1.addReponse((ReponseQCM) rep);
                 return e1;
             case "PHOTO":
                 return new EpreuvePhoto(num, question, uri, points, zone);
@@ -181,6 +185,8 @@ public class GestionEtapes {
                 for (String mot : mots)
                     e2.addMot(mot);
                 return e2;
+            case "OUVERTE":
+                return new EpreuveOuverte(num,question,uri,points,reponses.get(0));
             default:
                 return null;
         }

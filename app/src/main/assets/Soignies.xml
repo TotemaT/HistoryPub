@@ -1,0 +1,174 @@
+<Jeu name="Soignies en boisson">
+	<Etape num="1" url="android_asset/etape1.html">
+		<Zone>
+			<Latitude>50.579905</Latitude>
+			<Longitude>4.073490</Longitude>  
+			<Rayon>5</Rayon>
+		</Zone>
+
+		<Epreuves>
+			<Epreuve uri="http://epreuve1.jeux-piste.mobile.ipl.be" type="OUVERTE" points="1">
+				<Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de Scarmure?</Question>
+				<Reponse>Cordovero</Reponse>
+			</Epreuve>
+
+			<Epreuve uri="http://epreuve2.jeux-piste.mobile.ipl.be" type="PHOTO" points="2">
+				<Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.</Question>
+				<Zone>
+					<Latitude>50.34477</Latitude>
+					<Longitude>4.04244</Longitude>  
+					<Rayon>5</Rayon>
+				</Zone>
+			</Epreuve>
+
+			<Epreuve uri="http://epreuve3.jeux-piste.mobile.ipl.be" type="OUVERTE" points="2">
+				<Question>En face du Cordovero se trouve une école. Donnez son nom.</Question>
+				<Reponse>DOA</Reponse>
+			</Epreuve>
+			
+		</Epreuves>
+	</Etape>
+
+	<Etape num="2" url="android_asset/etape2.html">
+		<Zone>
+			<Latitude>50.579794</Latitude>
+			<Longitude>4.072846</Longitude>  
+			<Rayon>5</Rayon>
+		</Zone>
+
+		<Epreuves>
+			<Epreuve uri="http://epreuve4.jeux-piste.mobile.ipl.be" type="QCM" points="3">
+					<Question>Vous êtes et serez en train de suivre l'itinéraire d'une certaine procession se déroulant le lundi de Pentecôte (en sens inverse). Quel est le nom de cette procession?
+					</Question>
+					<Reponse bonne="false">Le Demi Tour</Reponse>
+					<Reponse bonne="false">Le Petit Tour</Reponse>
+					<Reponse bonne="true">Le Grand Tour</Reponse>
+			</Epreuve>
+			<Epreuve uri="http://epreuve5.jeux-piste.mobile.ipl.be" type="OUVERTE" points="2">
+					<Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?</Question>
+					<Reponse>Saint Vincent</Reponse>
+			</Epreuve>
+		</Epreuves>
+	</Etape>
+
+	<Etape num="3" url="android_asset/etape3.html">
+		<Zone>
+			<Latitude>50.579399</Latitude>
+			<Longitude>4.071242</Longitude>  
+			<Rayon>5</Rayon>
+		</Zone>
+
+		<Epreuves>
+			<Epreuve uri="http://epreuve6.jeux-piste.mobile.ipl.be" type="OUVERTE" points="2">
+					<Question>En face de vous se trouve une Collégiale. Quel est le nom de celle-ci?
+					</Question>
+					<Reponse>Collégiale Saint Vincent</Reponse>
+			</Epreuve>
+
+			<Epreuve uri="http://epreuve7.jeux-piste.mobile.ipl.be" type="PHOTO" points="2">
+					<Question>Prenez une photo de la Collégiale.</Question>
+					<Zone>
+						<Latitude>50.579399</Latitude>
+						<Longitude>4.071242</Longitude>  
+						<Rayon>5</Rayon>
+					</Zone>
+			</Epreuve>
+
+			<Epreuve uri="http://epreuve8.jeux-piste.mobile.ipl.be" type="QCM" points="1">
+					<Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant le 3ème dimanche d'octobre.
+						Lequel?
+					</Question>
+					<Reponse bonne="false">l'Oktoberfest</Reponse>
+					<Reponse bonne="true">le brûlage de Simpélourd</Reponse>
+					<Reponse bonne="false">La réponse D</Reponse>
+			</Epreuve>
+		</Epreuves>
+	</Etape>
+
+
+	<Etape num="4" url="android_asset/etape4.html">
+		<Zone>
+			<Latitude>50.579663</Latitude>
+			<Longitude>4.070570</Longitude>  
+			<Rayon>8</Rayon> <!-- Car il y a plusieurs bars repris dans la même étape -->
+		</Zone>
+
+		<Epreuves>
+			<Epreuve uri="http://epreuve9.jeux-piste.mobile.ipl.be" type="QCM" points="2">
+					<Question>A quel type d'art appartient la Collégiale de Soignies?</Question>
+					<Reponse bonne="false">l'art gothique</Reponse>
+					<Reponse bonne="true">l'art roman</Reponse>
+					<Reponse bonne="false">l'art baroque</Reponse>
+			</Epreuve>
+
+			<Epreuve uri="http://epreuve10.jeux-piste.mobile.ipl.be" type="OUVERTE" points="1">
+					<Question>Dans cette Collégiale se trouve un musée. Donnez son nom</Question>
+					<Reponse>Le musée du Chapitre</Reponse>
+			</Epreuve>
+
+			<Epreuve uri="http://epreuve11.jeux-piste.mobile.ipl.be" type="QCM" points="2">
+					<Question>La légende veut qu'en 1986, lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée se nourrissant avidement des malheureux volatiles. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?</Question>
+					<Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
+					<Reponse bonne="false">Araneae Sonegiensis</Reponse>
+					<Reponse bonne="false">Migidae</Reponse>
+			</Epreuve>
+		</Epreuves>
+	</Etape>
+
+	<Etape num="5" url="android_asset/etape5.html">
+		<Zone>
+			<Latitude>50.579269</Latitude>
+			<Longitude>4.069147</Longitude>  
+			<Rayon>5</Rayon>
+		</Zone>
+
+		<Epreuves>
+			<Epreuve uri="http://epreuve12.jeux-piste.mobile.ipl.be" type="QCM" points="1">
+				<Question>Lors de la Simpélourd, un évenement est organisé sur la place verte. Lequel?</Question>
+				<Reponse bonne="true">La Ducasse, également appellée Kermess</Reponse>
+				<Reponse bonne="false">La foire agricole</Reponse>
+				<Reponse bonne="false">Le Grand Tour</Reponse>
+			</Epreuve>
+			<Epreuve uri="http://epreuve13.jeux-piste.mobile.ipl.be" type="PHOTO" points="2">
+				<Question>Sur la place verte se trouve une statue représentant Simpélourd. Prenez-la en photo.</Question>
+				<Zone> 
+					<Latitude>50.579297</Latitude>
+					<Longitude>4.068778</Longitude>  
+					<Rayon>5</Rayon>
+				</Zone>
+			</Epreuve>
+			<Epreuve uri="http://epreuve14.jeux-piste.mobile.ipl.be" type="QCM" points="2">
+				<Question>De quelle contraction provient le nom Simpélourd?</Question>
+				<Reponse bonne="true">Simple et lourd</Reponse>
+				<Reponse bonne="false">Saint Pélourd</Reponse>
+				<Reponse bonne="false">A définir</Reponse>
+			</Epreuve>
+		</Epreuves>
+	</Etape>
+
+	<Etape num="6" url="android_asset/etape6.html">
+		<Zone> 
+			<Latitude>50.578989</Latitude>
+			<Longitude>4.067862</Longitude>  
+			<Rayon>5</Rayon>
+		</Zone>
+		<Epreuves>
+			<Epreuve uri="http://epreuve15.jeux-piste.mobile.ipl.be" type="QCM" points="2">
+				<Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le nom de ce bonbon?</Question>
+				<Reponse bonne="false">Le Carambar</Reponse>
+				<Reponse bonne="false">Le Caramel</Reponse>
+				<Reponse bonne="true">Le Carabibi</Reponse>
+			</Epreuve>
+			<Epreuve uri="http://epreuve16.jeux-piste.mobile.ipl.be" type="OUVERTE" points="1">
+				<Question>Quel est le surnom de Simpélourd?</Question>
+				<Reponse>Mononk</Reponse>
+			</Epreuve>
+			<Epreuve uri="http://epreuve17.jeux-piste.mobile.ipl.be" type="QCM" points="2">
+				<Question>Soignies n'est pas connue que pour ses festivités. Elle est également la capitale européenne de...</Question>
+				<Reponse bonne="true">La Pierre Bleue</Reponse>
+				<Reponse bonne="false">La Pierre Noire</Reponse>
+				<Reponse bonne="false">La Pierre Blanche</Reponse>
+			</Epreuve>
+		</Epreuves>
+	</Etape>
+</Jeu>

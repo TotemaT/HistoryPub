@@ -3,17 +3,12 @@ package be.ipl.mobile.projet.historypub.pojo.epreuves;
 /**
  * Created by nat on 11-11-15.
  */
-public class ReponseQCM {
-    private String reponse;
+public class ReponseQCM extends Reponse{
     private boolean bonne;
 
     public ReponseQCM(String reponse, boolean bonne) {
-        this.reponse = reponse;
+        super(reponse);
         this.bonne = bonne;
-    }
-
-    public String getReponse() {
-        return reponse;
     }
 
     public boolean estBonne() {
