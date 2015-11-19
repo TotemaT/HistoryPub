@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/question_textView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"/>
+
+    <include
+        android:id="@+id/choix_1"
+        layout="@layout/qcm_reponse"/>
+
+    <include
+        android:id="@+id/choix_2"
+        layout="@layout/qcm_reponse"/>
+
+    <include
+        android:id="@+id/choix_3"
+        layout="@layout/qcm_reponse"/>
+
+</LinearLayout>

@@ -23,9 +23,16 @@ package be.ipl.mobile.projet.historypub;
  * Interface contenant les différentes constantes utilisée dans le programme.
  */
 public interface Config {
-    String EXTRA_ETAPE = "etape";
+    /* Prefs */
+    String PREF_ETAPE_COURANTE = "etape_courante"; /* Retiens le NUMERO de l'étape courante */
+    String PREF_EPREUVE_COURANTE = "epreuve_courante"; /* Retiens l'URL de l'épreuve courante */
+
+    /* Intent extras */
+    String EXTRA_ETAPE_COURANTE = "etape";
     String EXTRA_EPREUVE = "epreuve";
-    // Pas d'espace dans les noms en xml
+
+    /* XML */
     String NAMESPACE = null;
-    String FICHIER_ALMA="CampusAlma.xml";
+    String FICHIER_ALMA = "CampusAlma.xml";
+
 }

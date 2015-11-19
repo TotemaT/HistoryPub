@@ -18,10 +18,6 @@ public abstract class Epreuve {
         this.points = points;
     }
 
-    public enum Type {
-        QCM, PHOTO, ATROU;
-    }
-
     public int getNum() {
         return num;
     }

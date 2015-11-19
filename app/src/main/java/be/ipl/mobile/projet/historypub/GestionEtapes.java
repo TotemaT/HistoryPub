@@ -70,7 +70,6 @@ public class GestionEtapes {
         } catch (XmlPullParserException | IOException e) {
             Log.e(TAG, "Erreur lors de la lecture du fichier XML");
         }
-
     }
 
     public Etape getEtape(int numero) {
@@ -81,8 +80,8 @@ public class GestionEtapes {
         parser.require(XmlPullParser.START_TAG, Config.NAMESPACE, "Etape");
         int num = Integer.parseInt(parser.getAttributeValue(Config.NAMESPACE, "num"));
         String url = parser.getAttributeValue(Config.NAMESPACE, "url");
-        Zone zone=null;
-        List<Epreuve> list = new ArrayList<Epreuve>();
+        Zone zone = null;
+        List<Epreuve> list = new ArrayList<>();
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG)
@@ -94,43 +93,43 @@ public class GestionEtapes {
                 list = readEpreuves(parser);
         }
 
-        Etape e = new Etape(num,url,zone);
-        for(Epreuve ep: list)
+        Etape e = new Etape(num, url, zone);
+        for (Epreuve ep : list)
             e.addEpreuve(ep);
 
         return e;
     }
 
     private Zone readZone(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG,Config.NAMESPACE,"Zone");
-        double latitude=0;
-        double longitude=0;
-        int rayon=0;
+        parser.require(XmlPullParser.START_TAG, Config.NAMESPACE, "Zone");
+        double latitude = 0;
+        double longitude = 0;
+        int rayon = 0;
 
-        while(parser.next() != XmlPullParser.END_TAG){
+        while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG)
                 continue;
             String name = parser.getName();
-            if(name.equals("Latitude"))
+            if (name.equals("Latitude"))
                 latitude = Double.parseDouble(parser.nextText());
-            else if(name.equals("Longitude"))
+            else if (name.equals("Longitude"))
                 longitude = Double.parseDouble(parser.nextText());
-            else if(name.equals("Rayon"))
+            else if (name.equals("Rayon"))
                 rayon = Integer.parseInt(parser.nextText());
         }
-        return new Zone(latitude,longitude,rayon);
+        return new Zone(latitude, longitude, rayon);
     }
 
     private List<Epreuve> readEpreuves(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG,Config.NAMESPACE,"Epreuves");
-        List<Epreuve> list = new ArrayList<Epreuve>();
-        while(parser.next() != XmlPullParser.END_TAG){
-            if(parser.getEventType() != XmlPullParser.START_TAG)
+        parser.require(XmlPullParser.START_TAG, Config.NAMESPACE, "Epreuves");
+        List<Epreuve> list = new ArrayList<>();
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG)
                 continue;
             String name = parser.getName();
-            if(name.equals("Epreuve")) {
+            if (name.equals("Epreuve")) {
                 Epreuve e = readEpreuve(parser);
-                if(e!=null)
+                if (e != null)
                     list.add(e);
             }
         }
@@ -139,44 +138,44 @@ public class GestionEtapes {
 
     private Epreuve readEpreuve(XmlPullParser parser) throws IOException, XmlPullParserException {
         parser.require(XmlPullParser.START_TAG, Config.NAMESPACE, "Epreuve");
-        int num = Integer.parseInt(parser.getAttributeValue(Config.NAMESPACE,"num"));
+        int num = Integer.parseInt(parser.getAttributeValue(Config.NAMESPACE, "num"));
         String uri = parser.getAttributeValue(Config.NAMESPACE, "uri");
         int points = Integer.parseInt(parser.getAttributeValue(Config.NAMESPACE, "points"));
         String type = parser.getAttributeValue(Config.NAMESPACE, "type");
-        String question="";
+        String question = "";
         Zone zone = null;
         List<String> mots = new ArrayList<String>();
         List<ReponseQCM> reponses = new ArrayList<ReponseQCM>();
 
-        while(parser.next() != XmlPullParser.END_TAG){
-            if(parser.getEventType() != XmlPullParser.START_TAG)
+        while (parser.next() != XmlPullParser.END_TAG) {
+            if (parser.getEventType() != XmlPullParser.START_TAG)
                 continue;
             String name = parser.getName();
-            if(name.equals("Question"))
+            if (name.equals("Question"))
                 question = parser.nextText();
-            else if(name.equals("Zone"))
+            else if (name.equals("Zone"))
                 zone = readZone(parser);
-            else if(name.equals("Reponse")){
-                boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE,"bonne"));
+            else if (name.equals("Reponse")) {
+                boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE, "bonne"));
                 String rep = parser.nextText();
-                reponses.add(new ReponseQCM(rep,isTrue));
-            } else if(name.equals("Mot")){
+                reponses.add(new ReponseQCM(rep, isTrue));
+            } else if (name.equals("Mot")) {
                 mots.add(parser.nextText());
             }
         }
 
         type = type.toUpperCase();
-        switch (type){
+        switch (type) {
             case "QCM":
-                EpreuveQCM e1 = new EpreuveQCM(num,question,uri,points);
-                for(ReponseQCM rep: reponses)
+                EpreuveQCM e1 = new EpreuveQCM(num, question, uri, points);
+                for (ReponseQCM rep : reponses)
                     e1.addReponse(rep);
                 return e1;
             case "PHOTO":
-                return new EpreuvePhoto(num,question,uri,points,zone);
+                return new EpreuvePhoto(num, question, uri, points, zone);
             case "ATROU":
-                EpreuveATrou e2 = new EpreuveATrou(num,question,uri,points);
-                for(String mot: mots)
+                EpreuveATrou e2 = new EpreuveATrou(num, question, uri, points);
+                for (String mot : mots)
                     e2.addMot(mot);
                 return e2;
             default:

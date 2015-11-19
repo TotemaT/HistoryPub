@@ -27,8 +27,6 @@ import android.os.Bundle;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final String PREF_DERNIERE_ETAPE_REUSSIE = "derniere_etape_reussie";
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +36,24 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             protected Intent doInBackground(Void... voids) {
-                Intent intent = new Intent(SplashActivity.this, QuestionOuverteActivity.class);
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
-                intent.putExtra(Config.EXTRA_ETAPE, pref.getInt(PREF_DERNIERE_ETAPE_REUSSIE, 0));
+                /* Numerotation des etapes et épreuves commence à 0 */
+                int etape = pref.getInt(Config.PREF_ETAPE_COURANTE, 0);
+                String epreuve = pref.getString(Config.PREF_EPREUVE_COURANTE, null);
 
+                Intent intent;
+                if (epreuve == null) {
+                    intent = new Intent(SplashActivity.this, EtapeActivity.class);
+                    intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
+                } else {
+                    intent = new Intent(SplashActivity.this, EpreuveActivity.class);
+                    intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
+                    intent.putExtra(Config.EXTRA_EPREUVE, epreuve);
+                }
+                
+                /* Charge le fichier XML */
                 GestionEtapes.getInstance(SplashActivity.this);
+
                 return intent;
             }
 

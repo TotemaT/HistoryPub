@@ -23,6 +23,10 @@ public class EpreuveQCM extends Epreuve {
         reponses.add(reponse);
     }
 
+    public List<ReponseQCM> getReponses() {
+        return reponses;
+    }
+
     public boolean estReponseCorrecte(int numero) {
         return reponses.get(numero).estBonne();
     }
