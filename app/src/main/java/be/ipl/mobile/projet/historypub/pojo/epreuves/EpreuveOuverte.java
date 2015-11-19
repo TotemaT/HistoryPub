@@ -12,6 +12,10 @@ public class EpreuveOuverte extends Epreuve{
         this.reponse = reponse;
     }
 
+    public Reponse getReponse() {
+        return reponse;
+    }
+
     public boolean estReponseCorrecte(Reponse reponse){
         return this.reponse.equals(reponse);
     }

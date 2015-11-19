@@ -16,7 +16,7 @@
 				<Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.</Question>
 				<Zone>
 					<Latitude>50.34477</Latitude>
-					<Longitude>4.04244</Longitude>  
+					<Longitude>4.04244</Longitude>
 					<Rayon>5</Rayon>
 				</Zone>
 			</Epreuve>

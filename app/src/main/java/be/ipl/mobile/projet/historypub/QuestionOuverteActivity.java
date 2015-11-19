@@ -42,7 +42,7 @@ public class QuestionOuverteActivity extends AppCompatActivity {
                 if(mEpreuve.estReponseCorrecte(new Reponse(edit.getText().toString())))
                     Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();
             }
         });
     }
