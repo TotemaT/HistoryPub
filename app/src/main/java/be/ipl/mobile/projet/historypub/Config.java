@@ -33,6 +33,6 @@ public interface Config {
 
     /* XML */
     String NAMESPACE = null;
-    String FICHIER_ALMA = "CampusAlma.xml";
+    String FICHIER_ALMA = "Soignies.xml";
 
 }

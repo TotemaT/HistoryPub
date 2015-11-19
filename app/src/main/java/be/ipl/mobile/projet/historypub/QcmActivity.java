@@ -117,36 +117,8 @@ public class QcmActivity extends AppCompatActivity {
                 Toast.makeText(QcmActivity.this, "Mauvaise réponse... :(\nLa bonne réponse était : " + bonneReponse, Toast.LENGTH_SHORT).show();
             }
 
-            chargerEpreuveOuEtapeSuivante();
-        }
-    }
-
-    private void chargerEpreuveOuEtapeSuivante() {
-        Epreuve epreuveSuivante = mEtape.getEpreuve(mEpreuve.getNum() + 1);
-        if (epreuveSuivante != null) {
-            Type typeSuivant = epreuveSuivante.getType();
-            if (typeSuivant == Type.QCM) {
-                Intent intent = new Intent(this, QcmActivity.class);
-                intent.putExtra(Config.EXTRA_ETAPE_COURANTE, mEtape.getNum());
-                Log.d(TAG, epreuveSuivante.getUri());
-                intent.putExtra(Config.EXTRA_EPREUVE, epreuveSuivante.getUri());
-                startActivity(intent);
-                finish();
-            }
-            /* sinon regarder les autres types */
-        } else {
-            Log.d(TAG, "pas d'epreuve suivante");
-            /* l'étape est finie, charger la suivante */
-            Etape etapeSuivante = GestionEtapes.getInstance(this).getEtape(mEtape.getNum() + 1);
-            if (etapeSuivante == null) {
-                /* charger écran de fin reprenant le temps total et le score final */
-            } else {
-                Log.d(TAG, "charge etape num : " + etapeSuivante.getNum());
-                Intent intent = new Intent(this, EtapeActivity.class);
-                intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etapeSuivante.getNum());
-                startActivity(intent);
-                finish();
-            }
+            Utils.chargerEpreuveOuEtapeSuivante(this, mEtape, mEpreuve);
+            finish();
         }
     }
 }

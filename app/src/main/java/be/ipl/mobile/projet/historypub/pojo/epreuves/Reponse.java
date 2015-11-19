@@ -7,7 +7,7 @@ public class Reponse {
     private String reponse;
 
     public Reponse(String reponse) {
-        this.reponse = reponse;
+        this.reponse = reponse.trim();
     }
 
     public String getReponse() {
@@ -17,10 +17,16 @@ public class Reponse {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Reponse)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Reponse reponse1 = (Reponse) o;
 
-        return !(reponse != null ? !reponse.equals(reponse1.reponse) : reponse1.reponse != null);
+        return !(reponse != null ? !reponse.equalsIgnoreCase(reponse1.reponse) : reponse1.reponse != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return reponse != null ? reponse.hashCode() : 0;
     }
 }
