@@ -1,5 +1,5 @@
 <Jeu name="Soignies en boisson">
-	<Etape num="1" url="android_asset/etape1.html">
+	<Etape num="1" url="etape1.html">
 		<Zone>
 			<Latitude>50.579905</Latitude>
 			<Longitude>4.073490</Longitude>  
@@ -29,7 +29,7 @@
 		</Epreuves>
 	</Etape>
 
-	<Etape num="2" url="android_asset/etape2.html">
+	<Etape num="2" url="etape2.html">
 		<Zone>
 			<Latitude>50.579794</Latitude>
 			<Longitude>4.072846</Longitude>  
@@ -51,7 +51,7 @@
 		</Epreuves>
 	</Etape>
 
-	<Etape num="3" url="android_asset/etape3.html">
+	<Etape num="3" url="etape3.html">
 		<Zone>
 			<Latitude>50.579399</Latitude>
 			<Longitude>4.071242</Longitude>  
@@ -86,7 +86,7 @@
 	</Etape>
 
 
-	<Etape num="4" url="android_asset/etape4.html">
+	<Etape num="4" url="etape4.html">
 		<Zone>
 			<Latitude>50.579663</Latitude>
 			<Longitude>4.070570</Longitude>  
@@ -115,7 +115,7 @@
 		</Epreuves>
 	</Etape>
 
-	<Etape num="5" url="android_asset/etape5.html">
+	<Etape num="5" url="etape5.html">
 		<Zone>
 			<Latitude>50.579269</Latitude>
 			<Longitude>4.069147</Longitude>  
@@ -146,7 +146,7 @@
 		</Epreuves>
 	</Etape>
 
-	<Etape num="6" url="android_asset/etape6.html">
+	<Etape num="6" url="etape6.html">
 		<Zone> 
 			<Latitude>50.578989</Latitude>
 			<Longitude>4.067862</Longitude>  

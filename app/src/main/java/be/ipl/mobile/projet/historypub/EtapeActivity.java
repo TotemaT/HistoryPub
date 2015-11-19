@@ -43,7 +43,7 @@ public class EtapeActivity extends AppCompatActivity {
                 return true;
             }
         });
-        mWebView.loadUrl(mEtape.getUrl());
+        mWebView.loadUrl("file:///android_asset/"+mEtape.getUrl());
     }
 
     private void lanceEpreuveCorrespondante(String url) {

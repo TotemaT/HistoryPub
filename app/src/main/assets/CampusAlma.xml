@@ -1,5 +1,5 @@
 <Jeu name="Campus Alma">
-	<Etape num="1" url="file:///android_asset/etape1.html" >
+	<Etape num="1" url="etape1.html" >
 		<!-- L'url référence un fichier présent dans les assets -->
 		<Zone> <!-- Zone dans laquelle se déroule cette étape -->
 			<Latitude>50.8494611</Latitude>
@@ -33,7 +33,7 @@
 		</Epreuves>
 	</Etape>
 
-	<Etape num="2" url="file:///android_asset/etape2.html" >
+	<Etape num="2" url="etape2.html" >
 		<Zone>
 			<Latitude>50.8494611</Latitude>
 			<Longitude>4.4507495</Longitude>

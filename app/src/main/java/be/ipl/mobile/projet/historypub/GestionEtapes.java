@@ -150,7 +150,8 @@ public class GestionEtapes {
         String question = "";
         Zone zone = null;
         List<String> mots = new ArrayList<String>();
-        List<Reponse> reponses = new ArrayList<Reponse>();
+        List<ReponseQCM> reponses = new ArrayList<ReponseQCM>();
+        Reponse reponse = null;
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG)
@@ -161,11 +162,13 @@ public class GestionEtapes {
             else if (name.equals("Zone"))
                 zone = readZone(parser);
             else if (name.equals("Reponse")) {
-                String rep = parser.nextText();
-                if(parser.getAttributeValue(Config.NAMESPACE, "bonne")==null)
-                    reponses.add(new Reponse(rep));
-                boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE, "bonne"));
-                reponses.add(new ReponseQCM(rep, isTrue));
+                if(parser.getAttributeValue(Config.NAMESPACE, "bonne")==null||parser.getAttributeValue(Config.NAMESPACE, "bonne").isEmpty()){
+                    reponse = new Reponse(parser.nextText());
+                }
+                else {
+                    boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE, "bonne"));
+                    reponses.add(new ReponseQCM(parser.nextText(), isTrue));
+                }
             } else if (name.equals("Mot")) {
                 mots.add(parser.nextText());
             }
@@ -175,8 +178,8 @@ public class GestionEtapes {
         switch (type) {
             case "QCM":
                 EpreuveQCM e1 = new EpreuveQCM(num, question, uri, points);
-                for (Reponse rep : reponses)
-                    e1.addReponse((ReponseQCM) rep);
+                for (ReponseQCM rep : reponses)
+                    e1.addReponse(rep);
                 return e1;
             case "PHOTO":
                 return new EpreuvePhoto(num, question, uri, points, zone);
@@ -186,7 +189,7 @@ public class GestionEtapes {
                     e2.addMot(mot);
                 return e2;
             case "OUVERTE":
-                return new EpreuveOuverte(num,question,uri,points,reponses.get(0));
+                return new EpreuveOuverte(num,question,uri,points,reponse);
             default:
                 return null;
         }
