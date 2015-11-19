@@ -1,4 +1,4 @@
-package be.ipl.mobile.projet.jeudepiste;
+package be.ipl.mobile.projet.historypub;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,9 +1,9 @@
-package be.ipl.mobile.projet.jeudepiste.pojo;
+package be.ipl.mobile.projet.historypub.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.Epreuve;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 
 /**
  * Created by matt on 10/11/15.

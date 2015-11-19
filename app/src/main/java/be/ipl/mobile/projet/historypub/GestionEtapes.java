@@ -1,4 +1,4 @@
-package be.ipl.mobile.projet.jeudepiste;
+package be.ipl.mobile.projet.historypub;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,16 +9,15 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import be.ipl.mobile.projet.jeudepiste.pojo.Etape;
-import be.ipl.mobile.projet.jeudepiste.pojo.Zone;
-import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.Epreuve;
-import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.EpreuveATrou;
-import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.EpreuvePhoto;
-import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.EpreuveQCM;
-import be.ipl.mobile.projet.jeudepiste.pojo.epreuves.ReponseQCM;
+import be.ipl.mobile.projet.historypub.pojo.Etape;
+import be.ipl.mobile.projet.historypub.pojo.Zone;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveATrou;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuvePhoto;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
 
 /**
  * Created by matt on 10/11/15.

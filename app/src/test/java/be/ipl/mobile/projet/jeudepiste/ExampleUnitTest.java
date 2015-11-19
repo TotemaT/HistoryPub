@@ -1,4 +1,4 @@
-package be.ipl.mobile.projet.jeudepiste;
+package be.ipl.mobile.projet.historypub;
 
 import org.junit.Test;
 

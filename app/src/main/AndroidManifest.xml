@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="be.ipl.mobile.projet.jeudepiste" >
+    package="be.ipl.mobile.projet.historypub" >
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashActivity"
+            android:name="be.ipl.mobile.projet.historypub.SplashActivity"
             android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListeEpreuveActivity" />
+        <activity android:name="be.ipl.mobile.projet.historypub.ListeEpreuveActivity" />
         <activity
-            android:name=".QuestionOuverteActivity"
+            android:name="be.ipl.mobile.projet.historypub.QuestionOuverteActivity"
             android:label="@string/title_activity_question_ouverte" >
         </activity>
     </application>

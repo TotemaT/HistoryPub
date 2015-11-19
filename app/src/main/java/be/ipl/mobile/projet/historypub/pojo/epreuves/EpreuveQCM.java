@@ -1,4 +1,4 @@
-package be.ipl.mobile.projet.jeudepiste.pojo.epreuves;
+package be.ipl.mobile.projet.historypub.pojo.epreuves;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -17,23 +17,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.jeudepiste;
-
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+package be.ipl.mobile.projet.historypub;
 
 /**
- *
+ * Interface contenant les différentes constantes utilisée dans le programme.
  */
-public class ListeEpreuveActivity extends AppCompatActivity {
-    private static final String TAG = "ListeEpreuveActivity";
-    private static final String PREF_DERNIERE_EPREUVE_REUSSIE = "derniere_epreuve_reussie";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        Log.d(TAG, "Dernière épreuve réussie : " + getIntent().getIntExtra(Config.EXTRA_ETAPE, -1));
-    }
+public interface Config {
+    String EXTRA_ETAPE = "etape";
+    String EXTRA_EPREUVE = "epreuve";
+    // Pas d'espace dans les noms en xml
+    String NAMESPACE = null;
+    String FICHIER_ALMA="CampusAlma.xml";
 }

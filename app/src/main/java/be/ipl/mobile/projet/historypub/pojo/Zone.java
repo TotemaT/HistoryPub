@@ -1,4 +1,4 @@
-package be.ipl.mobile.projet.jeudepiste.pojo;
+package be.ipl.mobile.projet.historypub.pojo;
 
 /**
  * Created by matt on 10/11/15.
