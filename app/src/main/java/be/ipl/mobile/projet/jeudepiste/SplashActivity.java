@@ -46,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             protected Intent doInBackground(Void... voids) {
-                Intent intent = new Intent(SplashActivity.this, ListeEpreuveActivity.class);
+                Intent intent = new Intent(SplashActivity.this, QuestionOuverteActivity.class);
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 intent.putExtra(Config.EXTRA_ETAPE, pref.getInt(PREF_DERNIERE_ETAPE_REUSSIE, 0));
 

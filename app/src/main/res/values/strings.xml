@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Jeu De Piste</string>
     <string name="logo_description">Logo JeuDePiste</string>
+    <string name="title_activity_question_ouverte">QuestionOuverteActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="question_ouvrable_hint">Entrez votre réponse ici</string>
+    <string name="repondre">Répondre</string>
 </resources>
