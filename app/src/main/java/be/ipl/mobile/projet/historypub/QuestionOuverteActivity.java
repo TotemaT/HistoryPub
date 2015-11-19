@@ -37,12 +37,14 @@ public class QuestionOuverteActivity extends AppCompatActivity {
         repondre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edit.getText()==null)
+                if (edit.getText() == null) {
                     Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
-                if(mEpreuve.estReponseCorrecte(new Reponse(edit.getText().toString())))
+                } else if (mEpreuve.estReponseCorrecte(new Reponse(edit.getText().toString()))) {
                     Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
-                else
+                } else {
                     Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();
+                }
+                Utils.chargerEpreuveOuEtapeSuivante(QuestionOuverteActivity.this, mEtape, mEpreuve);
             }
         });
     }
