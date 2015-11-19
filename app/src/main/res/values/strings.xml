@@ -2,5 +2,5 @@
     <string name="app_name">History Pub</string>
     <string name="logo_description">Logo History Pub</string>
     <string name="question_ouvrable_hint">Entrez votre réponse ici</string>
-    <string name="repondre">Répondre</string>
+    <string name="ok">OK</string>
 </resources>

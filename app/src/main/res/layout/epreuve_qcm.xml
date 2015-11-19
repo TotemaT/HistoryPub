@@ -2,13 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
         android:id="@+id/question_textView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"/>
+        android:layout_weight="3"
+        android:gravity="center"
+        android:textSize="20sp"/>
 
     <include
         android:id="@+id/choix_1"
@@ -22,4 +28,10 @@
         android:id="@+id/choix_3"
         layout="@layout/qcm_reponse"/>
 
+    <Button
+        android:id="@+id/reponse_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="@string/ok"/>
 </LinearLayout>

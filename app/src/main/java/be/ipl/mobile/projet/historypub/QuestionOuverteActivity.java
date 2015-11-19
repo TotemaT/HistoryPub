@@ -15,7 +15,7 @@ public class QuestionOuverteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_ouverte);
-        Button repondre = (Button) findViewById(R.id.boutton_question_ouverte);
+        Button repondre = (Button) findViewById(R.id.reponse_btn);
         EditText edit = (EditText) findViewById(R.id.question_ouverte_edit);
         TextView question = (TextView) findViewById(R.id.question_ouverte);
         //Mettre le texte de la question ici
