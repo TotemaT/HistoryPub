@@ -40,19 +40,22 @@ public class SplashActivity extends AppCompatActivity {
                 /* Numerotation des etapes et épreuves commence à 0 */
                 int etape = pref.getInt(Config.PREF_ETAPE_COURANTE, 0);
                 String epreuve = pref.getString(Config.PREF_EPREUVE_COURANTE, null);
+                
+                /* Charge le fichier XML */
+                GestionEtapes.getInstance(SplashActivity.this);
+
+
 
                 Intent intent;
                 if (epreuve == null) {
                     intent = new Intent(SplashActivity.this, EtapeActivity.class);
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                 } else {
-                    intent = new Intent(SplashActivity.this, EpreuveActivity.class);
+                    /* TODO vérifier le type de question */
+                    intent = new Intent(SplashActivity.this, QcmActivity.class);
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);
                 }
-                
-                /* Charge le fichier XML */
-                GestionEtapes.getInstance(SplashActivity.this);
 
                 return intent;
             }

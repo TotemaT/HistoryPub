@@ -1,9 +1,7 @@
 package be.ipl.mobile.projet.historypub.pojo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 
@@ -14,13 +12,13 @@ public class Etape {
     private int num;
     private String url;
     private Zone zone;
-    private Map<String, Epreuve> epreuves;
+    private List<Epreuve> epreuves;
 
     public Etape(int num, String url, Zone zone) {
-        this.num = num;
+        this.num = num - 1;
         this.url = url;
         this.zone = zone;
-        this.epreuves = new HashMap<>();
+        this.epreuves = new ArrayList<>();
     }
 
     public int getNum() {
@@ -40,13 +38,22 @@ public class Etape {
     }
 
     public Epreuve getEpreuve(String uri) {
-        if (!epreuves.containsKey(uri)) {
-            throw new IllegalArgumentException("L'uri n'existe pas");
+        for (Epreuve epreuve : epreuves) {
+            if (epreuve.getUri().equals(uri)) {
+                return epreuve;
+            }
         }
-        return epreuves.get(uri);
+        throw new IllegalArgumentException("L'uri n'existe pas");
+    }
+
+    public Epreuve getEpreuve(int num) {
+        if (num < 0 || num > epreuves.size() - 1) {
+            return null;
+        }
+        return epreuves.get(num);
     }
 
     public void addEpreuve(Epreuve epreuve) {
-        epreuves.put(epreuve.getUri(), epreuve);
+        epreuves.add(epreuve);
     }
 }

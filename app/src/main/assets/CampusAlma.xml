@@ -20,7 +20,7 @@
 				<Question>Prenez en photo l'entrée principale de l'ipl</Question>
 				<Zone>
 					<Latitude>50.8494611</Latitude>
-					<Longitude>4.4507495</Longitude> 
+					<Longitude>4.4507495</Longitude>
 					<Rayon>10</Rayon> <!-- Zone de tolérance en m -->
 				</Zone>
 			</Epreuve>
@@ -32,11 +32,11 @@
 			</Epreuve>
 		</Epreuves>
 	</Etape>
-	
-	<Etape num="2" url="file://etape2.html" >
+
+	<Etape num="2" url="file:///android_asset/etape2.html" >
 		<Zone>
 			<Latitude>50.8494611</Latitude>
-			<Longitude>4.4507495</Longitude>  
+			<Longitude>4.4507495</Longitude>
 			<Rayon>100</Rayon> <!-- Zone de tolérance en m -->
 		</Zone>
 	</Etape>

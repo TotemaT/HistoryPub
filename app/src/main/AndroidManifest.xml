@@ -21,7 +21,7 @@
 
         <activity android:name=".EtapeActivity"/>
 
-        <activity android:name=".EpreuveActivity"/>
+        <activity android:name=".QcmActivity"/>
 
         <activity
             android:name="be.ipl.mobile.projet.historypub.QuestionOuverteActivity">

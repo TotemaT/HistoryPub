@@ -11,7 +11,7 @@ public abstract class Epreuve {
     private int points;
 
     public Epreuve(int num, String question, String uri, Type type, int points) {
-        this.num = num;
+        this.num = num - 1;
         this.question = question;
         this.uri = uri;
         this.type = type;
