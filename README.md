@@ -1,7 +1,22 @@
 # History Pub [![Build Status](https://magnum.travis-ci.com/Crapoo/HistoryPub.svg?token=yJBmbVBshhaMztbgxQd2&branch=master)](https://magnum.travis-ci.com/Crapoo/HistoryPub)
+> Découvrez Soignies en boisson.
 
-Projet Mobile du Bloc3 à l'Institut Paul Lambin lors de l'année académique 2015-2016.
+Projet Mobile du Bloc3 de l'année académique 2015-2016 à l'Institut Paul Lambin.
+
+## Qu'est ce que c'est quoi que cette app?
+Comme son slogan le laisse entendre, **History Pub** vous fera découvrir la ville de Soignies en passant par les différents bar que la ville offre.
+
+Sur le chemin entre ces différents établissements, vous aurez l'occasion d'en apprendre plus sur l'histoire et le folklore de la ville. Durant les différents arrêts, vous aurez bien entendu l'occasion de profiter des bar et des diverses boissons proposées avant de reprendre le chemin vers d'autres découvertes!
+
+## Comment que c'est que ça marche cette affaire là?
+Lancez l'application et laissez vous guider. Il vous faudra vous déplacer, l'application ne permettant de répondre aux questions qu'une fois sur place.
+
+Une fois cela fait, vous aurez l'occasion de répondres à différents types de questions tels que : 
+
+- Questions à choix multiples vous proposant 3 réponses possibles
+- Questions ouvertes ne demandant qu'un ou deux mots facilement trouvables
+- Prise en photo d'un batiment ou autre
 
 ## Auteurs
-* Matteo Taroli
-* Nathan Raspe
+- Matteo Taroli
+- Nathan Raspe
