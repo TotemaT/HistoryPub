@@ -1,0 +1,104 @@
+\documentclass[11pt]{scrreprt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[scale=0.775]{geometry}
+\usepackage{lmodern}
+\usepackage[ilines]{scrpage2}
+\usepackage[pdftex, bookmarks=true, hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{tocbibind}
+\usepackage{chngcntr}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{scrhack}
+\usepackage{ulem}
+
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\pagestyle{scrheadings}
+
+% clear head and foot
+\clearscrheadings
+\clearscrplain
+\clearscrheadfoot
+
+\cefoot[\textsc{Nathan Raspe \& Matteo Taroli}]{\textsc{Nathan Raspe \& Matteo Taroli}}
+\cofoot[\textsc{Nathan Raspe \& Matteo Taroli}]{\textsc{Nathan Raspe \& Matteo Taroli}}
+\lefoot[]{}
+\lofoot[]{}
+\refoot[\thepage]{\thepage}
+\rofoot[\thepage]{\thepage}
+
+\begin{document}
+
+    \renewcommand{\labelitemi}{$\bullet$}
+    \renewcommand{\labelitemii}{$\circ$}
+    %%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+    \begin{titlepage}
+        \begin{center}
+            %\includegraphics[width=5cm]{images/logo.pdf}
+            % Si ajout d'un logo, modifier la hauteur de l'espacement vertical
+            ~\\[8cm]
+
+            \textsc{\Large Projet de Développement d'Application Mobile}\\[0.5cm]
+
+            % Title
+            \rule{\textwidth}{1pt} \\[0.4cm]
+            { \bfseries \Huge{History Pub}\\ \Large{Découvrez Soignies en boisson}\\[0.4cm]}
+
+            \rule{\textwidth}{1pt} \\[1.5cm]
+
+            % Authors
+            \textsc{Nathan Raspe \& Matteo Taroli}
+
+            \vfill
+
+            {\large 27 Novembre 2015}
+            \vfill
+        \end{center}
+    \end{titlepage}
+
+    % Table of contents
+    \pagenumbering{roman}
+    \tableofcontents
+    % List of figures
+    \renewcommand\listfigurename{Table des illustrations}
+    \listoffigures
+    \pagebreak
+    \pagenumbering{arabic}
+
+    %%%%%%%% BEGIN CONTENT %%%%%%%%%%%%
+    \chapter{Introduction}
+
+    \chapter{Mode d'emploi}
+
+    \chapter{Architecture}
+
+    \chapter{Bugs connus}
+
+    \chapter{Utilisation de code open-source}
+
+    \chapter{License}
+
+    \noindent \textsc{History Pub} est placé sous license GNU GENERAL PUBLIC LICENSE version 3.
+    \hfill\\
+
+    \noindent Cela signifie que n'importe qui \textbf{peut} :
+    \begin{itemize}
+        \item utiliser notre code de façon privée
+        \item utiliser notre code dans des projets à but commercial
+        \item redistribuer notre code
+        \item modifier notre code
+    \end{itemize}
+    \hfill\\
+    Mais cela signifie aussi qu'une personne utilisant tout ou partie du code de \textsc{History Pub} dans un projet \textbf{doit} :
+    \begin{itemize}
+        \item publier les sources de ce projet
+        \item inclure une copy de la license et copyright dans ce projet
+        \item préciser les changements importants fait à notre code
+    \end{itemize}
+    \hfill\\
+    Celà signifie aussi que notre code est fourni sans garantie et que nous ne pouvons donc pas être tenus responsable de problèmes quelconques liés à son utilisation en dehors de \textsc{History Pub}.
+
+\end{document}
