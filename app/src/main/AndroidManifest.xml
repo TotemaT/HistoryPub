@@ -3,6 +3,13 @@
     package="be.ipl.mobile.projet.historypub"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,9 +30,9 @@
 
         <activity android:name=".QcmActivity"/>
 
-        <activity
-            android:name="be.ipl.mobile.projet.historypub.QuestionOuverteActivity">
-        </activity>
+        <activity android:name=".PhotoActivity"/>
+
+        <activity android:name=".QuestionOuverteActivity"/>
 
 
     </application>

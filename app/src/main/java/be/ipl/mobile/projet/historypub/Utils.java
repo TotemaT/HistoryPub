@@ -24,6 +24,8 @@ public class Utils {
                 intent = new Intent(context, QcmActivity.class);
             } else if (typeSuivant == Type.OUVERTE) {
                 intent = new Intent(context, QuestionOuverteActivity.class);
+            } else if (typeSuivant == Type.PHOTO) {
+                intent = new Intent(context, PhotoActivity.class);
             }
             intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape.getNum());
             intent.putExtra(Config.EXTRA_EPREUVE, epreuveSuivante.getUri());
