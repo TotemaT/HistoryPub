@@ -45,7 +45,7 @@ public class EtapeActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getPoints(this));
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getInstance(this).getPoints());
         return true;
     }
 

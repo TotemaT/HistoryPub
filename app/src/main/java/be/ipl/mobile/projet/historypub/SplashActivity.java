@@ -44,14 +44,13 @@ public class SplashActivity extends AppCompatActivity {
                 
                 /* Charge le fichier XML */
                 GestionEtapes.getInstance(SplashActivity.this);
-                Utils.augmenterPoints(SplashActivity.this, 0);
+                Utils.getInstance(SplashActivity.this).augmenterPoints(0);
 
                 Intent intent;
                 if (epreuve == null) {
                     intent = new Intent(SplashActivity.this, EtapeActivity.class);
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                 } else {
-                    /* TODO vérifier le type de question */
                     intent = new Intent(SplashActivity.this, QcmActivity.class);
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);

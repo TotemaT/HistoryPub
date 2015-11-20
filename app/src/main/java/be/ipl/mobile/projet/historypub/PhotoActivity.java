@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,8 +58,10 @@ public class PhotoActivity extends AppCompatActivity {
                 if (!photoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    Utils.augmenterPoints(PhotoActivity.this, mEpreuve.getPoints());
-                    Utils.chargerEpreuveOuEtapeSuivante(PhotoActivity.this, mEtape, mEpreuve);
+                    Utils utils = Utils.getInstance(PhotoActivity.this);
+                    Toast.makeText(PhotoActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
+                    utils.augmenterPoints(mEpreuve.getPoints());
+                    utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
                     finish();
                 }
             }
@@ -79,7 +82,7 @@ public class PhotoActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getPoints(this));
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getInstance(this).getPoints());
         return true;
     }
 

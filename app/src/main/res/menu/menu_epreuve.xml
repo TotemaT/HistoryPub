@@ -6,4 +6,8 @@
         android:title="@string/score"
         android:id="@+id/score_menu"
         tools:showAsAction="ifRoom"/>
+    <item
+        android:title="Réinitialiser le parcours"
+        android:id="@+id/reinit_menu"
+        tools:showAsAction="ifRoom" />
 </menu>

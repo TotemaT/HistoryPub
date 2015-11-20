@@ -70,7 +70,7 @@ public class QuestionOuverteActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getPoints(this));
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getInstance(this).getPoints());
         return true;
     }
 
@@ -79,13 +79,14 @@ public class QuestionOuverteActivity extends AppCompatActivity {
         if (mReponse.getText().toString().isEmpty() || mReponse.getText().toString().equals("")) {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
+            Utils utils = Utils.getInstance(this);
             if (mEpreuve.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
-                Utils.augmenterPoints(QuestionOuverteActivity.this, mEpreuve.getPoints());
-                Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
+                utils.augmenterPoints(mEpreuve.getPoints());
+                Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse! +"+mEpreuve.getPoints()+" points.", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();
             }
-            Utils.chargerEpreuveOuEtapeSuivante(QuestionOuverteActivity.this, mEtape, mEpreuve);
+            utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
             finish();
         }
     }

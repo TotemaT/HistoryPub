@@ -1,12 +1,12 @@
 package be.ipl.mobile.projet.historypub;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -16,10 +16,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import be.ipl.mobile.projet.historypub.pojo.Etape;
-import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
-import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 
 /**
  * Created by matt on 10/11/15.
@@ -85,7 +83,8 @@ public class QcmActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getPoints(this));
+        Utils utils = Utils.getInstance(this);
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + utils.getPoints());
         return true;
     }
 
@@ -126,14 +125,16 @@ public class QcmActivity extends AppCompatActivity {
                 }
             }
 
+            Utils utils = Utils.getInstance(this);
+
             if (mEpreuve.getReponses().get(reponseChoisie).estBonne()) {
-                Toast.makeText(QcmActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
-                Utils.augmenterPoints(QcmActivity.this, mEpreuve.getPoints());
+                Toast.makeText(QcmActivity.this, "Bonne réponse! +"+mEpreuve.getPoints()+" points.", Toast.LENGTH_LONG).show();
+                utils.augmenterPoints(mEpreuve.getPoints());
             } else {
                 Toast.makeText(QcmActivity.this, "Mauvaise réponse... :(\nLa bonne réponse était : " + bonneReponse, Toast.LENGTH_SHORT).show();
             }
 
-            Utils.chargerEpreuveOuEtapeSuivante(this, mEtape, mEpreuve);
+            utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
             finish();
         }
     }

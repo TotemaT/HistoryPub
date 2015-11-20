@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
@@ -14,8 +16,21 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
  */
 public class Utils {
     private static final String TAG = "Utils";
+    private Context context;
+    private static Utils instance=null;
 
-    public static void chargerEpreuveOuEtapeSuivante(Context context, Etape etape, Epreuve epreuve) {
+    private Utils(Context context){
+        this.context = context;
+    }
+
+    public static Utils getInstance(Context context){
+        if(instance==null){
+            instance=new Utils(context);
+        }
+        return instance;
+    }
+
+    public void chargerEpreuveOuEtapeSuivante(Etape etape, Epreuve epreuve) {
         Epreuve epreuveSuivante = etape.getEpreuve(epreuve.getNum() + 1);
         Intent intent = new Intent();
         if (epreuveSuivante != null) {
@@ -29,6 +44,9 @@ public class Utils {
             }
             intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape.getNum());
             intent.putExtra(Config.EXTRA_EPREUVE, epreuveSuivante.getUri());
+            SharedPreferences.Editor edit = context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit();
+            edit.putString(Config.PREF_EPREUVE_COURANTE, epreuveSuivante.getUri());
+            edit.apply();
             /* sinon regarder les autres types */
         } else {
             Log.d(TAG, "pas d'epreuve suivante");
@@ -39,13 +57,17 @@ public class Utils {
             } else {
                 Log.d(TAG, "charge etape num : " + etapeSuivante.getNum());
                 intent = new Intent(context, EtapeActivity.class);
+                SharedPreferences.Editor edit = context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit();
+                edit.putInt(Config.PREF_ETAPE_COURANTE, etape.getNum() + 1);
+                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
+                edit.apply();
                 intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etapeSuivante.getNum());
             }
         }
         context.startActivity(intent);
     }
 
-    public static void augmenterPoints(Context context, int pointsAjouter) {
+    public void augmenterPoints(int pointsAjouter) {
         SharedPreferences prefs = context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE);
         int pointsTot = prefs.getInt(Config.PREF_POINTS_TOTAUX, 0) + pointsAjouter;
         prefs.edit()
@@ -54,8 +76,7 @@ public class Utils {
         Log.d(TAG, "Points totaux : " + pointsTot);
     }
 
-    public static int getPoints(Context context) {
+    public int getPoints() {
         return context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).getInt(Config.PREF_POINTS_TOTAUX, 0);
     }
-
 }
