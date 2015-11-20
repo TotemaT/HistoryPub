@@ -1,9 +1,0 @@
-\select@language {french}
-\contentsline {chapter}{Table des mati\`eres}{i}{chapter*.1}
-\contentsline {chapter}{Table des illustrations}{ii}{chapter*.2}
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Mode d'emploi}{2}{chapter.2}
-\contentsline {chapter}{\numberline {3}Architecture}{3}{chapter.3}
-\contentsline {chapter}{\numberline {4}Bugs connus}{4}{chapter.4}
-\contentsline {chapter}{\numberline {5}Utilisation de code open-source}{5}{chapter.5}
-\contentsline {chapter}{\numberline {6}License}{6}{chapter.6}
