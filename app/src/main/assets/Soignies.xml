@@ -9,8 +9,7 @@
         <Epreuves>
             <Epreuve num="1" points="1" type="OUVERTE"
                      uri="http://epreuve1.historypub.mobile.ipl.be/">
-                <Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de
-                    Scarmure?
+                <Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de Scarmure?
                 </Question>
                 <Reponse>Cordovero</Reponse>
             </Epreuve>
@@ -44,9 +43,7 @@
 
         <Epreuves>
             <Epreuve num="4" points="3" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
-                <Question>Vous êtes et serez en train de suivre l'itinéraire d'une certaine
-                    procession se déroulant le lundi de Pentecôte (en sens inverse). Quel est le nom
-                    de cette procession?
+                <Question>Vous êtes et serez en train de suivre l'itinéraire d'une certaine procession se déroulant le lundi de Pentecôte (en sens inverse). Quel est le nom de cette procession?
                 </Question>
                 <Reponse bonne="false">Le Demi Tour</Reponse>
                 <Reponse bonne="false">Le Petit Tour</Reponse>
@@ -54,8 +51,7 @@
             </Epreuve>
             <Epreuve num="5" points="2" type="OUVERTE"
                      uri="http://epreuve5.historypub.mobile.ipl.be/">
-                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur
-                    de Soignies. Lequel?
+                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?
                 </Question>
                 <Reponse>Saint Vincent</Reponse>
             </Epreuve>
@@ -88,8 +84,7 @@
             </Epreuve>
 
             <Epreuve num="8" points="1" type="QCM" uri="http://epreuve8.historypub.mobile.ipl.be/">
-                <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant
-                    le 3ème dimanche d'octobre.
+                <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant e 3ème dimanche d'octobre.
                     Lequel?
                 </Question>
                 <Reponse bonne="false">l'Oktoberfest</Reponse>
@@ -124,12 +119,8 @@
 
             <Epreuve num="11" points="2" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
-                <Question>La légende veut qu'en 1986, lors de la rénovation de la Collégiale, les
-                    restes de dizaines de pigeons auraient été trouvés dans la charpente d'un
-                    clocher laissant par là présager de l'existence d'une gigantesque araignée se
-                    nourrissant avidement des malheureux volatiles. Depuis, cette araignée à trouvée
-                    sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom
-                    donné à cette araignée?
+                <Question>La légende veut qu'en 1986, lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée se nourrissant avidement des malheureux volatiles. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd.
+                    Sauriez-vous trouver le nom donné à cette araignée?
                 </Question>
                 <Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
                 <Reponse bonne="false">Araneae Sonegiensis</Reponse>
@@ -157,8 +148,8 @@
             </Epreuve>
             <Epreuve num="13" points="2" type="PHOTO"
                      uri="http://epreuve13.historypub.mobile.ipl.be/">
-                <Question>Sur la place verte se trouve une statue représentant Simpélourd. Prenez-la
-                    en photo.
+                <Question>Sur la place verte se trouve une statue représentant Simpélourd.
+                    Prenez-la en photo.
                 </Question>
                 <Zone>
                     <Latitude>50.579297</Latitude>
@@ -185,8 +176,7 @@
         <Epreuves>
             <Epreuve num="15" points="2" type="QCM"
                      uri="http://epreuve15.historypub.mobile.ipl.be/">
-                <Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le
-                    nom de ce bonbon?
+                <Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le nom de ce bonbon?
                 </Question>
                 <Reponse bonne="false">Le Carambar</Reponse>
                 <Reponse bonne="false">Le Caramel</Reponse>
@@ -199,8 +189,7 @@
             </Epreuve>
             <Epreuve num="17" points="2" type="QCM"
                      uri="http://epreuve17.historypub.mobile.ipl.be/">
-                <Question>Soignies n'est pas connue que pour ses festivités. Elle est également la
-                    capitale européenne de...
+                <Question>Soignies n'est pas connue que pour ses festivités. Elle est également la capitale européenne de...
                 </Question>
                 <Reponse bonne="true">La Pierre Bleue</Reponse>
                 <Reponse bonne="false">La Pierre Noire</Reponse>

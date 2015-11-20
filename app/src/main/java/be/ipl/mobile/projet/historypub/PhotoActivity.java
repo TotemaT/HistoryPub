@@ -91,7 +91,6 @@ public class PhotoActivity extends AppCompatActivity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 try {
-                    mQuestion.setVisibility(View.INVISIBLE);
                     mPhoto.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
                     mPhoto.setVisibility(View.VISIBLE);
                 } catch (IOException e) {
