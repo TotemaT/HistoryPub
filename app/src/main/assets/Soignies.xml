@@ -127,24 +127,7 @@
                 <Reponse bonne="false">La foire agricole</Reponse>
                 <Reponse bonne="false">Le Grand Tour</Reponse>
             </Epreuve>
-            <Epreuve num="2" points="2" type="PHOTO"
-                     uri="http://epreuve13.historypub.mobile.ipl.be/">
-                <Question>Sur la place verte se trouve une statue représentant Simpélourd.
-                    Prenez-la en photo.
-                </Question>
-                <Zone>
-                    <Latitude>50.579297</Latitude>
-                    <Longitude>4.068778</Longitude>
-                    <Rayon>5</Rayon>
-                </Zone>
-            </Epreuve>
-            <Epreuve num="3" points="2" type="QCM"
-                     uri="http://epreuve14.historypub.mobile.ipl.be/">
-                <Question>De quelle contraction provient le nom Simpélourd?</Question>
-                <Reponse bonne="true">Simple et lourd</Reponse>
-                <Reponse bonne="false">Saint Pélourd</Reponse>
-                <Reponse bonne="false">A définir</Reponse>
-            </Epreuve>
+
         </Epreuves>
     </Etape>
 
@@ -201,6 +184,26 @@
                     <Longitude>4.071242</Longitude>
                     <Rayon>5</Rayon>
                 </Zone>
+            </Epreuve>
+
+            Appartient à l'étape 5
+            <Epreuve num="2" points="2" type="PHOTO"
+                     uri="http://epreuve13.historypub.mobile.ipl.be/">
+                <Question>Sur la place verte se trouve une statue représentant Simpélourd.
+                    Prenez-la en photo.
+                </Question>
+                <Zone>
+                    <Latitude>50.579297</Latitude>
+                    <Longitude>4.068778</Longitude>
+                    <Rayon>5</Rayon>
+                </Zone>
+            </Epreuve>
+            <Epreuve num="3" points="2" type="QCM"
+                     uri="http://epreuve14.historypub.mobile.ipl.be/">
+                <Question>De quelle contraction provient le nom Simpélourd?</Question>
+                <Reponse bonne="true">Simple et lourd</Reponse>
+                <Reponse bonne="false">Saint Pélourd</Reponse>
+                <Reponse bonne="false">A définir</Reponse>
             </Epreuve>
     -->
 </Jeu>

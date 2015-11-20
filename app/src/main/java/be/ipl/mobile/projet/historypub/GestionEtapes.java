@@ -73,7 +73,7 @@ public class GestionEtapes {
     }
 
     public Etape getEtape(int numero) {
-        if (numero < 0 || numero > etapes.size()) {
+        if (numero < 0 || numero >= etapes.size()) {
             return null;
         }
         return etapes.get(numero);
