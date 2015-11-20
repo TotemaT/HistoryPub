@@ -79,6 +79,10 @@ public class GestionEtapes {
         return etapes.get(numero);
     }
 
+    public int gestNombreEtapes(){
+        return etapes.size();
+    }
+
     private Etape readEtape(XmlPullParser parser) throws IOException, XmlPullParserException {
         parser.require(XmlPullParser.START_TAG, Config.NAMESPACE, "Etape");
         int num = Integer.parseInt(parser.getAttributeValue(Config.NAMESPACE, "num"));

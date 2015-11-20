@@ -25,6 +25,10 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import be.ipl.mobile.projet.historypub.pojo.Etape;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -44,15 +48,24 @@ public class SplashActivity extends AppCompatActivity {
                 
                 /* Charge le fichier XML */
                 GestionEtapes.getInstance(SplashActivity.this);
-                Utils.getInstance(SplashActivity.this).augmenterPoints(0);
+                new Utils(SplashActivity.this).augmenterPoints(0);
 
                 Intent intent;
                 if (epreuve == null) {
                     intent = new Intent(SplashActivity.this, EtapeActivity.class);
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                 } else {
-                    //TODO vérifier le type
-                    intent = new Intent(SplashActivity.this, QcmActivity.class);
+                    GestionEtapes ges = GestionEtapes.getInstance(SplashActivity.this);
+                    Epreuve ep = ges.getEtape(etape).getEpreuve(epreuve);
+                    if(ep.getType()== Type.QCM)
+                        intent = new Intent(SplashActivity.this, QcmActivity.class);
+                    else if(ep.getType()==Type.OUVERTE)
+                        intent = new Intent(SplashActivity.this, QuestionOuverteActivity.class);
+                    else if(ep.getType()==Type.PHOTO)
+                        intent = new Intent(SplashActivity.this, PhotoActivity.class);
+                    else
+                        intent = null;
+
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);
                 }

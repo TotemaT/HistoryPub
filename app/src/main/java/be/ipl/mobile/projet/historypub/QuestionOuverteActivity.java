@@ -1,10 +1,12 @@
 package be.ipl.mobile.projet.historypub;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,7 +72,21 @@ public class QuestionOuverteActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getInstance(this).getPoints());
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + new Utils(this).getPoints());
+        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Utils util = new Utils(QuestionOuverteActivity.this);
+                GestionEtapes g = GestionEtapes.getInstance(QuestionOuverteActivity.this);
+                SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE).edit();
+                edit.putInt(Config.PREF_ETAPE_COURANTE, 0);
+                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
+                edit.putInt(Config.PREF_POINTS_TOTAUX, 0);
+                edit.apply();
+                util.chargerEpreuveOuEtapeSuivante(null, null);
+                return false;
+            }
+        });
         return true;
     }
 
@@ -79,7 +95,7 @@ public class QuestionOuverteActivity extends AppCompatActivity {
         if (mReponse.getText().toString().isEmpty() || mReponse.getText().toString().equals("")) {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
-            Utils utils = Utils.getInstance(this);
+            Utils utils = new Utils(this);
             if (mEpreuve.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
                 utils.augmenterPoints(mEpreuve.getPoints());
                 Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse! +"+mEpreuve.getPoints()+" points.", Toast.LENGTH_LONG).show();

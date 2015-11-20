@@ -17,51 +17,48 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 public class Utils {
     private static final String TAG = "Utils";
     private Context context;
-    private static Utils instance=null;
 
-    private Utils(Context context){
+    public Utils(Context context){
         this.context = context;
     }
 
-    public static Utils getInstance(Context context){
-        if(instance==null){
-            instance=new Utils(context);
-        }
-        return instance;
-    }
-
     public void chargerEpreuveOuEtapeSuivante(Etape etape, Epreuve epreuve) {
-        Epreuve epreuveSuivante = etape.getEpreuve(epreuve.getNum() + 1);
         Intent intent = new Intent();
-        if (epreuveSuivante != null) {
-            Type typeSuivant = epreuveSuivante.getType();
-            if (typeSuivant == Type.QCM) {
-                intent = new Intent(context, QcmActivity.class);
-            } else if (typeSuivant == Type.OUVERTE) {
-                intent = new Intent(context, QuestionOuverteActivity.class);
-            } else if (typeSuivant == Type.PHOTO) {
-                intent = new Intent(context, PhotoActivity.class);
-            }
-            intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape.getNum());
-            intent.putExtra(Config.EXTRA_EPREUVE, epreuveSuivante.getUri());
-            SharedPreferences.Editor edit = context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit();
-            edit.putString(Config.PREF_EPREUVE_COURANTE, epreuveSuivante.getUri());
-            edit.apply();
-            /* sinon regarder les autres types */
+        if(etape==null){
+            intent = new Intent(context,EtapeActivity.class);
+            intent.putExtra(Config.EXTRA_ETAPE_COURANTE, 0);
         } else {
-            Log.d(TAG, "pas d'epreuve suivante");
-            /* l'étape est finie, charger la suivante */
-            Etape etapeSuivante = GestionEtapes.getInstance(context).getEtape(etape.getNum() + 1);
-            if (etapeSuivante == null) {
-                /* charger écran de fin reprenant le temps total et le score final */
-            } else {
-                Log.d(TAG, "charge etape num : " + etapeSuivante.getNum());
-                intent = new Intent(context, EtapeActivity.class);
+            Epreuve epreuveSuivante = etape.getEpreuve(epreuve.getNum() + 1);
+            if (epreuveSuivante != null) {
+                Type typeSuivant = epreuveSuivante.getType();
+                if (typeSuivant == Type.QCM) {
+                    intent = new Intent(context, QcmActivity.class);
+                } else if (typeSuivant == Type.OUVERTE) {
+                    intent = new Intent(context, QuestionOuverteActivity.class);
+                } else if (typeSuivant == Type.PHOTO) {
+                    intent = new Intent(context, PhotoActivity.class);
+                }
+                intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape.getNum());
+                intent.putExtra(Config.EXTRA_EPREUVE, epreuveSuivante.getUri());
                 SharedPreferences.Editor edit = context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit();
-                edit.putInt(Config.PREF_ETAPE_COURANTE, etape.getNum() + 1);
-                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
+                edit.putString(Config.PREF_EPREUVE_COURANTE, epreuveSuivante.getUri());
                 edit.apply();
-                intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etapeSuivante.getNum());
+            /* sinon regarder les autres types */
+            } else {
+                Log.d(TAG, "pas d'epreuve suivante");
+            /* l'étape est finie, charger la suivante */
+                Etape etapeSuivante = GestionEtapes.getInstance(context).getEtape(etape.getNum() + 1);
+                if (etapeSuivante == null) {
+                /* charger écran de fin reprenant le temps total et le score final */
+                } else {
+                    Log.d(TAG, "charge etape num : " + etapeSuivante.getNum());
+                    intent = new Intent(context, EtapeActivity.class);
+                    SharedPreferences.Editor edit = context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit();
+                    edit.putInt(Config.PREF_ETAPE_COURANTE, etape.getNum() + 1);
+                    edit.putString(Config.PREF_EPREUVE_COURANTE, null);
+                    edit.apply();
+                    intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etapeSuivante.getNum());
+                }
             }
         }
         context.startActivity(intent);

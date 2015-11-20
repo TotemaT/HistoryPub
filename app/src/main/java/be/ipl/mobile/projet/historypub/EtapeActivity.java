@@ -1,11 +1,13 @@
 package be.ipl.mobile.projet.historypub;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -45,7 +47,21 @@ public class EtapeActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getInstance(this).getPoints());
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + new Utils(this).getPoints());
+        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Utils util = new Utils(EtapeActivity.this);
+                GestionEtapes g = GestionEtapes.getInstance(EtapeActivity.this);
+                SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE).edit();
+                edit.putInt(Config.PREF_ETAPE_COURANTE, 0);
+                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
+                edit.putInt(Config.PREF_POINTS_TOTAUX,0);
+                edit.apply();
+                util.chargerEpreuveOuEtapeSuivante(null, null);
+                return false;
+            }
+        });
         return true;
     }
 

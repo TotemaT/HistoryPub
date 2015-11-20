@@ -83,8 +83,21 @@ public class QcmActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        Utils utils = Utils.getInstance(this);
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + utils.getPoints());
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + new Utils(this).getPoints());
+        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Utils util = new Utils(QcmActivity.this);
+                GestionEtapes g = GestionEtapes.getInstance(QcmActivity.this);
+                SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE).edit();
+                edit.putInt(Config.PREF_ETAPE_COURANTE, 0);
+                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
+                edit.putInt(Config.PREF_POINTS_TOTAUX, 0);
+                edit.apply();
+                util.chargerEpreuveOuEtapeSuivante(null, null);
+                return false;
+            }
+        });
         return true;
     }
 
@@ -125,7 +138,7 @@ public class QcmActivity extends AppCompatActivity {
                 }
             }
 
-            Utils utils = Utils.getInstance(this);
+            Utils utils = new Utils(this);
 
             if (mEpreuve.getReponses().get(reponseChoisie).estBonne()) {
                 Toast.makeText(QcmActivity.this, "Bonne réponse! +"+mEpreuve.getPoints()+" points.", Toast.LENGTH_LONG).show();

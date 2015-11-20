@@ -1,6 +1,7 @@
 package be.ipl.mobile.projet.historypub;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -58,7 +60,7 @@ public class PhotoActivity extends AppCompatActivity {
                 if (!photoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    Utils utils = Utils.getInstance(PhotoActivity.this);
+                    Utils utils = new Utils(PhotoActivity.this);
                     Toast.makeText(PhotoActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
                     utils.augmenterPoints(mEpreuve.getPoints());
                     utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
@@ -82,7 +84,21 @@ public class PhotoActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getInstance(this).getPoints());
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + new Utils(this).getPoints());
+        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Utils util = new Utils(PhotoActivity.this);
+                GestionEtapes g = GestionEtapes.getInstance(PhotoActivity.this);
+                SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES,MODE_PRIVATE).edit();
+                edit.putInt(Config.PREF_ETAPE_COURANTE,0);
+                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
+                edit.putInt(Config.PREF_POINTS_TOTAUX, 0);
+                edit.apply();
+                util.chargerEpreuveOuEtapeSuivante(null, null);
+                return false;
+            }
+        });
         return true;
     }
 

@@ -14,19 +14,8 @@
                 <Reponse>Cordovero</Reponse>
             </Epreuve>
 
-            <Epreuve num="2" points="2" type="PHOTO"
+            <Epreuve num="2" points="2" type="OUVERTE"
                      uri="http://epreuve2.historypub.mobile.ipl.be/">
-                <Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.
-                </Question>
-                <Zone>
-                    <Latitude>50.34477</Latitude>
-                    <Longitude>4.04244</Longitude>
-                    <Rayon>5</Rayon>
-                </Zone>
-            </Epreuve>
-
-            <Epreuve num="3" points="2" type="OUVERTE"
-                     uri="http://epreuve3.historypub.mobile.ipl.be/">
                 <Question>En face du Cordovero se trouve une école. Donnez son nom.</Question>
                 <Reponse>DOA</Reponse>
             </Epreuve>
@@ -42,14 +31,14 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="4" points="3" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
+            <Epreuve num="1" points="3" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
                 <Question>Vous êtes et serez en train de suivre l'itinéraire d'une certaine procession se déroulant le lundi de Pentecôte (en sens inverse). Quel est le nom de cette procession?
                 </Question>
                 <Reponse bonne="false">Le Demi Tour</Reponse>
                 <Reponse bonne="false">Le Petit Tour</Reponse>
                 <Reponse bonne="true">Le Grand Tour</Reponse>
             </Epreuve>
-            <Epreuve num="5" points="2" type="OUVERTE"
+            <Epreuve num="2" points="2" type="OUVERTE"
                      uri="http://epreuve5.historypub.mobile.ipl.be/">
                 <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?
                 </Question>
@@ -67,24 +56,16 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="6" points="2" type="OUVERTE"
+            <Epreuve num="1" points="2" type="OUVERTE"
                      uri="http://epreuve6.historypub.mobile.ipl.be/">
                 <Question>En face de vous se trouve une Collégiale. Quel est le nom de celle-ci?
                 </Question>
                 <Reponse>Collégiale Saint Vincent</Reponse>
             </Epreuve>
 
-            <Epreuve num="7" points="2" type="PHOTO"
-                     uri="http://epreuve7.historypub.mobile.ipl.be/">
-                <Question>Prenez une photo de la Collégiale.</Question>
-                <Zone>
-                    <Latitude>50.579399</Latitude>
-                    <Longitude>4.071242</Longitude>
-                    <Rayon>5</Rayon>
-                </Zone>
-            </Epreuve>
 
-            <Epreuve num="8" points="1" type="QCM" uri="http://epreuve8.historypub.mobile.ipl.be/">
+
+            <Epreuve num="2" points="1" type="QCM" uri="http://epreuve7.historypub.mobile.ipl.be/">
                 <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant e 3ème dimanche d'octobre.
                     Lequel?
                 </Question>
@@ -105,20 +86,20 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="9" points="2" type="QCM" uri="http://epreuve9.historypub.mobile.ipl.be/">
+            <Epreuve num="1" points="2" type="QCM" uri="http://epreuve9.historypub.mobile.ipl.be/">
                 <Question>A quel type d'art appartient la Collégiale de Soignies?</Question>
                 <Reponse bonne="false">l'art gothique</Reponse>
                 <Reponse bonne="true">l'art roman</Reponse>
                 <Reponse bonne="false">l'art baroque</Reponse>
             </Epreuve>
 
-            <Epreuve num="10" points="1" type="OUVERTE"
+            <Epreuve num="2" points="1" type="OUVERTE"
                      uri="http://epreuve10.historypub.mobile.ipl.be/">
                 <Question>Dans cette Collégiale se trouve un musée. Donnez son nom</Question>
                 <Reponse>Le musée du Chapitre</Reponse>
             </Epreuve>
 
-            <Epreuve num="11" points="2" type="QCM"
+            <Epreuve num="3" points="2" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
                 <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?
                 </Question>
@@ -137,7 +118,7 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="12" points="1" type="QCM"
+            <Epreuve num="1" points="1" type="QCM"
                      uri="http://epreuve12.historypub.mobile.ipl.be/">
                 <Question>Lors de la Simpélourd, un évenement est organisé sur la place verte.
                     Lequel?
@@ -146,7 +127,7 @@
                 <Reponse bonne="false">La foire agricole</Reponse>
                 <Reponse bonne="false">Le Grand Tour</Reponse>
             </Epreuve>
-            <Epreuve num="13" points="2" type="PHOTO"
+            <Epreuve num="2" points="2" type="PHOTO"
                      uri="http://epreuve13.historypub.mobile.ipl.be/">
                 <Question>Sur la place verte se trouve une statue représentant Simpélourd.
                     Prenez-la en photo.
@@ -157,7 +138,7 @@
                     <Rayon>5</Rayon>
                 </Zone>
             </Epreuve>
-            <Epreuve num="14" points="2" type="QCM"
+            <Epreuve num="3" points="2" type="QCM"
                      uri="http://epreuve14.historypub.mobile.ipl.be/">
                 <Question>De quelle contraction provient le nom Simpélourd?</Question>
                 <Reponse bonne="true">Simple et lourd</Reponse>
@@ -174,7 +155,7 @@
             <Rayon>5</Rayon>
         </Zone>
         <Epreuves>
-            <Epreuve num="15" points="2" type="QCM"
+            <Epreuve num="1" points="2" type="QCM"
                      uri="http://epreuve15.historypub.mobile.ipl.be/">
                 <Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le nom de ce bonbon?
                 </Question>
@@ -182,12 +163,12 @@
                 <Reponse bonne="false">Le Caramel</Reponse>
                 <Reponse bonne="true">Le Carabibi</Reponse>
             </Epreuve>
-            <Epreuve num="16" points="1" type="OUVERTE"
+            <Epreuve num="2" points="1" type="OUVERTE"
                      uri="http://epreuve16.historypub.mobile.ipl.be/">
                 <Question>Quel est le surnom de Simpélourd?</Question>
                 <Reponse>Mononk</Reponse>
             </Epreuve>
-            <Epreuve num="17" points="2" type="QCM"
+            <Epreuve num="3" points="2" type="QCM"
                      uri="http://epreuve17.historypub.mobile.ipl.be/">
                 <Question>Soignies n'est pas connue que pour ses festivités. Elle est également la capitale européenne de...
                 </Question>
@@ -197,4 +178,29 @@
             </Epreuve>
         </Epreuves>
     </Etape>
+
+    <!-- Appartient à l'étape 1
+    <Epreuve num="2" points="2" type="PHOTO"
+                     uri="http://epreuve2.historypub.mobile.ipl.be/">
+                <Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.
+                </Question>
+                <Zone>
+                    <Latitude>50.34477</Latitude>
+                    <Longitude>4.04244</Longitude>
+                    <Rayon>5</Rayon>
+                </Zone>
+            </Epreuve>
+
+
+            Appartient à l'étape 3
+            <Epreuve num="2" points="2" type="PHOTO"
+                     uri="http://epreuve7.historypub.mobile.ipl.be/">
+                <Question>Prenez une photo de la Collégiale.</Question>
+                <Zone>
+                    <Latitude>50.579399</Latitude>
+                    <Longitude>4.071242</Longitude>
+                    <Rayon>5</Rayon>
+                </Zone>
+            </Epreuve>
+    -->
 </Jeu>
