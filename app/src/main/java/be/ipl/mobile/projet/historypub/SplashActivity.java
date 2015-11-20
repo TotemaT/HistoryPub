@@ -40,11 +40,11 @@ public class SplashActivity extends AppCompatActivity {
                 /* Numerotation des etapes et épreuves commence à 0 */
                 int etape = pref.getInt(Config.PREF_ETAPE_COURANTE, 0);
                 String epreuve = pref.getString(Config.PREF_EPREUVE_COURANTE, null);
+                int pointTotaux = pref.getInt(Config.PREF_POINTS_TOTAUX,0);
                 
                 /* Charge le fichier XML */
                 GestionEtapes.getInstance(SplashActivity.this);
-
-
+                Utils.augmenterPoints(SplashActivity.this, pointTotaux);
 
                 Intent intent;
                 if (epreuve == null) {

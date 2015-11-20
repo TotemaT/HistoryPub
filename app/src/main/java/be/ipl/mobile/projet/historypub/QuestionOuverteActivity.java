@@ -71,7 +71,7 @@ public class QuestionOuverteActivity extends AppCompatActivity {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
             if (mEpreuve.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
-                Utils.augmenterPoints(mEpreuve.getPoints());
+                Utils.augmenterPoints(QuestionOuverteActivity.this,mEpreuve.getPoints());
                 Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();

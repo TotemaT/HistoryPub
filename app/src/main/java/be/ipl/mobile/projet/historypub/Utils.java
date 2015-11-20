@@ -1,7 +1,9 @@
 package be.ipl.mobile.projet.historypub;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import be.ipl.mobile.projet.historypub.pojo.Etape;
@@ -22,7 +24,6 @@ public class Utils {
     public static void chargerEpreuveOuEtapeSuivante(Context context, Etape etape, Epreuve epreuve) {
         Epreuve epreuveSuivante = etape.getEpreuve(epreuve.getNum() + 1);
         Intent intent = new Intent();
-
         if (epreuveSuivante != null) {
             Type typeSuivant = epreuveSuivante.getType();
             if (typeSuivant == Type.QCM) {
@@ -50,8 +51,11 @@ public class Utils {
         context.startActivity(intent);
     }
 
-    public static void augmenterPoints(int pointsAjouter) {
+    public static void augmenterPoints(Activity act, int pointsAjouter) {
+        SharedPreferences.Editor edit = act.getPreferences(Context.MODE_PRIVATE).edit();
+        Log.i("POINTS_TOTAUX",act.getPreferences(Context.MODE_PRIVATE).getInt(Config.PREF_POINTS_TOTAUX,0)+"");
         points+=pointsAjouter;
+        edit.putInt(Config.PREF_POINTS_TOTAUX, points);
     }
 
     public static int getPoints(){

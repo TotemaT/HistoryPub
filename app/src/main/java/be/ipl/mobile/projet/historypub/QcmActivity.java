@@ -77,7 +77,7 @@ public class QcmActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("Points: "+Utils.getPoints());
+        menu.add("Points: " + Utils.getPoints());
         return true;
     }
 
@@ -120,7 +120,7 @@ public class QcmActivity extends AppCompatActivity {
 
             if (mEpreuve.getReponses().get(reponseChoisie).estBonne()) {
                 Toast.makeText(QcmActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
-                Utils.augmenterPoints(mEpreuve.getPoints());
+                Utils.augmenterPoints(QcmActivity.this,mEpreuve.getPoints());
             } else {
                 Toast.makeText(QcmActivity.this, "Mauvaise réponse... :(\nLa bonne réponse était : " + bonneReponse, Toast.LENGTH_SHORT).show();
             }

@@ -14,16 +14,16 @@
                 <Reponse>Cordovero</Reponse>
             </Epreuve>
 
-            <Epreuve num="2" points="2" type="PHOTO"
-                     uri="http://epreuve2.historypub.mobile.ipl.be/">
-                <Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.
+
+            <Epreuve num="2" points="2" type="QCM"
+                     uri="http://epreuve11.historypub.mobile.ipl.be/">
+                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?
                 </Question>
-                <Zone>
-                    <Latitude>50.34477</Latitude>
-                    <Longitude>4.04244</Longitude>
-                    <Rayon>5</Rayon>
-                </Zone>
+                <Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
+                <Reponse bonne="false">Araneae Sonegiensis</Reponse>
+                <Reponse bonne="false">Migidae Sonegiensis</Reponse>
             </Epreuve>
+
 
             <Epreuve num="3" points="2" type="OUVERTE"
                      uri="http://epreuve3.historypub.mobile.ipl.be/">
@@ -55,7 +55,18 @@
                 </Question>
                 <Reponse>Saint Vincent</Reponse>
             </Epreuve>
+            <Epreuve num="2" points="2" type="PHOTO"
+                     uri="http://epreuve2.historypub.mobile.ipl.be/">
+                <Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.
+                </Question>
+                <Zone>
+                    <Latitude>50.34477</Latitude>
+                    <Longitude>4.04244</Longitude>
+                    <Rayon>5</Rayon>
+                </Zone>
+            </Epreuve>
         </Epreuves>
+
     </Etape>
 
     <Etape num="3" url="etape3.html">
@@ -119,12 +130,11 @@
 
             <Epreuve num="11" points="2" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
-                <Question>La légende veut qu'en 1986, lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée se nourrissant avidement des malheureux volatiles. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd.
-                    Sauriez-vous trouver le nom donné à cette araignée?
+                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?
                 </Question>
                 <Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
                 <Reponse bonne="false">Araneae Sonegiensis</Reponse>
-                <Reponse bonne="false">Migidae</Reponse>
+                <Reponse bonne="false">Migidae Sonegiensis</Reponse>
             </Epreuve>
         </Epreuves>
     </Etape>

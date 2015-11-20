@@ -57,7 +57,7 @@ public class PhotoActivity extends AppCompatActivity {
                 if (!photoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    Utils.augmenterPoints(mEpreuve.getPoints());
+                    Utils.augmenterPoints(PhotoActivity.this,mEpreuve.getPoints());
                     Utils.chargerEpreuveOuEtapeSuivante(PhotoActivity.this, mEtape, mEpreuve);
                     finish();
                 }
