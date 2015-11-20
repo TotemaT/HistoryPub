@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,16 +63,24 @@ public class QuestionOuverteActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("Points: " + Utils.getPoints());
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_epreuve, menu);
         return true;
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getPoints(this));
+        return true;
+    }
+
+
     private void verifierReponse() {
-        if (mReponse.getText().toString().isEmpty()||mReponse.getText().toString().equals("")) {
+        if (mReponse.getText().toString().isEmpty() || mReponse.getText().toString().equals("")) {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
             if (mEpreuve.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
-                Utils.augmenterPoints(QuestionOuverteActivity.this,mEpreuve.getPoints());
+                Utils.augmenterPoints(QuestionOuverteActivity.this, mEpreuve.getPoints());
                 Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();

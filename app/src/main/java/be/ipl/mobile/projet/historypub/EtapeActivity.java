@@ -38,7 +38,14 @@ public class EtapeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("Points: "+Utils.getPoints());
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_epreuve, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getPoints(this));
         return true;
     }
 
@@ -50,16 +57,16 @@ public class EtapeActivity extends AppCompatActivity {
                 return true;
             }
         });
-        mWebView.loadUrl("file:///android_asset/"+mEtape.getUrl());
+        mWebView.loadUrl("file:///android_asset/" + mEtape.getUrl());
     }
 
     private void lanceEpreuveCorrespondante(String url) {
-        Log.i("ET",mEtape.toString());
-        Log.i("NB_EP",mEtape.getNombreEpreuves()+"");
+        Log.i("ET", mEtape.toString());
+        Log.i("NB_EP", mEtape.getNombreEpreuves() + "");
         Type type = mEtape.getEpreuve(url).getType();
         Intent intent;
         /* QCM par défaut, si pas ce type là, on passe dans les if et bla bla bla */
-        if(type.equals(Type.QCM))
+        if (type.equals(Type.QCM))
             intent = new Intent(EtapeActivity.this, QcmActivity.class);
         else if (type.equals(Type.OUVERTE))
             intent = new Intent(EtapeActivity.this, QuestionOuverteActivity.class);

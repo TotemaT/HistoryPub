@@ -1,6 +1,5 @@
 package be.ipl.mobile.projet.historypub;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,10 +7,6 @@ import android.util.Log;
 
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
-import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveOuverte;
-import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
-import be.ipl.mobile.projet.historypub.pojo.epreuves.Reponse;
-import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 
 /**
@@ -19,7 +14,6 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
  */
 public class Utils {
     private static final String TAG = "Utils";
-    private static int points=0;
 
     public static void chargerEpreuveOuEtapeSuivante(Context context, Etape etape, Epreuve epreuve) {
         Epreuve epreuveSuivante = etape.getEpreuve(epreuve.getNum() + 1);
@@ -51,15 +45,17 @@ public class Utils {
         context.startActivity(intent);
     }
 
-    public static void augmenterPoints(Activity act, int pointsAjouter) {
-        SharedPreferences.Editor edit = act.getPreferences(Context.MODE_PRIVATE).edit();
-        Log.i("POINTS_TOTAUX",act.getPreferences(Context.MODE_PRIVATE).getInt(Config.PREF_POINTS_TOTAUX,0)+"");
-        points+=pointsAjouter;
-        edit.putInt(Config.PREF_POINTS_TOTAUX, points);
+    public static void augmenterPoints(Context context, int pointsAjouter) {
+        SharedPreferences prefs = context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE);
+        int pointsTot = prefs.getInt(Config.PREF_POINTS_TOTAUX, 0) + pointsAjouter;
+        prefs.edit()
+                .putInt(Config.PREF_POINTS_TOTAUX, pointsTot)
+                .apply();
+        Log.d(TAG, "Points totaux : " + pointsTot);
     }
 
-    public static int getPoints(){
-        return points;
+    public static int getPoints(Context context) {
+        return context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).getInt(Config.PREF_POINTS_TOTAUX, 0);
     }
 
 }

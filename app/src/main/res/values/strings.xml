@@ -4,4 +4,5 @@
     <string name="question_ouvrable_hint">Entrez votre réponse ici</string>
     <string name="ok">OK</string>
     <string name="prendre_photo">Prendre photo</string>
+    <string name="score">Score</string>
 </resources>

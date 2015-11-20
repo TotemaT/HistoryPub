@@ -37,4 +37,5 @@ public interface Config {
     String NAMESPACE = null;
     String FICHIER_ALMA = "Soignies.xml";
 
+    String PREFERENCES = "HistoryPub_prefs";
 }

@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             protected Intent doInBackground(Void... voids) {
-                SharedPreferences pref = getPreferences(MODE_PRIVATE);
+                SharedPreferences pref = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE);
                 /* Numerotation des etapes et épreuves commence à 0 */
                 int etape = pref.getInt(Config.PREF_ETAPE_COURANTE, 0);
                 String epreuve = pref.getString(Config.PREF_EPREUVE_COURANTE, null);
@@ -44,7 +44,7 @@ public class SplashActivity extends AppCompatActivity {
                 
                 /* Charge le fichier XML */
                 GestionEtapes.getInstance(SplashActivity.this);
-                Utils.augmenterPoints(SplashActivity.this, pointTotaux);
+                Utils.augmenterPoints(SplashActivity.this, 0);
 
                 Intent intent;
                 if (epreuve == null) {

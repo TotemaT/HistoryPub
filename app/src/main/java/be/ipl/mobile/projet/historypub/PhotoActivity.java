@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,7 +37,6 @@ public class PhotoActivity extends AppCompatActivity {
     private boolean photoPrise = false;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +57,7 @@ public class PhotoActivity extends AppCompatActivity {
                 if (!photoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    Utils.augmenterPoints(PhotoActivity.this,mEpreuve.getPoints());
+                    Utils.augmenterPoints(PhotoActivity.this, mEpreuve.getPoints());
                     Utils.chargerEpreuveOuEtapeSuivante(PhotoActivity.this, mEtape, mEpreuve);
                     finish();
                 }
@@ -72,9 +72,17 @@ public class PhotoActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("Points: "+Utils.getPoints());
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_epreuve, menu);
         return true;
     }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        (menu.findItem(R.id.score_menu)).setTitle("Score: " + Utils.getPoints(this));
+        return true;
+    }
+
 
     private static Uri getOutputMediaFileUri() {
         return Uri.fromFile(getOutputMediaFile());
