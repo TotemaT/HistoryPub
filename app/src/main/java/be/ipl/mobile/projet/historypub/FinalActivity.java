@@ -8,6 +8,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FinalActivity extends AppCompatActivity {
     private TextView score_final;
     private TextView temps_final;
@@ -49,9 +53,16 @@ public class FinalActivity extends AppCompatActivity {
     }
 
     public void remplir_stats_finaux(){
-        SharedPreferences sp = getSharedPreferences(Config.PREFERENCES,MODE_PRIVATE);
-        score_final.setText("Score: "+String.valueOf(sp.getInt(Config.PREF_POINTS_TOTAUX, 0)));
-        temps_final.setText("Temps:" +sp.getString(Config.PREF_TEMPS_DEBUT, null));
+        SharedPreferences sp = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE);
+        score_final.setText("Score: " + String.valueOf(sp.getInt(Config.PREF_POINTS_TOTAUX, 0)));
+        Date deb = new Date(sp.getLong(Config.PREF_TEMPS_DEBUT, 0));
+        Date fin = new Date();
+        long diff = fin.getTime() - deb.getTime();
+        int nbHeures = (int) (diff / 3600000.0f);
+        int nbMinutes = (int) (diff/ 60000.0f);
+        int nbSecondes = (int) (diff / 1000.0f);
+        long time = fin.getTime()-deb.getTime();
+        temps_final.setText("Temps: "+ nbHeures+"heure(s), "+nbMinutes+" minute(s)," + nbSecondes+" secondes.");
         SharedPreferences.Editor edit = sp.edit();
         edit.putInt(Config.PREF_POINTS_TOTAUX, 0);
         edit.putString(Config.PREF_TEMPS_DEBUT, null);

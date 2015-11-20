@@ -10,6 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import java.util.Date;
+
 
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
@@ -87,9 +89,15 @@ public class EtapeActivity extends AppCompatActivity {
         else if (type.equals(Type.OUVERTE))
             intent = new Intent(EtapeActivity.this, QuestionOuverteActivity.class);
         else
-            intent = new Intent(EtapeActivity.this, QuestionOuverteActivity.class);//TODO Temporaire, à remplacer par autre chose
-        intent.putExtra(Config.EXTRA_EPREUVE, url);
+            intent = new Intent(EtapeActivity.this, PhotoActivity.class);//TODO Temporaire, à remplacer par autre chose
+        if(mEtape.getNum()==0&&mEtape.getEpreuve(url).getNum()==0) {
+            Date d = new Date();
+            SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE).edit();
+            edit.putLong(Config.PREF_TEMPS_DEBUT, d.getTime());
+            edit.apply();
+        }
         intent.putExtra(Config.EXTRA_ETAPE_COURANTE, mEtape.getNum());
+        intent.putExtra(Config.EXTRA_EPREUVE,mEtape.getEpreuve(url).getUri());
 
         Log.d(TAG, "Url capturée : " + url);
 
