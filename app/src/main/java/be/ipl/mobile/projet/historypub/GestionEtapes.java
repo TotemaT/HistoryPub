@@ -27,7 +27,6 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
 public class GestionEtapes {
     /*TODO il reste a faire:
         - Fermer le fichier CampusAlma.xml une fois le traitement effectué
-        - Traiter tout ce qui est relatif à l'uri (Quand on clique on arrive sur la bonne épreuve/etape <=> Trouver le bon fichier html
     */
     private static final String TAG = "GestionEtapes";
 

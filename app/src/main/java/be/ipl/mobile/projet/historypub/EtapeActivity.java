@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -32,7 +34,12 @@ public class EtapeActivity extends AppCompatActivity {
         Log.d(TAG, "chargement de : " + mEtape.getUrl());
 
         setupWebview();
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Points: "+Utils.getPoints());
+        return true;
     }
 
     private void setupWebview() {

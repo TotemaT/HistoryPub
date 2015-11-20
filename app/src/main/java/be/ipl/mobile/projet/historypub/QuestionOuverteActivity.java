@@ -3,6 +3,7 @@ package be.ipl.mobile.projet.historypub;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,11 +60,18 @@ public class QuestionOuverteActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Points: " + Utils.getPoints());
+        return true;
+    }
+
     private void verifierReponse() {
-        if (mReponse.getText().toString().isEmpty()) {
+        if (mReponse.getText().toString().isEmpty()||mReponse.getText().toString().equals("")) {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
             if (mEpreuve.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
+                Utils.augmenterPoints(mEpreuve.getPoints());
                 Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();

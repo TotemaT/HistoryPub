@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -74,6 +75,12 @@ public class QcmActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Points: "+Utils.getPoints());
+        return true;
+    }
+
     private void setQuestion() {
         ((TextView) findViewById(R.id.question_textView)).setText(mEpreuve.getQuestion());
 
@@ -113,6 +120,7 @@ public class QcmActivity extends AppCompatActivity {
 
             if (mEpreuve.getReponses().get(reponseChoisie).estBonne()) {
                 Toast.makeText(QcmActivity.this, "Bonne réponse!", Toast.LENGTH_LONG).show();
+                Utils.augmenterPoints(mEpreuve.getPoints());
             } else {
                 Toast.makeText(QcmActivity.this, "Mauvaise réponse... :(\nLa bonne réponse était : " + bonneReponse, Toast.LENGTH_SHORT).show();
             }
