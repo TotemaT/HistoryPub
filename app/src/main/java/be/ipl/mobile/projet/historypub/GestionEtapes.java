@@ -150,6 +150,7 @@ public class GestionEtapes {
         Zone zone = null;
         List<String> mots = new ArrayList<String>();
         List<ReponseQCM> reponses = new ArrayList<ReponseQCM>();
+        List<Reponse> reponsesOuvertes = new ArrayList<>();
         Reponse reponse = null;
 
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -162,7 +163,7 @@ public class GestionEtapes {
                 zone = readZone(parser);
             else if (name.equals("Reponse")) {
                 if (parser.getAttributeValue(Config.NAMESPACE, "bonne") == null || parser.getAttributeValue(Config.NAMESPACE, "bonne").isEmpty()) {
-                    reponse = new Reponse(parser.nextText());
+                    reponsesOuvertes.add(new Reponse(parser.nextText()));
                 } else {
                     boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE, "bonne"));
                     reponses.add(new ReponseQCM(parser.nextText(), isTrue));
@@ -187,7 +188,7 @@ public class GestionEtapes {
                     e2.addMot(mot);
                 return e2;
             case "OUVERTE":
-                return new EpreuveOuverte(num, question, uri, points, reponse);
+                return new EpreuveOuverte(num, question, uri, points, reponsesOuvertes);
             default:
                 return null;
         }

@@ -12,6 +12,7 @@
                 <Question>Bla bla bla, question en anglais, lol. Quel est le nom de la librairire se trouvant près de Rue Chanoine de Scarmure?
                 </Question>
                 <Reponse>Cordovero</Reponse>
+                <Reponse>Le Cordovero</Reponse>
             </Epreuve>
 
             <Epreuve num="2" points="2" type="OUVERTE"
