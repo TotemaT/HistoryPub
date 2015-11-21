@@ -44,8 +44,7 @@ public class SplashActivity extends AppCompatActivity {
                 /* Numerotation des etapes et épreuves commence à 0 */
                 int etape = pref.getInt(Config.PREF_ETAPE_COURANTE, 0);
                 String epreuve = pref.getString(Config.PREF_EPREUVE_COURANTE, null);
-                int pointTotaux = pref.getInt(Config.PREF_POINTS_TOTAUX,0);
-                
+
                 /* Charge le fichier XML */
                 GestionEtapes.getInstance(SplashActivity.this);
                 new Utils(SplashActivity.this).augmenterPoints(0);
@@ -57,14 +56,13 @@ public class SplashActivity extends AppCompatActivity {
                 } else {
                     GestionEtapes ges = GestionEtapes.getInstance(SplashActivity.this);
                     Epreuve ep = ges.getEtape(etape).getEpreuve(epreuve);
-                    if(ep.getType()== Type.QCM)
+                    if (ep.getType() == Type.QCM) {
                         intent = new Intent(SplashActivity.this, QcmActivity.class);
-                    else if(ep.getType()==Type.OUVERTE)
+                    } else if (ep.getType() == Type.OUVERTE) {
                         intent = new Intent(SplashActivity.this, QuestionOuverteActivity.class);
-                    else if(ep.getType()==Type.PHOTO)
+                    } else {
                         intent = new Intent(SplashActivity.this, PhotoActivity.class);
-                    else
-                        intent = null;
+                    }
 
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);

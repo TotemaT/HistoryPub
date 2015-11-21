@@ -32,16 +32,19 @@ public class QcmActivity extends AppCompatActivity {
     private AppCompatCheckBox mCheckBoxDeux;
     private AppCompatCheckBox mCheckBoxTrois;
 
+    private Utils util;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.epreuve_qcm);
+
+        util = new Utils(this);
 
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
 
         mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE_COURANTE, 0));
         mEpreuve = (EpreuveQCM) mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
-
-        setContentView(R.layout.epreuve_qcm);
 
         mCheckBoxUn = (AppCompatCheckBox) findViewById(R.id.choix_1).findViewById(R.id.qcm_checkbox);
         mCheckBoxDeux = (AppCompatCheckBox) findViewById(R.id.choix_2).findViewById(R.id.qcm_checkbox);
@@ -83,18 +86,11 @@ public class QcmActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + new Utils(this).getPoints());
+        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
         (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Utils util = new Utils(QcmActivity.this);
-                GestionEtapes g = GestionEtapes.getInstance(QcmActivity.this);
-                SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE).edit();
-                edit.putInt(Config.PREF_ETAPE_COURANTE, 0);
-                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
-                edit.putInt(Config.PREF_POINTS_TOTAUX, 0);
-                edit.apply();
-                util.chargerEpreuveOuEtapeSuivante(null, null);
+                util.resetPartie();
                 return false;
             }
         });
@@ -148,7 +144,6 @@ public class QcmActivity extends AppCompatActivity {
             }
 
             utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
-            finish();
         }
     }
 }

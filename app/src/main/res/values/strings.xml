@@ -4,9 +4,12 @@
     <string name="question_ouvrable_hint">Entrez votre réponse ici</string>
     <string name="ok">OK</string>
     <string name="prendre_photo">Prendre photo</string>
-    <string name="score">Score</string>
     <string name="title_activity_final">FinalActivity</string>
-    <string name="message_final">Félicitation vous avez fini le parcours. Ci-dessous se trouvent votre score total ainsi que le temps nécessaire
-    pour réaliser ce parcours.</string>
+    <string name="message_final">Félicitation, vous avez fini le parcours !</string>
     <string name="action_settings">Settings</string>
+    <string name="duree_finale">%1$d heures %2$d minutes et %3$d secondes</string>
+    <string name="score">Score : %1$d</string>
+    <string name="final_score">Score</string>
+    <string name="final_duree">Duree</string>
+    <string name="partager">Partager mon score</string>
 </resources>

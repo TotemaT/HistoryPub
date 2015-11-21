@@ -1,8 +1,7 @@
 package be.ipl.mobile.projet.historypub;
 
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,15 +22,20 @@ public class QuestionOuverteActivity extends AppCompatActivity {
 
     private EditText mReponse;
 
+    private Utils util;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_question_ouverte);
+
+        util = new Utils(this);
+
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
 
         mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE_COURANTE, 0));
         mEpreuve = (EpreuveOuverte) mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
 
-        setContentView(R.layout.activity_question_ouverte);
         Button repondre = (Button) findViewById(R.id.reponse_btn);
         mReponse = (EditText) findViewById(R.id.question_ouverte_edit);
 
@@ -72,18 +76,11 @@ public class QuestionOuverteActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + new Utils(this).getPoints());
+        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
         (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Utils util = new Utils(QuestionOuverteActivity.this);
-                GestionEtapes g = GestionEtapes.getInstance(QuestionOuverteActivity.this);
-                SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE).edit();
-                edit.putInt(Config.PREF_ETAPE_COURANTE, 0);
-                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
-                edit.putInt(Config.PREF_POINTS_TOTAUX, 0);
-                edit.apply();
-                util.chargerEpreuveOuEtapeSuivante(null, null);
+                util.resetPartie();
                 return false;
             }
         });
@@ -98,12 +95,11 @@ public class QuestionOuverteActivity extends AppCompatActivity {
             Utils utils = new Utils(this);
             if (mEpreuve.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
                 utils.augmenterPoints(mEpreuve.getPoints());
-                Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse! +"+mEpreuve.getPoints()+" points.", Toast.LENGTH_LONG).show();
+                Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();
             }
             utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
-            finish();
         }
     }
 }

@@ -1,5 +1,6 @@
 package be.ipl.mobile.projet.historypub;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
 import java.util.Date;
 
 
@@ -25,11 +27,14 @@ public class EtapeActivity extends AppCompatActivity {
     private WebView mWebView;
 
     private Etape mEtape;
+    private Utils util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etape);
+
+        util = new Utils(this);
 
         mWebView = (WebView) findViewById(R.id.webView);
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
@@ -49,18 +54,11 @@ public class EtapeActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + new Utils(this).getPoints());
+        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
         (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Utils util = new Utils(EtapeActivity.this);
-                GestionEtapes g = GestionEtapes.getInstance(EtapeActivity.this);
-                SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE).edit();
-                edit.putInt(Config.PREF_ETAPE_COURANTE, 0);
-                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
-                edit.putInt(Config.PREF_POINTS_TOTAUX,0);
-                edit.apply();
-                util.chargerEpreuveOuEtapeSuivante(null, null);
+                util.resetPartie();
                 return false;
             }
         });
@@ -83,27 +81,28 @@ public class EtapeActivity extends AppCompatActivity {
         Log.i("NB_EP", mEtape.getNombreEpreuves() + "");
         Type type = mEtape.getEpreuve(url).getType();
         Intent intent;
-        /* QCM par défaut, si pas ce type là, on passe dans les if et bla bla bla */
-        if (type.equals(Type.QCM))
+        if (type.equals(Type.QCM)) {
             intent = new Intent(EtapeActivity.this, QcmActivity.class);
-        else if (type.equals(Type.OUVERTE))
+        } else if (type.equals(Type.OUVERTE)) {
             intent = new Intent(EtapeActivity.this, QuestionOuverteActivity.class);
-        else
-            intent = new Intent(EtapeActivity.this, PhotoActivity.class);//TODO Temporaire, à remplacer par autre chose
-        if(mEtape.getNum()==0&&mEtape.getEpreuve(url).getNum()==0) {
-            Date d = new Date();
-            SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE).edit();
-            edit.putLong(Config.PREF_TEMPS_DEBUT, d.getTime());
-            edit.apply();
+        } else {
+            intent = new Intent(EtapeActivity.this, PhotoActivity.class);
+        }
+        SharedPreferences prefs = getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE);
+        /* Si pas dans les préférences, premier lancement ou premier lancement après un reset */
+        if (!prefs.contains(Config.PREF_TEMPS_DEBUT)) {
+            getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE)
+                    .edit()
+                    .putLong(Config.PREF_TEMPS_DEBUT, new Date().getTime())
+                    .apply();
         }
         intent.putExtra(Config.EXTRA_ETAPE_COURANTE, mEtape.getNum());
-        intent.putExtra(Config.EXTRA_EPREUVE,mEtape.getEpreuve(url).getUri());
+        intent.putExtra(Config.EXTRA_EPREUVE, mEtape.getEpreuve(url).getUri());
 
         Log.d(TAG, "Url capturée : " + url);
 
         startActivity(intent);
         finish();
     }
-
 
 }

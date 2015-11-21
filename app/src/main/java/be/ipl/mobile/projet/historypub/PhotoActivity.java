@@ -39,11 +39,15 @@ public class PhotoActivity extends AppCompatActivity {
     private Uri uri;
     private boolean photoPrise = false;
 
+    private Utils util;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+
+        util = new Utils(this);
 
         mEtape = GestionEtapes.getInstance(this).getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE_COURANTE, 0));
         mEpreuve = mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
@@ -64,7 +68,6 @@ public class PhotoActivity extends AppCompatActivity {
                     Toast.makeText(PhotoActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
                     utils.augmenterPoints(mEpreuve.getPoints());
                     utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
-                    finish();
                 }
             }
         });
@@ -84,18 +87,11 @@ public class PhotoActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle("Score: " + new Utils(this).getPoints());
+        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
         (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Utils util = new Utils(PhotoActivity.this);
-                GestionEtapes g = GestionEtapes.getInstance(PhotoActivity.this);
-                SharedPreferences.Editor edit = getSharedPreferences(Config.PREFERENCES,MODE_PRIVATE).edit();
-                edit.putInt(Config.PREF_ETAPE_COURANTE,0);
-                edit.putString(Config.PREF_EPREUVE_COURANTE, null);
-                edit.putInt(Config.PREF_POINTS_TOTAUX, 0);
-                edit.apply();
-                util.chargerEpreuveOuEtapeSuivante(null, null);
+                util.resetPartie();
                 return false;
             }
         });
