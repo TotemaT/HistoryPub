@@ -5,7 +5,7 @@ package be.ipl.mobile.projet.historypub.pojo.epreuves;
  */
 public class EpreuveOuverte extends Epreuve{
 
-    private Reponse reponse;
+    private final Reponse reponse;
 
     public EpreuveOuverte(int num, String question, String uri, int points, Reponse reponse) {
         super(num, question, uri, Type.OUVERTE, points);

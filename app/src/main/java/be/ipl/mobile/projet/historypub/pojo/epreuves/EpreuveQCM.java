@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class EpreuveQCM extends Epreuve {
 
-    public List<ReponseQCM> reponses;
+    private List<ReponseQCM> reponses;
 
     public EpreuveQCM(int num, String question, String uri, int points) {
         super(num, question, uri, Type.QCM, points);

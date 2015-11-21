@@ -4,13 +4,13 @@ package be.ipl.mobile.projet.historypub.pojo.epreuves;
  * Created by matt on 10/11/15.
  */
 public abstract class Epreuve {
-    private int num;
-    private String question;
-    private String uri;
-    private Type type;
-    private int points;
+    private final int num;
+    private final String question;
+    private final String uri;
+    private final Type type;
+    private final int points;
 
-    public Epreuve(int num, String question, String uri, Type type, int points) {
+    Epreuve(int num, String question, String uri, Type type, int points) {
         this.num = num - 1;
         this.question = question;
         this.uri = uri;

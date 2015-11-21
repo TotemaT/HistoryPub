@@ -8,6 +8,7 @@
     <string name="prendre_photo">Prendre photo</string>
     <string name="score">Score : %1$d</string>
     <string name="reset_parcours">Réinitialiser le jeu</string>
+    <string name="photo_prise">Photo prise par l\'utilisateur</string>
 
     <!-- Ecran final -->
     <string name="message_final">Félicitation, vous avez fini le parcours !</string>

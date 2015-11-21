@@ -48,7 +48,7 @@ public class GestionEtapes {
         return instance;
     }
 
-    public void initialiserListeEpreuves() {
+    private void initialiserListeEpreuves() {
         etapes = new ArrayList<>();
 
         /* Lecture fichier xml */
@@ -78,10 +78,6 @@ public class GestionEtapes {
             return null;
         }
         return etapes.get(numero);
-    }
-
-    public int gestNombreEtapes() {
-        return etapes.size();
     }
 
     private Etape readEtape(XmlPullParser parser) throws IOException, XmlPullParserException {

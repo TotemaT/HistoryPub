@@ -62,7 +62,7 @@ public class FinalActivity extends AppCompatActivity {
         return true;
     }
 
-    public void remplirStatsFinales() {
+    private void remplirStatsFinales() {
         mScoreFinal.setText(String.valueOf(util.getPoints()));
 
         Resources res = getResources();

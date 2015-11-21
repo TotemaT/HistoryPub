@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:contentDescription="@string/photo_prise"/>
 
     <Button
         android:id="@+id/picture_btn"

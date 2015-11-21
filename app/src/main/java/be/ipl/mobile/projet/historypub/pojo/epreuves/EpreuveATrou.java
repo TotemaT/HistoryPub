@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class EpreuveATrou extends Epreuve {
 
-    private List<String> mots;
+    private final List<String> mots;
 
     public EpreuveATrou(int num, String question, String uri, int points) {
         super(num, question, uri, Type.ATROU, points);

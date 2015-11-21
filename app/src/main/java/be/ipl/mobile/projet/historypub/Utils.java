@@ -5,13 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.concurrent.TimeUnit;
 
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
@@ -20,7 +15,7 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 /**
  * Created by matt on 19/11/15.
  */
-public class Utils {
+class Utils {
     private static final String TAG = "Utils";
 
     private Context context;

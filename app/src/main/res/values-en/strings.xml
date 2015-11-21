@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">History Pub</string>
     <string name="logo_description">History Pub logo</string>
 
     <!-- Epreuves -->
@@ -9,6 +8,7 @@
     <string name="prendre_photo">Take a picture</string>
     <string name="score">Score : %1$d</string>
     <string name="reset_parcours">Reset the game</string>
+    <string name="photo_prise">Photo taken by the user</string>
 
     <!-- Ecran final -->
     <string name="message_final">Congratulations, you\'ve completed the journey!</string>
