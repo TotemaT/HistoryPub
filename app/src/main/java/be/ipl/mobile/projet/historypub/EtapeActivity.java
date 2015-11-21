@@ -3,6 +3,7 @@ package be.ipl.mobile.projet.historypub;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,10 +12,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 
 import java.io.File;
 import java.util.Date;
-
 
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
@@ -22,13 +31,21 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 /**
  * Created by matt on 19/11/15.
  */
-public class EtapeActivity extends AppCompatActivity {
+public class EtapeActivity extends AppCompatActivity
+        implements ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
     private static final String TAG = "EtapeActivity";
 
     private WebView mWebView;
 
     private Etape mEtape;
     private Utils util;
+
+    /*
+        La partie geolocalisation est en grande partie reprise du tutoriel de Google se trouvant
+        à cette adresse : https://developer.android.com/training/location/receive-location-updates.html
+     */
+    private GoogleApiClient mApiClient;
+    private LocationRequest mLocationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +60,49 @@ public class EtapeActivity extends AppCompatActivity {
 
         Log.d(TAG, "chargement de : " + mEtape.getUrl());
 
+        buildGoogleApiClient();
+
         setupWebview();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mApiClient.connect();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mApiClient.isConnected()) {
+            startLocationUpdates();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mApiClient.isConnected()) {
+            stopLocationUpdates();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        if (mApiClient.isConnected()) {
+            mApiClient.disconnect();
+        }
+
+        super.onStop();
+    }
+
+    private void buildGoogleApiClient() {
+        mApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        createLocationRequest();
     }
 
     @Override
@@ -74,7 +133,7 @@ public class EtapeActivity extends AppCompatActivity {
                 return true;
             }
         });
-        mWebView.loadUrl("file:///android_asset/" + getString(R.string.prefix) + File.separator + mEtape.getUrl());
+        mWebView.loadUrl(getUrl("location." + mEtape.getUrl()));
     }
 
     private void lanceEpreuveCorrespondante(String url) {
@@ -106,4 +165,61 @@ public class EtapeActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onConnected(Bundle bundle) {
+        Log.d(TAG, "onConnected");
+
+        Location location = LocationServices.FusedLocationApi.getLastLocation(mApiClient);
+        if (location != null && mEtape.getZone().contient(location.getLatitude(), location.getLongitude())) {
+            Log.d(TAG, location.toString());
+            stopLocationUpdates();
+            lancerEtape();
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        /* Retente de se connecter */
+        mApiClient.connect();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        Log.d(TAG, "Location changed : " + location.toString());
+
+        if (mEtape.getZone().contient(location.getLatitude(), location.getLongitude())) {
+            lancerEtape();
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        if (!connectionResult.equals(ConnectionResult.SUCCESS)) {
+            Toast.makeText(EtapeActivity.this, R.string.gps_erreur, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void createLocationRequest() {
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+    }
+
+    private void startLocationUpdates() {
+        LocationServices.FusedLocationApi.requestLocationUpdates(mApiClient, mLocationRequest, this);
+    }
+
+    private void stopLocationUpdates() {
+        LocationServices.FusedLocationApi.removeLocationUpdates(mApiClient, this);
+    }
+
+    private void lancerEtape() {
+        Toast.makeText(EtapeActivity.this, R.string.location_ok, Toast.LENGTH_SHORT).show();
+        mWebView.loadUrl(mEtape.getUrl());
+    }
+
+    public String getUrl(String url) {
+        return "file:///android_asset/" + getString(R.string.prefix) + File.separator + url;
+    }
 }

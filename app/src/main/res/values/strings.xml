@@ -9,8 +9,8 @@
     <string name="score">Score : %1$d</string>
     <string name="reset_parcours">Réinitialiser le jeu</string>
     <string name="photo_prise">Photo prise par l\'utilisateur</string>
-    <string name="message_intro">Le fonctionnement de ce jeu est assez simple: vous devez vous rendre aux coordonnées fournies par l\'application avant de répondre à une série de
-        questions relatives à ces différents lieux. Les expliquations ne seront également visibles qu\'une fois sur place.</string>
+    <string name="location_ok">Vous êtes dans la zone. Que l\'étape commence!</string>
+    <string name="gps_erreur">Impossible de trouver votre position. Votre GPS est-il activé?</string>
 
     <!-- Ecran final -->
     <string name="message_final">Félicitation, vous avez fini le parcours !</string>

@@ -53,15 +53,13 @@ public class SplashActivity extends AppCompatActivity {
                 String epreuve = pref.getString(Config.PREF_EPREUVE_COURANTE, null);
 
                 /* Charge le fichier XML */
-                GestionEtapes.getInstance(SplashActivity.this);
-                new Utils(SplashActivity.this).augmenterPoints(0);
+                GestionEtapes gestionEtapes = GestionEtapes.getInstance(SplashActivity.this);
 
                 if (epreuve == null) {
                     intent = new Intent(SplashActivity.this, EtapeActivity.class);
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                 } else {
-                    GestionEtapes ges = GestionEtapes.getInstance(SplashActivity.this);
-                    Epreuve ep = ges.getEtape(etape).getEpreuve(epreuve);
+                    Epreuve ep = gestionEtapes.getEtape(etape).getEpreuve(epreuve);
                     if (ep.getType() == Type.QCM) {
                         intent = new Intent(SplashActivity.this, QcmActivity.class);
                     } else if (ep.getType() == Type.OUVERTE) {
@@ -73,18 +71,10 @@ public class SplashActivity extends AppCompatActivity {
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);
                 }
-                new AlertDialog.Builder(SplashActivity.this)
-                        .setTitle("Avant-propos")
-                        .setMessage(R.string.message_intro)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_info)
-                        .show();
 
+                startActivity(intent);
+                finish();
+                
             }
         }, SPLASH_TIMEOUT);
 
