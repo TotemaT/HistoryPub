@@ -37,8 +37,8 @@ public class FinalActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
         util.resetPartie();
     }
 
@@ -64,10 +64,14 @@ public class FinalActivity extends AppCompatActivity {
 
     private void remplirStatsFinales() {
         mScoreFinal.setText(String.valueOf(util.getPoints()));
+        int[] duree = util.getDuree();
 
         Resources res = getResources();
-        int[] duree = util.getDuree();
-        mTempsFinal.setText(res.getString(R.string.duree_finale, duree[0], duree[1], duree[2]));
+        String heures = res.getQuantityString(R.plurals.heures, duree[0], duree[0]);
+        String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
+        String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
+
+        mTempsFinal.setText(res.getString(R.string.duree_finale, heures, minutes, secondes));
     }
 
 }

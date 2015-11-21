@@ -12,7 +12,22 @@
 
     <!-- Ecran final -->
     <string name="message_final">Congratulations, you\'ve completed the journey!</string>
-    <string name="duree_finale">%1$d hours %2$d minutes and %3$d seconds</string>
+    <plurals name="heures">
+        <item quantity="zero">%1$d hour</item>
+        <item quantity="one">%1$d hour</item>
+        <item quantity="other">%1$d hours</item>
+    </plurals>
+    <plurals name="minutes">
+        <item quantity="zero">%1$d minute</item>
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
+    <plurals name="secondes">
+        <item quantity="zero">%1$d second</item>
+        <item quantity="one">%1$d second</item>
+        <item quantity="other">%1$d seconds</item>
+    </plurals>
+    <string name="duree_finale">%1$s, %2$s and %3$s</string>
     <string name="final_score">Score</string>
     <string name="final_duree">Duration</string>
     <string name="partager">Share my score</string>
