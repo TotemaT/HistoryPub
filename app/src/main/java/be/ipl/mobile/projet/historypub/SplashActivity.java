@@ -22,8 +22,10 @@ package be.ipl.mobile.projet.historypub;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
@@ -31,16 +33,18 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private static final long SPLASH_TIMEOUT = 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        new AsyncTask<Void, Void, Intent>() {
-
+        new Handler().postDelayed(new Runnable() {
             @Override
-            protected Intent doInBackground(Void... voids) {
+            public void run() {
                 SharedPreferences pref = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE);
+
                 /* Numerotation des etapes et épreuves commence à 0 */
                 int etape = pref.getInt(Config.PREF_ETAPE_COURANTE, 0);
                 String epreuve = pref.getString(Config.PREF_EPREUVE_COURANTE, null);
@@ -67,15 +71,10 @@ public class SplashActivity extends AppCompatActivity {
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);
                 }
-
-                return intent;
-            }
-
-            @Override
-            protected void onPostExecute(Intent intent) {
                 startActivity(intent);
                 finish();
             }
-        }.execute();
+        }, SPLASH_TIMEOUT);
+
     }
 }
