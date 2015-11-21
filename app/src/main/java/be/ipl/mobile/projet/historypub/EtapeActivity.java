@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.io.File;
 import java.util.Date;
 
 
@@ -73,7 +74,7 @@ public class EtapeActivity extends AppCompatActivity {
                 return true;
             }
         });
-        mWebView.loadUrl("file:///android_asset/" + mEtape.getUrl());
+        mWebView.loadUrl("file:///android_asset/" + getString(R.string.prefix) + File.separator + mEtape.getUrl());
     }
 
     private void lanceEpreuveCorrespondante(String url) {

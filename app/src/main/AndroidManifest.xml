@@ -28,10 +28,7 @@
         <activity android:name=".QcmActivity" />
         <activity android:name=".PhotoActivity" />
         <activity android:name=".QuestionOuverteActivity" />
-        <activity
-            android:name=".FinalActivity"
-            android:label="@string/title_activity_final" >
-        </activity>
+        <activity android:name=".FinalActivity"/>
     </application>
 
 </manifest>

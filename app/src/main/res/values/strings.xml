@@ -1,15 +1,21 @@
 <resources>
-    <string name="app_name">History Pub</string>
+    <string name="app_name" translatable="false">History Pub</string>
     <string name="logo_description">Logo History Pub</string>
-    <string name="question_ouvrable_hint">Entrez votre réponse ici</string>
+
+    <!-- Epreuves -->
+    <string name="question_ouverte_hint">Entrez votre réponse ici</string>
     <string name="ok">OK</string>
     <string name="prendre_photo">Prendre photo</string>
-    <string name="title_activity_final">FinalActivity</string>
-    <string name="message_final">Félicitation, vous avez fini le parcours !</string>
-    <string name="action_settings">Settings</string>
-    <string name="duree_finale">%1$d heures %2$d minutes et %3$d secondes</string>
     <string name="score">Score : %1$d</string>
+    <string name="reset_parcours">Réinitialiser le jeu</string>
+
+    <!-- Ecran final -->
+    <string name="message_final">Félicitation, vous avez fini le parcours !</string>
+    <string name="duree_finale">%1$d heures %2$d minutes et %3$d secondes</string>
     <string name="final_score">Score</string>
     <string name="final_duree">Duree</string>
     <string name="partager">Partager mon score</string>
+
+    <!-- Config -->
+    <string name="prefix">fr</string>
 </resources>

@@ -63,7 +63,7 @@ public class FinalActivity extends AppCompatActivity {
     }
 
     public void remplirStatsFinales() {
-        mScoreFinal.setText("" + util.getPoints());
+        mScoreFinal.setText(String.valueOf(util.getPoints()));
 
         Resources res = getResources();
         int[] duree = util.getDuree();

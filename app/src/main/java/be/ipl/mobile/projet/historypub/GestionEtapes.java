@@ -7,6 +7,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class GestionEtapes {
         try {
             parser = XmlPullParserFactory.newInstance().newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-            parser.setInput(context.getAssets().open(Config.FICHIER_ALMA), null);
+            parser.setInput(context.getAssets().open(context.getString(R.string.prefix) + File.separator + Config.FICHIER_ALMA), null);
             parser.nextTag();
 
             parser.require(XmlPullParser.START_TAG, Config.NAMESPACE, "Jeu");
@@ -79,7 +80,7 @@ public class GestionEtapes {
         return etapes.get(numero);
     }
 
-    public int gestNombreEtapes(){
+    public int gestNombreEtapes() {
         return etapes.size();
     }
 
@@ -164,10 +165,9 @@ public class GestionEtapes {
             else if (name.equals("Zone"))
                 zone = readZone(parser);
             else if (name.equals("Reponse")) {
-                if(parser.getAttributeValue(Config.NAMESPACE, "bonne")==null||parser.getAttributeValue(Config.NAMESPACE, "bonne").isEmpty()){
+                if (parser.getAttributeValue(Config.NAMESPACE, "bonne") == null || parser.getAttributeValue(Config.NAMESPACE, "bonne").isEmpty()) {
                     reponse = new Reponse(parser.nextText());
-                }
-                else {
+                } else {
                     boolean isTrue = Boolean.parseBoolean(parser.getAttributeValue(Config.NAMESPACE, "bonne"));
                     reponses.add(new ReponseQCM(parser.nextText(), isTrue));
                 }
@@ -191,7 +191,7 @@ public class GestionEtapes {
                     e2.addMot(mot);
                 return e2;
             case "OUVERTE":
-                return new EpreuveOuverte(num,question,uri,points,reponse);
+                return new EpreuveOuverte(num, question, uri, points, reponse);
             default:
                 return null;
         }
