@@ -9,6 +9,8 @@
     <string name="score">Score : %1$d</string>
     <string name="reset_parcours">Reset the game</string>
     <string name="photo_prise">Photo taken by the user</string>
+    <string name="message_intro">Le fonctionnement de ce jeu est assez simple: vous devez vous rendre aux coordonnées fournies par l\'application avant de répondre à une série de
+        questions relatives à ces différents lieux. Les expliquations ne seront également visibles qu\'une fois sur place.</string>
 
     <!-- Ecran final -->
     <string name="message_final">Congratulations, you\'ve completed the journey!</string>

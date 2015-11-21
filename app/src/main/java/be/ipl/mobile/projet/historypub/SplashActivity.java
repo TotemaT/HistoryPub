@@ -19,6 +19,8 @@
 
 package be.ipl.mobile.projet.historypub;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -34,6 +36,7 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 public class SplashActivity extends AppCompatActivity {
 
     private static final long SPLASH_TIMEOUT = 3000;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,6 @@ public class SplashActivity extends AppCompatActivity {
                 GestionEtapes.getInstance(SplashActivity.this);
                 new Utils(SplashActivity.this).augmenterPoints(0);
 
-                Intent intent;
                 if (epreuve == null) {
                     intent = new Intent(SplashActivity.this, EtapeActivity.class);
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
@@ -71,8 +73,18 @@ public class SplashActivity extends AppCompatActivity {
                     intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);
                 }
-                startActivity(intent);
-                finish();
+                new AlertDialog.Builder(SplashActivity.this)
+                        .setTitle("Avant-propos")
+                        .setMessage(R.string.message_intro)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .show();
+
             }
         }, SPLASH_TIMEOUT);
 
