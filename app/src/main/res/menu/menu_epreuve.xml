@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="@string/score"
         android:id="@+id/score_menu"
-        tools:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
     <item
         android:title="@string/reset_parcours"
         android:id="@+id/reinit_menu"
-        tools:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom" />
 </menu>
