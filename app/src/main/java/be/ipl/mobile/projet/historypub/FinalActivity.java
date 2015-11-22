@@ -36,9 +36,12 @@ import android.widget.TextView;
  * Activité présentant un résumé de la partie à l'utilisateur.
  */
 public class FinalActivity extends AppCompatActivity {
-    private TextView mScoreFinal;
-    private TextView mTempsFinal;
+    private TextView mScoreFinalTv;
+    private TextView mTempsFinalTv;
     private Utils util;
+
+    private String mScore;
+    private String mDuree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,22 +50,22 @@ public class FinalActivity extends AppCompatActivity {
 
         util = new Utils(this);
 
-        mScoreFinal = (TextView) findViewById(R.id.score_final);
-        mTempsFinal = (TextView) findViewById(R.id.temps_total);
+        mScoreFinalTv = (TextView) findViewById(R.id.score_final);
+        mTempsFinalTv = (TextView) findViewById(R.id.temps_total);
 
         Button partagerBtn = (Button) findViewById(R.id.partager_btn);
         partagerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                util.partager();
+                util.partager(mDuree, mScore);
             }
         });
         remplirStatsFinales();
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onDestroy() {
+        super.onDestroy();
         util.resetPartie();
     }
 
@@ -90,15 +93,18 @@ public class FinalActivity extends AppCompatActivity {
      * Affiche le score final et la durée totale du jeu.
      */
     private void remplirStatsFinales() {
-        mScoreFinal.setText(String.valueOf(util.getPoints()));
         int[] duree = util.getDuree();
-
         Resources res = getResources();
+
         String heures = res.getQuantityString(R.plurals.heures, duree[0], duree[0]);
         String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
         String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-        mTempsFinal.setText(res.getString(R.string.duree_finale, heures, minutes, secondes));
+        mScore = res.getQuantityString(R.plurals.points, util.getPoints(), util.getPoints());
+        mDuree = res.getString(R.string.duree_finale, heures, minutes, secondes);
+
+        mScoreFinalTv.setText(mScore);
+        mTempsFinalTv.setText(mDuree);
     }
 
 }

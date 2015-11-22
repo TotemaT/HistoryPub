@@ -9,8 +9,6 @@
     <string name="score">Score : %1$d</string>
     <string name="reset_parcours">Reset the game</string>
     <string name="photo_prise">Photo taken by the user</string>
-    <string name="message_intro">Le fonctionnement de ce jeu est assez simple: vous devez vous rendre aux coordonnées fournies par l\'application avant de répondre à une série de
-        questions relatives à ces différents lieux. Les expliquations ne seront également visibles qu\'une fois sur place.</string>
 
     <!-- Ecran final -->
     <string name="message_final">Congratulations, you\'ve completed the journey!</string>
@@ -31,9 +29,18 @@
     </plurals>
     <string name="duree_finale">%1$s, %2$s and %3$s</string>
     <string name="final_score">Score</string>
+    <plurals name="points">
+        <item quantity="one">%1$d point</item>
+        <item quantity="other">%1$d points</item>
+    </plurals>
     <string name="final_duree">Duration</string>
     <string name="partager">Share my score</string>
 
+    <!-- Partage -->
+    <string name="contenu_partage_final">I discovered Soignies thanks to History Pub.\nI finished the game in %1$s and I score %2$s!\nTry to beat me by downloading the app! :)</string>
+    <string name="titre_partage_final">I finished History Pub</string>
+
     <!-- Config -->
     <string name="prefix">en</string>
+    <string name="partage_choix">How do you want to share your final score?</string>
 </resources>

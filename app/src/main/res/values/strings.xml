@@ -9,31 +9,38 @@
     <string name="score">Score : %1$d</string>
     <string name="reset_parcours">Réinitialiser le jeu</string>
     <string name="photo_prise">Photo prise par l\'utilisateur</string>
-    <string name="message_intro">Le fonctionnement de ce jeu est assez simple: vous devez vous rendre aux coordonnées fournies par l\'application avant de répondre à une série de
-        questions relatives à ces différents lieux. Les expliquations ne seront également visibles qu\'une fois sur place.</string>
 
     <!-- Ecran final -->
     <string name="message_final">Félicitation, vous avez fini le parcours !</string>
     <plurals name="heures">
-        <item quantity="zero">%1$d heure</item>
         <item quantity="one">%1$d heure</item>
         <item quantity="other">%1$d heures</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="zero">%1$d minute</item>
         <item quantity="one">%1$d minute</item>
         <item quantity="other">%1$d minutes</item>
     </plurals>
     <plurals name="secondes">
-        <item quantity="zero">%1$d seconde</item>
         <item quantity="one">%1$d seconde</item>
         <item quantity="other">%1$d secondes</item>
     </plurals>
     <string name="duree_finale">%1$s, %2$s et %3$s</string>
     <string name="final_score">Score</string>
+    <plurals name="points">
+        <item quantity="one">%1$d point</item>
+        <item quantity="other">%1$d points</item>
+    </plurals>
     <string name="final_duree">Duree</string>
-    <string name="partager">Partager mon score</string>
+    <string name="partager">Partager</string>
+
+    <!-- Partage -->
+    <string name="titre_partage_final">J\'ai fini History Pub</string>
+    <string name="contenu_partage_final">J\'ai pu découvrir Soignies grâce à History Pub.\nJ\'ai completé le jeu en %1$s et j\'ai marqué %2$s!\nTente de me battre en téléchargeant l\'application! :)</string>
+
+    <!-- TODO partage à n'importe quelle épreuve épreuve -->
 
     <!-- Config -->
     <string name="prefix">fr</string>
+    <string name="partage_choix">Comment voulez-vous partager votre score final?</string>
+
 </resources>

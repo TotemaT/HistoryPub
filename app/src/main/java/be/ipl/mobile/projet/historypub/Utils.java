@@ -26,6 +26,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.os.Build;
 import android.util.Log;
 
 import java.util.Date;
@@ -164,11 +166,13 @@ class Utils {
      * Partage avec d'autres personnes le score total du jeu une fois fini ainsi que le temps
      * total mis pour le finir.
      */
-    public void partager() {
-        /*
-        Partage l'étape et épreuve courante avec la durée jusqu'à maintenant
-        Faire la distinction entre partage durant la partie et une fois la partie finie!
-
-        */
+    public void partager(String duree, String score) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.titre_partage_final));
+        intent.putExtra(Intent.EXTRA_TEXT,
+                context.getString(R.string.contenu_partage_final, duree, score));
+        intent = Intent.createChooser(intent, context.getString(R.string.partage_choix));
+        context.startActivity(intent);
     }
 }
