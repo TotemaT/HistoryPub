@@ -1,7 +1,28 @@
+/*
+    History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
+    en parcourant cette dernière de bar en bar.
+
+    Copyright (C) 2015
+        Matteo Taroli <contact@matteotaroli.be>
+        Nathan Raspe <raspe_nathan@live.be>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package be.ipl.mobile.projet.historypub;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -25,6 +46,9 @@ import java.util.Date;
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 
+/**
+ * Activité reprenant une épreuve de photographie.
+ */
 public class PhotoActivity extends AppCompatActivity {
     private static final String TAG = "PhotoActivity";
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
@@ -33,7 +57,6 @@ public class PhotoActivity extends AppCompatActivity {
     private Epreuve mEpreuve;
 
     private Button mButton;
-    private TextView mQuestion;
     private ImageView mPhoto;
 
     private Uri uri;
@@ -49,7 +72,7 @@ public class PhotoActivity extends AppCompatActivity {
 
         util = new Utils(this);
 
-        mEtape = GestionEtapes.getInstance(this).getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE_COURANTE, 0));
+        mEtape = GestionEtapes.getInstance(this).getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE, 0));
         mEpreuve = mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
 
         /* Gestion de la prise de photo */
@@ -72,8 +95,8 @@ public class PhotoActivity extends AppCompatActivity {
             }
         });
 
-        mQuestion = (TextView) findViewById(R.id.question_textView);
-        mQuestion.setText(mEpreuve.getQuestion());
+        TextView question = (TextView) findViewById(R.id.question_textView);
+        question.setText(mEpreuve.getQuestion());
         mPhoto = (ImageView) findViewById(R.id.photo_imageview);
 
     }
@@ -99,10 +122,18 @@ public class PhotoActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Construit le lien URI du fichier dans lequel enregistrer la photo prise.
+     * @return URI de l'image
+     */
     private static Uri getOutputMediaFileUri() {
         return Uri.fromFile(getOutputMediaFile());
     }
 
+    /**
+     * Crée et retourne le fichier dans lequel enregistrer la photo prise.
+     * @return Fichier image
+     */
     private static File getOutputMediaFile() {
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), "HistoryPub");

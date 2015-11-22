@@ -1,3 +1,25 @@
+/*
+    History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
+    en parcourant cette dernière de bar en bar.
+
+    Copyright (C) 2015
+        Matteo Taroli <contact@matteotaroli.be>
+        Nathan Raspe <raspe_nathan@live.be>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package be.ipl.mobile.projet.historypub;
 
 import android.os.Bundle;
@@ -19,7 +41,7 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
 
 /**
- * Created by matt on 10/11/15.
+ * Activité reprenant une épreuve de question à choix multiples.
  */
 public class QcmActivity extends AppCompatActivity {
     private static final String TAG = "QcmActivity";
@@ -42,7 +64,7 @@ public class QcmActivity extends AppCompatActivity {
 
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
 
-        mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE_COURANTE, 0));
+        mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE, 0));
         mEpreuve = (EpreuveQCM) mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
 
         mCheckBoxUn = (AppCompatCheckBox) findViewById(R.id.choix_1).findViewById(R.id.qcm_checkbox);
@@ -96,6 +118,9 @@ public class QcmActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Affiche la question et les différents choix de réponses à cette dernière.
+     */
     private void setQuestion() {
         ((TextView) findViewById(R.id.question_textView)).setText(mEpreuve.getQuestion());
 
@@ -111,6 +136,10 @@ public class QcmActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Vérifie la réponse donnée ou demande de répondre.
+     * Préviens l'utilisateur si la réponse est correcte ou non et lance l'épreuve ou étape suivante
+     */
     private void verifieReponse() {
         int reponseChoisie = -1;
         if (mCheckBoxUn.isChecked()) {
@@ -136,7 +165,7 @@ public class QcmActivity extends AppCompatActivity {
             Utils utils = new Utils(this);
 
             if (mEpreuve.getReponses().get(reponseChoisie).estBonne()) {
-                Toast.makeText(QcmActivity.this, "Bonne réponse! +"+mEpreuve.getPoints()+" points.", Toast.LENGTH_LONG).show();
+                Toast.makeText(QcmActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
                 utils.augmenterPoints(mEpreuve.getPoints());
             } else {
                 Toast.makeText(QcmActivity.this, "Mauvaise réponse... :(\nLa bonne réponse était : " + bonneReponse, Toast.LENGTH_SHORT).show();

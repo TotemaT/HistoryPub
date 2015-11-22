@@ -1,10 +1,33 @@
+/*
+    History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
+    en parcourant cette dernière de bar en bar.
+
+    Copyright (C) 2015
+        Matteo Taroli <contact@matteotaroli.be>
+        Nathan Raspe <raspe_nathan@live.be>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package be.ipl.mobile.projet.historypub.pojo.epreuves;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by matt on 10/11/15.
+ * Epreuve spécifique représentant une question à choix multiples,
+ * la réponse étant contenue dans une liste de 3 choix.
  */
 public class EpreuveQCM extends Epreuve {
 
@@ -15,11 +38,8 @@ public class EpreuveQCM extends Epreuve {
         reponses = new ArrayList<>();
     }
 
-    public void addReponse(String reponse, boolean bonne) {
-        reponses.add(new ReponseQCM(reponse, bonne));
-    }
 
-    public void addReponse(ReponseQCM reponse){
+    public void addReponse(ReponseQCM reponse) {
         reponses.add(reponse);
     }
 

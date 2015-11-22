@@ -1,4 +1,7 @@
 /*
+    History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
+    en parcourant cette dernière de bar en bar.
+
     Copyright (C) 2015
         Matteo Taroli <contact@matteotaroli.be>
         Nathan Raspe <raspe_nathan@live.be>
@@ -19,20 +22,19 @@
 
 package be.ipl.mobile.projet.historypub;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 
-import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 
+/**
+ * Activité de SplashScreen affichant le logo et le nom de l'application
+ * pendant le chargement du fichier XML
+ */
 public class SplashActivity extends AppCompatActivity {
 
     private static final long SPLASH_TIMEOUT = 3000;
@@ -53,15 +55,13 @@ public class SplashActivity extends AppCompatActivity {
                 String epreuve = pref.getString(Config.PREF_EPREUVE_COURANTE, null);
 
                 /* Charge le fichier XML */
-                GestionEtapes.getInstance(SplashActivity.this);
-                new Utils(SplashActivity.this).augmenterPoints(0);
+                GestionEtapes gestionEtapes = GestionEtapes.getInstance(SplashActivity.this);
 
                 if (epreuve == null) {
                     intent = new Intent(SplashActivity.this, EtapeActivity.class);
-                    intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
+                    intent.putExtra(Config.EXTRA_ETAPE, etape);
                 } else {
-                    GestionEtapes ges = GestionEtapes.getInstance(SplashActivity.this);
-                    Epreuve ep = ges.getEtape(etape).getEpreuve(epreuve);
+                    Epreuve ep = gestionEtapes.getEtape(etape).getEpreuve(epreuve);
                     if (ep.getType() == Type.QCM) {
                         intent = new Intent(SplashActivity.this, QcmActivity.class);
                     } else if (ep.getType() == Type.OUVERTE) {
@@ -70,20 +70,12 @@ public class SplashActivity extends AppCompatActivity {
                         intent = new Intent(SplashActivity.this, PhotoActivity.class);
                     }
 
-                    intent.putExtra(Config.EXTRA_ETAPE_COURANTE, etape);
+                    intent.putExtra(Config.EXTRA_ETAPE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);
                 }
-                new AlertDialog.Builder(SplashActivity.this)
-                        .setTitle("Avant-propos")
-                        .setMessage(R.string.message_intro)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_info)
-                        .show();
+
+                startActivity(intent);
+                finish();
 
             }
         }, SPLASH_TIMEOUT);

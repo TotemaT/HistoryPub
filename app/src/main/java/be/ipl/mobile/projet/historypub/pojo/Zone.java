@@ -1,7 +1,29 @@
+/*
+    History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
+    en parcourant cette dernière de bar en bar.
+
+    Copyright (C) 2015
+        Matteo Taroli <contact@matteotaroli.be>
+        Nathan Raspe <raspe_nathan@live.be>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package be.ipl.mobile.projet.historypub.pojo;
 
 /**
- * Created by matt on 10/11/15.
+ * Correspond à un zone d'un rayon donnée, autour d'une point géographique.
  */
 public class Zone {
 
@@ -17,22 +39,10 @@ public class Zone {
         this.rayon = rayon;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public int getRayon() {
-        return rayon;
-    }
-
-    /*
-        Retourne la distance entre le centre de la zone et les coordonnées données.
-        Basé sur la formule de Haversine, cf <http://stackoverflow.com/a/12600225>
-    */
+    /**
+     * Retourne la distance entre le centre de la zone et le point donné.
+     * Basé sur la formule de Haversine, cf <http://stackoverflow.com/a/12600225>.
+     */
     private int distanceAvec(double latitude, double longitude) {
         double distanceLatitude = Math.toRadians(this.latitude - latitude);
         double distanceLongitude = Math.toRadians(this.longitude - longitude);
@@ -45,6 +55,13 @@ public class Zone {
         return (int) (Math.round(RAYON_TERRE * c));
     }
 
+    /**
+     * Vérifie si un point géographique se trouve dans la zone.
+     *
+     * @param latitude  Latitude du point
+     * @param longitude Longitude du point
+     * @return True si le point se trouve dans la zone
+     */
     public boolean contient(double latitude, double longitude) {
         return distanceAvec(latitude, longitude) <= rayon;
     }

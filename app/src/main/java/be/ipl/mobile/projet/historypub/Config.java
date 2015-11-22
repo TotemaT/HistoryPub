@@ -23,19 +23,20 @@ package be.ipl.mobile.projet.historypub;
  * Interface contenant les différentes constantes utilisée dans le programme.
  */
 interface Config {
+    /* Fichier de préférences */
+    String PREFERENCES = "HistoryPub_prefs";
+
     /* Prefs */
     String PREF_ETAPE_COURANTE = "etape_courante"; /* Retiens le NUMERO de l'étape courante */
     String PREF_EPREUVE_COURANTE = "epreuve_courante"; /* Retiens l'URL de l'épreuve courante */
-    String PREF_POINTS_TOTAUX = "points_totaux"; /* Retiens les points totaux de l'utilisateur */
+    String PREF_SCORE = "score"; /* Retiens les points totaux de l'utilisateur */
     String PREF_TEMPS_DEBUT = "temps_debut"; /*Le moment où l'on a commencé les épreuves */
 
     /* Intent extras */
-    String EXTRA_ETAPE_COURANTE = "etape";
+    String EXTRA_ETAPE = "etape";
     String EXTRA_EPREUVE = "epreuve";
 
     /* XML */
-    String NAMESPACE = null;
     String FICHIER_ALMA = "Soignies.xml";
-
-    String PREFERENCES = "HistoryPub_prefs";
+    String NAMESPACE = null;
 }
