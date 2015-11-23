@@ -21,6 +21,7 @@
                 <Reponse>DOA</Reponse>
                 <Reponse>Le DOA</Reponse>
                 <Reponse>Le Premier degré d'Observation Autonome</Reponse>
+                <Reponse>Premier degré d'Observation Autonome</Reponse>
             </Epreuve>
 
         </Epreuves>
@@ -34,20 +35,27 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="1" points="3" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
-                <Question>Vous êtes et serez en train de suivre l'itinéraire d'une certaine procession se déroulant le lundi de Pentecôte (en sens inverse). Quel est le nom de cette procession?
+            <Epreuve num="1" points="2" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
+                <Question>Vous êtes et serez en train de suivre l'itinéraire du Tour Saint Vincent, qui porte également comme nom ...
                 </Question>
                 <Reponse bonne="false">Le Demi Tour</Reponse>
                 <Reponse bonne="false">Le Petit Tour</Reponse>
                 <Reponse bonne="true">Le Grand Tour</Reponse>
             </Epreuve>
-            <Epreuve num="2" points="2" type="OUVERTE"
+            <Epreuve num="2" points="1" type="OUVERTE"
                      uri="http://epreuve5.historypub.mobile.ipl.be/">
                 <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?
                 </Question>
                 <Reponse>Saint Vincent</Reponse>
                 <Reponse>St Vincent</Reponse>
                 <Reponse>Vincent</Reponse>
+            </Epreuve>
+            <Epreuve num="3" points="2" type="QCM"
+                     uri="http://epreuve6.historypub.mobile.ipl.be/">
+                <Question>Quel est le nom complet de Saint Vincent?</Question>
+                <Reponse bonne="true">Saint Vincent Madelgaire</Reponse>
+                <Reponse bonne="false">Saint Vincent Madelon</Reponse>
+                <Reponse bonne="false">Saint Vincent Madère</Reponse>
             </Epreuve>
         </Epreuves>
 
@@ -61,8 +69,8 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="1" points="2" type="OUVERTE"
-                     uri="http://epreuve6.historypub.mobile.ipl.be/">
+            <Epreuve num="1" points="1" type="OUVERTE"
+                     uri="http://epreuve7.historypub.mobile.ipl.be/">
                 <Question>En face de vous se trouve une Collégiale. Quel est le nom de celle-ci?
                 </Question>
                 <Reponse>Collégiale Saint Vincent</Reponse>
@@ -73,14 +81,19 @@
                 <Reponse>Collegiale St Vincent</Reponse>
                 <Reponse>La Collégiale St Vincent</Reponse>
                 <Reponse>La Collegiale St Vincent</Reponse>
+                <Reponse>Saint Vincent</Reponse>
+                <Reponse>St Vincent</Reponse>
             </Epreuve>
 
+            <Epreuve num="2" points="2" type="QCM" uri="http://epreuve8.historypub.mobile.ipl.be/">
+                <Question>A quel type d'art appartient la Collégiale de Soignies?</Question>
+                <Reponse bonne="false">l'art gothique</Reponse>
+                <Reponse bonne="true">l'art roman</Reponse>
+                <Reponse bonne="false">l'art baroque</Reponse>
+            </Epreuve>
 
-
-            <Epreuve num="2" points="1" type="QCM" uri="http://epreuve7.historypub.mobile.ipl.be/">
-                <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant e 3ème dimanche d'octobre.
-                    Lequel?
-                </Question>
+            <Epreuve num="3" points="2" type="QCM" uri="http://epreuve9.historypub.mobile.ipl.be/">
+                <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant le 3ème dimanche d'octobre.Lequel?</Question>
                 <Reponse bonne="false">l'Oktoberfest</Reponse>
                 <Reponse bonne="true">le brûlage de Simpélourd</Reponse>
                 <Reponse bonne="false">Tomorrowland</Reponse>
@@ -98,29 +111,32 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="1" points="2" type="QCM" uri="http://epreuve9.historypub.mobile.ipl.be/">
-                <Question>A quel type d'art appartient la Collégiale de Soignies?</Question>
-                <Reponse bonne="false">l'art gothique</Reponse>
-                <Reponse bonne="true">l'art roman</Reponse>
-                <Reponse bonne="false">l'art baroque</Reponse>
-            </Epreuve>
-
-            <Epreuve num="2" points="1" type="OUVERTE"
+            <Epreuve num="1" points="2" type="OUVERTE"
                      uri="http://epreuve10.historypub.mobile.ipl.be/">
                 <Question>Dans cette Collégiale se trouve un musée. Donnez son nom</Question>
                 <Reponse>Le musée du Chapitre</Reponse>
                 <Reponse>musée du Chapitre</Reponse>
                 <Reponse>Le musee du Chapitre</Reponse>
                 <Reponse>musee du Chapitre</Reponse>
+                <Reponse>Chapitre</Reponse>
             </Epreuve>
 
-            <Epreuve num="3" points="2" type="QCM"
+            <Epreuve num="2" points="2" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
                 <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?
                 </Question>
                 <Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
                 <Reponse bonne="false">Araneae Sonegiensis</Reponse>
                 <Reponse bonne="false">Migidae Sonegiensis</Reponse>
+            </Epreuve>
+
+            <Epreuve num="3" points="1" type="QCM"
+                     uri="http://epreuve12.historypub.mobile.ipl.be/">
+                <Question>Soignies n'est pas connue que pour ses festivités et ses constructions. Elle est également la capitale européenne de...
+                </Question>
+                <Reponse bonne="true">La Pierre Bleue</Reponse>
+                <Reponse bonne="false">La Pierre Noire</Reponse>
+                <Reponse bonne="false">La Pierre Blanche</Reponse>
             </Epreuve>
         </Epreuves>
     </Etape>
@@ -134,9 +150,8 @@
 
         <Epreuves>
             <Epreuve num="1" points="1" type="QCM"
-                     uri="http://epreuve12.historypub.mobile.ipl.be/">
-                <Question>Lors de la Simpélourd, un évenement est organisé sur la place verte.
-                    Lequel?
+                     uri="http://epreuve13.historypub.mobile.ipl.be/">
+                <Question>Lors de la Simpélourd, un évenement est organisé sur la place verte. Lequel?
                 </Question>
                 <Reponse bonne="true">La Ducasse, également appellée Kermess</Reponse>
                 <Reponse bonne="false">La foire agricole</Reponse>
@@ -151,6 +166,12 @@
                 <Reponse bonne="false">Simplet lourd</Reponse>
             </Epreuve>
 
+            <Epreuve num="3" points="2" type="OUVERTE"
+                     uri="http://epreuve15.historypub.mobile.ipl.be/">
+                <Question>Quel est le surnom de Simpélourd?</Question>
+                <Reponse>Mononk</Reponse>
+            </Epreuve>
+
         </Epreuves>
     </Etape>
 
@@ -162,25 +183,20 @@
         </Zone>
         <Epreuves>
             <Epreuve num="1" points="2" type="QCM"
-                     uri="http://epreuve15.historypub.mobile.ipl.be/">
+                     uri="http://epreuve16.historypub.mobile.ipl.be/">
                 <Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le nom de ce bonbon?
                 </Question>
                 <Reponse bonne="false">Le Carambar</Reponse>
                 <Reponse bonne="false">Le Caramel</Reponse>
                 <Reponse bonne="true">Le Carabibi</Reponse>
             </Epreuve>
-            <Epreuve num="2" points="1" type="OUVERTE"
-                     uri="http://epreuve16.historypub.mobile.ipl.be/">
-                <Question>Quel est le surnom de Simpélourd?</Question>
-                <Reponse>Mononk</Reponse>
-            </Epreuve>
-            <Epreuve num="3" points="2" type="QCM"
+
+            <Epreuve num="2" points="2" type="QCM"
                      uri="http://epreuve17.historypub.mobile.ipl.be/">
-                <Question>Soignies n'est pas connue que pour ses festivités. Elle est également la capitale européenne de...
-                </Question>
-                <Reponse bonne="true">La Pierre Bleue</Reponse>
-                <Reponse bonne="false">La Pierre Noire</Reponse>
-                <Reponse bonne="false">La Pierre Blanche</Reponse>
+                <Question>Dans ce même cortège, les géants de Soignies sont de sortie. Cependant, l'un de ces noms de géant n'est pas correct. Lequel?</Question>
+                <Reponse bonne="false">Dudule</Reponse>
+                <Reponse bonne="true">Goliath</Reponse>
+                <Reponse bonne="false">Nénesse</Reponse>
             </Epreuve>
         </Epreuves>
     </Etape>
