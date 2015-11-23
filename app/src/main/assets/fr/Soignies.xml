@@ -19,6 +19,8 @@
                      uri="http://epreuve2.historypub.mobile.ipl.be/">
                 <Question>En face du Cordovero se trouve une école. Donnez son nom.</Question>
                 <Reponse>DOA</Reponse>
+                <Reponse>Le DOA</Reponse>
+                <Reponse>Le Premier degré d'Observation Autonome</Reponse>
             </Epreuve>
 
         </Epreuves>
@@ -44,6 +46,8 @@
                 <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?
                 </Question>
                 <Reponse>Saint Vincent</Reponse>
+                <Reponse>St Vincent</Reponse>
+                <Reponse>Vincent</Reponse>
             </Epreuve>
         </Epreuves>
 
@@ -62,6 +66,13 @@
                 <Question>En face de vous se trouve une Collégiale. Quel est le nom de celle-ci?
                 </Question>
                 <Reponse>Collégiale Saint Vincent</Reponse>
+                <Reponse>Collegiale Saint Vincent</Reponse>
+                <Reponse>La Collégiale Saint Vincent</Reponse>
+                <Reponse>La Collegiale Saint Vincent</Reponse>
+                <Reponse>Collégiale St Vincent</Reponse>
+                <Reponse>Collegiale St Vincent</Reponse>
+                <Reponse>La Collégiale St Vincent</Reponse>
+                <Reponse>La Collegiale St Vincent</Reponse>
             </Epreuve>
 
 
@@ -72,7 +83,7 @@
                 </Question>
                 <Reponse bonne="false">l'Oktoberfest</Reponse>
                 <Reponse bonne="true">le brûlage de Simpélourd</Reponse>
-                <Reponse bonne="false">La réponse D</Reponse>
+                <Reponse bonne="false">Tomorrowland</Reponse>
             </Epreuve>
         </Epreuves>
     </Etape>
@@ -98,6 +109,9 @@
                      uri="http://epreuve10.historypub.mobile.ipl.be/">
                 <Question>Dans cette Collégiale se trouve un musée. Donnez son nom</Question>
                 <Reponse>Le musée du Chapitre</Reponse>
+                <Reponse>musée du Chapitre</Reponse>
+                <Reponse>Le musee du Chapitre</Reponse>
+                <Reponse>musee du Chapitre</Reponse>
             </Epreuve>
 
             <Epreuve num="3" points="2" type="QCM"
@@ -127,6 +141,14 @@
                 <Reponse bonne="true">La Ducasse, également appellée Kermess</Reponse>
                 <Reponse bonne="false">La foire agricole</Reponse>
                 <Reponse bonne="false">Le Grand Tour</Reponse>
+            </Epreuve>
+
+            <Epreuve num="2" points="2" type="QCM"
+                     uri="http://epreuve14.historypub.mobile.ipl.be/">
+                <Question>De quelle contraction provient le nom Simpélourd?</Question>
+                <Reponse bonne="true">Simple et lourd</Reponse>
+                <Reponse bonne="false">Saint Pélourd</Reponse>
+                <Reponse bonne="false">Simplet lourd</Reponse>
             </Epreuve>
 
         </Epreuves>
@@ -198,13 +220,6 @@
                     <Longitude>4.068778</Longitude>
                     <Rayon>5</Rayon>
                 </Zone>
-            </Epreuve>
-            <Epreuve num="3" points="2" type="QCM"
-                     uri="http://epreuve14.historypub.mobile.ipl.be/">
-                <Question>De quelle contraction provient le nom Simpélourd?</Question>
-                <Reponse bonne="true">Simple et lourd</Reponse>
-                <Reponse bonne="false">Saint Pélourd</Reponse>
-                <Reponse bonne="false">A définir</Reponse>
             </Epreuve>
     -->
 </Jeu>
