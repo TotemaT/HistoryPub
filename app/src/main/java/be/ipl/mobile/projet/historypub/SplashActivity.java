@@ -37,7 +37,7 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
  */
 public class SplashActivity extends AppCompatActivity {
 
-    private static final long SPLASH_TIMEOUT = 3000;
+    private static final long SPLASH_TIMEOUT = 0;
     private Intent intent;
 
     @Override
