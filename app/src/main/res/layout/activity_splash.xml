@@ -10,25 +10,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SplashActivity">
 
-
-    <ImageView
-        android:id="@+id/imageView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/logo_description"
-        android:paddingLeft="72dp"
-        android:paddingRight="72dp"
-        android:src="@drawable/logo"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:text="@string/app_name"
-        android:textSize="32sp"
-        android:textStyle="bold"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/logo_description"
+            android:src="@drawable/logo"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="32sp"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
 </RelativeLayout>

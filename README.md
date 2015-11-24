@@ -11,7 +11,7 @@ Sur le chemin entre ces différents établissements, vous aurez l'occasion d'en 
 ## Comment que c'est que ça marche cette affaire là?
 Lancez l'application et laissez vous guider. Il vous faudra vous déplacer, l'application ne permettant de répondre aux questions qu'une fois sur place.
 
-Une fois cela fait, vous aurez l'occasion de répondres à différents types de questions tels que : 
+Une fois cela fait, vous aurez l'occasion de répondres à différents types de questions tels que :
 
 - Questions à choix multiples vous proposant 3 réponses possibles
 - Questions ouvertes ne demandant qu'un ou deux mots facilement trouvables
@@ -20,3 +20,8 @@ Une fois cela fait, vous aurez l'occasion de répondres à différents types de 
 ## Auteurs
 - Matteo Taroli
 - Nathan Raspe
+
+## Credits
+Le logo est est dérivé de deux icônes faites par [Freepik](http://www.freepik.com/) pour le site [Flaticon](www.flaticon.com).
+
+Le logo final ne peut être utilisé ailleurs que dans le cadre de l'application History Pub, pour la license des icones utilisées, voir [ici](http://cdn.flaticon.com/license/license.pdf)
