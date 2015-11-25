@@ -67,26 +67,29 @@ public class QcmActivity extends AppCompatActivity {
         mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE, 0));
         mEpreuve = (EpreuveQCM) mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
 
-        mCheckBoxUn = (AppCompatCheckBox) findViewById(R.id.choix_1).findViewById(R.id.qcm_checkbox);
-        mCheckBoxDeux = (AppCompatCheckBox) findViewById(R.id.choix_2).findViewById(R.id.qcm_checkbox);
-        mCheckBoxTrois = (AppCompatCheckBox) findViewById(R.id.choix_3).findViewById(R.id.qcm_checkbox);
+        View choixUn = findViewById(R.id.choix_1);
+        View choixDeux = findViewById(R.id.choix_2);
+        View choixTrois = findViewById(R.id.choix_3);
 
-        CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
+        mCheckBoxUn = (AppCompatCheckBox) choixUn.findViewById(R.id.qcm_checkbox);
+        mCheckBoxDeux = (AppCompatCheckBox) choixDeux.findViewById(R.id.qcm_checkbox);
+        mCheckBoxTrois = (AppCompatCheckBox) choixTrois.findViewById(R.id.qcm_checkbox);
+
+        View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-            /* Probablement moyen de faire ça plus joliment, petit hack en attendant de trouver */
-                if (b) {
-                    mCheckBoxUn.setChecked(false);
-                    mCheckBoxDeux.setChecked(false);
-                    mCheckBoxTrois.setChecked(false);
-                    compoundButton.setChecked(true);
-                }
+            public void onClick(View view) {
+                mCheckBoxUn.setChecked(false);
+                mCheckBoxDeux.setChecked(false);
+                mCheckBoxTrois.setChecked(false);
+
+                ((AppCompatCheckBox) view.findViewById(R.id.qcm_checkbox)).setChecked(true);
             }
         };
 
-        mCheckBoxUn.setOnCheckedChangeListener(onCheckedChangeListener);
-        mCheckBoxDeux.setOnCheckedChangeListener(onCheckedChangeListener);
-        mCheckBoxTrois.setOnCheckedChangeListener(onCheckedChangeListener);
+        choixUn.setOnClickListener(clickListener);
+        choixDeux.setOnClickListener(clickListener);
+        choixTrois.setOnClickListener(clickListener);
+
         setQuestion();
 
         Button button = (Button) findViewById(R.id.reponse_btn);
