@@ -185,7 +185,7 @@ public class QcmActivity extends AppCompatActivity {
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            utils.getDialogExplicatif(mEtape,mEpreuve,res.getString(R.string.duree_finale, heures, minutes, secondes)).show();
+            utils.getDialogExplicatif(mEtape,mEpreuve,res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 }

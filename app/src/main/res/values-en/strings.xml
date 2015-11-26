@@ -39,6 +39,9 @@
     <string name="continuer">Continue</string>
 
     <!-- Partage -->
+    <string name="titre_partage_epreuve">I progressed in History Pub</string>
+    <string name="contenu_partage_epreuve">I finished the question %1$d of History Pub! It took me %3$s to get there and I scored %4$s till now! Try to beat me! :)</string>
+
     <string name="contenu_partage_final">I discovered Soignies thanks to History Pub.\nI finished the game in %1$s and I score %2$s!\nTry to beat me by downloading the app! :)</string>
     <string name="titre_partage_final">I finished History Pub</string>
 

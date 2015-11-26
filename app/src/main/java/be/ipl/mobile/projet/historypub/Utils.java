@@ -23,12 +23,13 @@
 package be.ipl.mobile.projet.historypub;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
 
 import java.util.Date;
 
@@ -163,36 +164,79 @@ class Utils {
     }
 
     /**
-     * Partage avec d'autres personnes le score total du jeu une fois fini ainsi que le temps
-     * total mis pour le finir.
+     * Partage du texte avec d'autres personnes.
+     *
+     * @param titre   Titre du message à partager
+     * @param contenu Contenu du message à partager
      */
-    public void partager(String duree, String score) {
+    public void partager(String titre, String contenu) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.titre_partage_final));
-        intent.putExtra(Intent.EXTRA_TEXT,
-                context.getString(R.string.contenu_partage_final, duree, score));
+        intent.putExtra(Intent.EXTRA_SUBJECT, titre);
+        intent.putExtra(Intent.EXTRA_TEXT, contenu);
         intent = Intent.createChooser(intent, context.getString(R.string.partage_choix));
         context.startActivity(intent);
     }
 
-    public AlertDialog.Builder getDialogExplicatif(final Etape etape, final Epreuve epreuve, final String durree){
+    /**
+     * Partage le score total du jeu une fois fini ainsi que le temps mis pour le finir.
+     *
+     * @param duree Duree totale mise pour terminer le jeu
+     * @param score Score totale marqué lors du jeu
+     */
+    public void partagerFinal(String duree, String score) {
+        partager(context.getString(R.string.titre_partage_final),
+                context.getString(R.string.contenu_partage_final, duree, score));
+    }
+
+    /**
+     * Partage le score total engrangé après une étape ainsi que le temps mis pour arriver à la fin
+     * de cette épreuve, en comptant depuis le début du jeu.
+     *
+     * @param epreuve Numéro de l'épreuve dans l'étape
+     * @param etape   Numéro de l'étape
+     * @param duree   Durée entre le début du jeu et la fin de l'épreuve
+     * @param points  Nombre de points gagné jusqu'à maintenant
+     */
+    public void partagerEpreuve(int epreuve, int etape, String duree, String points) {
+        partager(context.getString(R.string.titre_partage_epreuve),
+                context.getString(R.string.contenu_partage_epreuve, epreuve, etape, duree, points));
+    }
+
+    public void getDialogExplicatif(final Etape etape, final Epreuve epreuve, final String duree) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle("Explication")
                 .setMessage(epreuve.getExplication())
                 .setPositiveButton(R.string.continuer, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        chargerEpreuveOuEtapeSuivante(etape, epreuve);
+                        /* Rien à faire ici, dismiss le dialog et entre dans OnDismissListener */
                     }
-                }).setNeutralButton(R.string.partager, new DialogInterface.OnClickListener() {
+                })
+                .setNeutralButton(R.string.partager, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        partager(durree, context.getResources().getQuantityString(R.plurals.points, getPoints(), getPoints()));
-                        chargerEpreuveOuEtapeSuivante(etape,epreuve);
+                        /* Rien ici, on override le bouton par après */
+                    }
+                })
+                .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+                        chargerEpreuveOuEtapeSuivante(etape, epreuve);
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_info);
-        return builder;
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*
+                    Permet d'afficher le partage, mais quitter le dialog, évite donc de remettre
+                    l'utilisateur sur la question à son retour, lui permettant de répondre à nouveau.
+                 */
+                partagerEpreuve(epreuve.getNum(), etape.getNum(), duree, context.getResources().getQuantityString(R.plurals.points, getPoints(), getPoints()));
+            }
+        });
     }
 
 

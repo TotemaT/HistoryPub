@@ -57,7 +57,7 @@ public class FinalActivity extends AppCompatActivity {
         partagerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                util.partager(mDuree, mScore);
+                util.partagerFinal(mDuree, mScore);
             }
         });
         remplirStatsFinales();
