@@ -92,6 +92,10 @@ public class GestionEtapes {
         return etapes.get(numero);
     }
 
+    public int getNombreEtapes() {
+        return etapes.size();
+    }
+
     /**
      * Lis le fichier XML et crée les différents éléments du jeu
      */

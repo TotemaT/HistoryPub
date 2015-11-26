@@ -96,7 +96,7 @@ public class QuestionOuverteActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_epreuve, menu);
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -107,6 +107,13 @@ public class QuestionOuverteActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 util.resetPartie();
+                return false;
+            }
+        });
+        (menu.findItem(R.id.avancement)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                util.showAvancement(mEtape, mEpreuve);
                 return false;
             }
         });

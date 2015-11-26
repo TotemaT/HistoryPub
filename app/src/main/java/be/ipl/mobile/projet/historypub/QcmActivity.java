@@ -108,7 +108,7 @@ public class QcmActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_epreuve, menu);
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -119,6 +119,13 @@ public class QcmActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 util.resetPartie();
+                return false;
+            }
+        });
+        (menu.findItem(R.id.avancement)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                util.showAvancement(mEtape, mEpreuve);
                 return false;
             }
         });
@@ -185,7 +192,7 @@ public class QcmActivity extends AppCompatActivity {
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            utils.getDialogExplicatif(mEtape,mEpreuve,res.getString(R.string.duree_finale, heures, minutes, secondes));
+            utils.getDialogExplicatif(mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 }

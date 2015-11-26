@@ -27,9 +27,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.Date;
 
@@ -212,8 +215,8 @@ class Utils {
      * @param duree   Duree entre le début du jeu et maintenant
      */
     public void getDialogExplicatif(final Etape etape, final Epreuve epreuve, final String duree) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context)
-                .setTitle("Explication")
+        AlertDialog dialog = new AlertDialog.Builder(context)
+                .setTitle(context.getString(R.string.explication))
                 .setMessage(epreuve.getExplication())
                 .setPositiveButton(R.string.continuer, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -232,8 +235,8 @@ class Utils {
                         chargerEpreuveOuEtapeSuivante(etape, epreuve);
                     }
                 })
-                .setIcon(android.R.drawable.ic_dialog_info);
-        AlertDialog dialog = builder.create();
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .create();
         dialog.show();
         dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -248,5 +251,22 @@ class Utils {
         });
     }
 
+    public void showAvancement(Etape etape, Epreuve epreuve) {
+        AlertDialog dialog = new AlertDialog.Builder(context)
+                .setTitle(context.getString(R.string.avancement_etape, etape.getNum() + 1, GestionEtapes.getInstance(context).getNombreEtapes()))
+                .setView(R.layout.dialog_avancement)
+                .setPositiveButton(R.string.ok, null) /* dismiss le dialog */
+                .create();
+        dialog.show();
 
+        TextView etapeTv = (TextView) dialog.findViewById(R.id.etape_textview);
+        etapeTv.setText(context.getString(R.string.avancement_text));
+        ProgressBar progress = (ProgressBar) dialog.findViewById(R.id.avancement);
+        progress.setMax(etape.getNombreEpreuves());
+        if (epreuve != null) {
+            progress.setProgress(epreuve.getNum() + 1);
+        } else {
+            progress.setProgress(0);
+        }
+    }
 }

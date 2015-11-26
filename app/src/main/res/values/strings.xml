@@ -38,12 +38,19 @@
     <!-- Partage -->
     <string name="titre_partage_epreuve">J\'avance dans History Pub</string>
     <string name="contenu_partage_epreuve">J\'ai fini l\'épreuve %1$d de l\'étape %2$d de History Pub! J\'ai mis %3$s pour en arriver là et je suis actuellement à %4$s! Essaye de me battre! :)</string>
-
     <string name="titre_partage_final">J\'ai fini History Pub</string>
     <string name="contenu_partage_final">J\'ai pu découvrir Soignies grâce à History Pub.\nJ\'ai completé le jeu en %1$s et j\'ai marqué %2$s!\nTente de me battre en téléchargeant l\'application! :)</string>
+    <string name="partage_choix">Comment voulez-vous partager votre score final?</string>
+
+    <!-- Avancement -->
+    <string name="avancement">Avancement</string>
+    <string name="avancement_etape">Etape %1$d sur %2$d</string>
+    <string name="avancement_text">Votre avancement dans l\'étape :</string>
+
+    <!-- Dialog explication -->
+    <string name="explication">Explication</string>
 
     <!-- Config -->
     <string name="prefix">fr</string>
-    <string name="partage_choix">Comment voulez-vous partager votre score final?</string>
 
 </resources>

@@ -48,4 +48,8 @@
     <!-- Config -->
     <string name="prefix">en</string>
     <string name="partage_choix">How do you want to share your final score?</string>
+    <string name="avancement">Progression</string>
+    <string name="avancement_etape">Stage %1$d out of %2$s</string>
+    <string name="avancement_text">Your progression in this stage : </string>
+    <string name="explication">Explanation</string>
 </resources>
