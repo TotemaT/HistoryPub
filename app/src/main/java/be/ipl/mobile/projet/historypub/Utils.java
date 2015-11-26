@@ -203,6 +203,14 @@ class Utils {
                 context.getString(R.string.contenu_partage_epreuve, epreuve, etape, duree, points));
     }
 
+    /**
+     * Affiche un dialogue expliquant la réponse de l'épreuve finie. Permet aussi de partager son
+     * avancement.
+     *
+     * @param etape   Etape courante
+     * @param epreuve Epreuve courante
+     * @param duree   Duree entre le début du jeu et maintenant
+     */
     public void getDialogExplicatif(final Etape etape, final Epreuve epreuve, final String duree) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
                 .setTitle("Explication")
@@ -215,7 +223,7 @@ class Utils {
                 .setNeutralButton(R.string.partager, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        /* Rien ici, on override le bouton par après */
+                        /* Rien ici, on override le bouton par après pour éviter qu'il dismiss le dialog */
                     }
                 })
                 .setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -231,10 +239,11 @@ class Utils {
             @Override
             public void onClick(View view) {
                 /*
-                    Permet d'afficher le partage, mais quitter le dialog, évite donc de remettre
+                    Permet d'afficher le partage, mais sans quitter le dialog, évite donc de remettre
                     l'utilisateur sur la question à son retour, lui permettant de répondre à nouveau.
                  */
-                partagerEpreuve(epreuve.getNum(), etape.getNum(), duree, context.getResources().getQuantityString(R.plurals.points, getPoints(), getPoints()));
+                partagerEpreuve(epreuve.getNum(), etape.getNum(), duree,
+                        context.getResources().getQuantityString(R.plurals.points, getPoints(), getPoints()));
             }
         });
     }
