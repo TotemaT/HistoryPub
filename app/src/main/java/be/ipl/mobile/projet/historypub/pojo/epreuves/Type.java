@@ -26,5 +26,5 @@ package be.ipl.mobile.projet.historypub.pojo.epreuves;
  * Types d'épreuves rencontrées dans le jeu.
  */
 public enum Type {
-    QCM, PHOTO, ATROU, OUVERTE;
+    QCM, PHOTO, ATROU, OUVERTE
 }

@@ -172,12 +172,13 @@ public class GestionEtapes {
             if (parser.getEventType() != XmlPullParser.START_TAG)
                 continue;
             String name = parser.getName();
-            if (name.equals("Latitude"))
+            if (name.equals("Latitude")) {
                 latitude = Double.parseDouble(parser.nextText());
-            else if (name.equals("Longitude"))
+            } else if (name.equals("Longitude")) {
                 longitude = Double.parseDouble(parser.nextText());
-            else if (name.equals("Rayon"))
+            } else if (name.equals("Rayon")) {
                 rayon = Integer.parseInt(parser.nextText());
+            }
         }
         return new Zone(latitude, longitude, rayon);
     }
@@ -221,13 +222,11 @@ public class GestionEtapes {
         int points = Integer.parseInt(parser.getAttributeValue(Config.NAMESPACE, "points"));
         scoreTotal += points;
         String type = parser.getAttributeValue(Config.NAMESPACE, "type");
-        ;
         String question = "";
         Zone zone = null;
-        List<String> mots = new ArrayList<String>();
-        List<ReponseQCM> reponses = new ArrayList<ReponseQCM>();
+        List<String> mots = new ArrayList<>();
+        List<ReponseQCM> reponses = new ArrayList<>();
         List<Reponse> reponsesOuvertes = new ArrayList<>();
-        Reponse reponse = null;
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG)
