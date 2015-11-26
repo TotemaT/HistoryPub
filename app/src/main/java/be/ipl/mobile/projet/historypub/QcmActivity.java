@@ -30,7 +30,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,10 +73,14 @@ public class QcmActivity extends AppCompatActivity {
         mCheckBoxUn = (AppCompatCheckBox) choixUn.findViewById(R.id.qcm_checkbox);
         mCheckBoxDeux = (AppCompatCheckBox) choixDeux.findViewById(R.id.qcm_checkbox);
         mCheckBoxTrois = (AppCompatCheckBox) choixTrois.findViewById(R.id.qcm_checkbox);
+        mCheckBoxUn.setClickable(false);
+        mCheckBoxDeux.setClickable(false);
+        mCheckBoxTrois.setClickable(false);
 
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /* Uncheck toutes les checkbox puis check la réponse sélectionnée */
                 mCheckBoxUn.setChecked(false);
                 mCheckBoxDeux.setChecked(false);
                 mCheckBoxTrois.setChecked(false);

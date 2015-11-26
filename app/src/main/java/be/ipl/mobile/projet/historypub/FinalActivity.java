@@ -100,7 +100,9 @@ public class FinalActivity extends AppCompatActivity {
         String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
         String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-        mScore = res.getQuantityString(R.plurals.points, util.getPoints(), util.getPoints());
+        mScore = res.getString(R.string.score_final,
+                res.getQuantityString(R.plurals.points, util.getPoints(), util.getPoints()),
+                GestionEtapes.getInstance(this).getScoreTotal());
         mDuree = res.getString(R.string.duree_finale, heures, minutes, secondes);
 
         mScoreFinalTv.setText(mScore);

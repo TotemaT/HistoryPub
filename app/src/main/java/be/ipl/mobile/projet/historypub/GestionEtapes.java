@@ -53,11 +53,13 @@ public class GestionEtapes {
 
     private List<Etape> etapes;
     private Context context;
+    private int scoreTotal;
 
     private static GestionEtapes instance;
 
     private GestionEtapes(Context context) {
         this.context = context;
+        scoreTotal = 0;
         initialiserListeEpreuves();
     }
 
@@ -66,6 +68,28 @@ public class GestionEtapes {
             instance = new GestionEtapes(context);
         }
         return instance;
+    }
+
+    /**
+     * Retourne le score maximum possible dans le jeu.
+     *
+     * @return Score maximum
+     */
+    public int getScoreTotal() {
+        return scoreTotal;
+    }
+
+    /**
+     * Retourne l'étape décrite par son numéro
+     *
+     * @param numero Numéro d'identification de l'étape
+     * @return L'étape demandé ou null si le numéro ne correspond à aucune étape
+     */
+    public Etape getEtape(int numero) {
+        if (numero < 0 || numero >= etapes.size()) {
+            return null;
+        }
+        return etapes.get(numero);
     }
 
     /**
@@ -96,19 +120,6 @@ public class GestionEtapes {
         } catch (XmlPullParserException | IOException e) {
             Log.e(TAG, "Erreur lors de la lecture du fichier XML");
         }
-    }
-
-    /**
-     * Retourne l'étape décrite par son numéro
-     *
-     * @param numero Numéro d'identification de l'étape
-     * @return L'étape demandé ou null si le numéro ne correspond à aucune étape
-     */
-    public Etape getEtape(int numero) {
-        if (numero < 0 || numero >= etapes.size()) {
-            return null;
-        }
-        return etapes.get(numero);
     }
 
     /**
@@ -208,7 +219,9 @@ public class GestionEtapes {
         int num = Integer.parseInt(parser.getAttributeValue(Config.NAMESPACE, "num"));
         String uri = parser.getAttributeValue(Config.NAMESPACE, "uri");
         int points = Integer.parseInt(parser.getAttributeValue(Config.NAMESPACE, "points"));
+        scoreTotal += points;
         String type = parser.getAttributeValue(Config.NAMESPACE, "type");
+        ;
         String question = "";
         Zone zone = null;
         List<String> mots = new ArrayList<String>();

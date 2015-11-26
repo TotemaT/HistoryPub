@@ -30,6 +30,7 @@
         <item quantity="one">%1$d point</item>
         <item quantity="other">%1$d points</item>
     </plurals>
+    <string name="score_final">%1$s sur %2$d</string>
     <string name="final_duree">Duree</string>
     <string name="partager">Partager</string>
 

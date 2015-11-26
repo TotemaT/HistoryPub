@@ -175,4 +175,6 @@ class Utils {
         intent = Intent.createChooser(intent, context.getString(R.string.partage_choix));
         context.startActivity(intent);
     }
+
+
 }
