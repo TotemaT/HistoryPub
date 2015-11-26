@@ -1,15 +1,17 @@
 <Jeu name="Soignies en boisson">
     <Etape num="1" url="etape1.html">
         <Zone>
-            <Latitude>50.579905</Latitude>
-            <Longitude>4.073490</Longitude>
-            <Rayon>5</Rayon>
+            <Latitude>50.850499</Latitude>
+            <Longitude>4.445349</Longitude>
+            50,850499,4,445349
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
             <Epreuve num="1" points="1" type="OUVERTE"
                      uri="http://epreuve1.historypub.mobile.ipl.be/">
-                <Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de Scarmure?
+                <Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de
+                    Scarmure?
                 </Question>
                 <Reponse>Cordovero</Reponse>
                 <Reponse>Le Cordovero</Reponse>
@@ -33,7 +35,9 @@
 
         <Epreuves>
             <Epreuve num="1" points="3" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
-                <Question>Vous êtes et serez en train de suivre l'itinéraire d'une certaine procession se déroulant le lundi de Pentecôte (en sens inverse). Quel est le nom de cette procession?
+                <Question>Vous êtes et serez en train de suivre l'itinéraire d'une certaine
+                    procession se déroulant le lundi de Pentecôte (en sens inverse). Quel est le nom
+                    de cette procession?
                 </Question>
                 <Reponse bonne="false">Le Demi Tour</Reponse>
                 <Reponse bonne="false">Le Petit Tour</Reponse>
@@ -41,7 +45,8 @@
             </Epreuve>
             <Epreuve num="2" points="2" type="OUVERTE"
                      uri="http://epreuve5.historypub.mobile.ipl.be/">
-                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?
+                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur
+                    de Soignies. Lequel?
                 </Question>
                 <Reponse>Saint Vincent</Reponse>
             </Epreuve>
@@ -65,9 +70,9 @@
             </Epreuve>
 
 
-
             <Epreuve num="2" points="1" type="QCM" uri="http://epreuve7.historypub.mobile.ipl.be/">
-                <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant e 3ème dimanche d'octobre.
+                <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant
+                    e 3ème dimanche d'octobre.
                     Lequel?
                 </Question>
                 <Reponse bonne="false">l'Oktoberfest</Reponse>
@@ -102,7 +107,11 @@
 
             <Epreuve num="3" points="2" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
-                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?
+                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons
+                    auraient été trouvés dans la charpente d'un clocher laissant par là présager de
+                    l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa
+                    place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom
+                    donné à cette araignée?
                 </Question>
                 <Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
                 <Reponse bonne="false">Araneae Sonegiensis</Reponse>
@@ -141,7 +150,8 @@
         <Epreuves>
             <Epreuve num="1" points="2" type="QCM"
                      uri="http://epreuve15.historypub.mobile.ipl.be/">
-                <Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le nom de ce bonbon?
+                <Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le
+                    nom de ce bonbon?
                 </Question>
                 <Reponse bonne="false">Le Carambar</Reponse>
                 <Reponse bonne="false">Le Caramel</Reponse>
@@ -154,7 +164,8 @@
             </Epreuve>
             <Epreuve num="3" points="2" type="QCM"
                      uri="http://epreuve17.historypub.mobile.ipl.be/">
-                <Question>Soignies n'est pas connue que pour ses festivités. Elle est également la capitale européenne de...
+                <Question>Soignies n'est pas connue que pour ses festivités. Elle est également la
+                    capitale européenne de...
                 </Question>
                 <Reponse bonne="true">La Pierre Bleue</Reponse>
                 <Reponse bonne="false">La Pierre Noire</Reponse>

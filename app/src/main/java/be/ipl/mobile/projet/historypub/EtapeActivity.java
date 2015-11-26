@@ -35,17 +35,21 @@ public class EtapeActivity extends AppCompatActivity
         implements ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
     private static final String TAG = "EtapeActivity";
 
+    /*
+        La partie geolocalisation est en grande partie reprise du tutoriel de Google se trouvant
+        à cette adresse : https://developer.android.com/training/location/receive-location-updates.html
+    */
+
+    private static final long UPDATE_INTERVAL = 10000;
+    private static final long FASTEST_UPDATE_INTERVAL = UPDATE_INTERVAL / 2;
+
+    private GoogleApiClient mApiClient;
+    private LocationRequest mLocationRequest;
+
     private WebView mWebView;
 
     private Etape mEtape;
     private Utils util;
-
-    /*
-        La partie geolocalisation est en grande partie reprise du tutoriel de Google se trouvant
-        à cette adresse : https://developer.android.com/training/location/receive-location-updates.html
-     */
-    private GoogleApiClient mApiClient;
-    private LocationRequest mLocationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,13 +171,16 @@ public class EtapeActivity extends AppCompatActivity
 
     @Override
     public void onConnected(Bundle bundle) {
-        Log.d(TAG, "onConnected");
+        Log.d(TAG, "Connecté à APIClient");
 
         Location location = LocationServices.FusedLocationApi.getLastLocation(mApiClient);
-        if (location != null && mEtape.getZone().contient(location.getLatitude(), location.getLongitude())) {
+        if (location != null && mEtape.getZone().contient(location)) {
             Log.d(TAG, location.toString());
             stopLocationUpdates();
             lancerEtape();
+        } else {
+            Log.d(TAG, "Commence à mettre à jour la localisation");
+            startLocationUpdates();
         }
     }
 
@@ -187,9 +194,12 @@ public class EtapeActivity extends AppCompatActivity
     public void onLocationChanged(Location location) {
         Log.d(TAG, "Location changed : " + location.toString());
 
-        if (mEtape.getZone().contient(location.getLatitude(), location.getLongitude())) {
+        if (mEtape.getZone().contient(location)) {
+            Log.d(TAG, "Dans la zone");
             lancerEtape();
         }
+
+        Log.d(TAG, "Hors de la zone");
     }
 
     @Override
@@ -201,8 +211,8 @@ public class EtapeActivity extends AppCompatActivity
 
     private void createLocationRequest() {
         mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(10000);
-        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setFastestInterval(FASTEST_UPDATE_INTERVAL);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
@@ -215,6 +225,7 @@ public class EtapeActivity extends AppCompatActivity
     }
 
     private void lancerEtape() {
+        stopLocationUpdates();
         Toast.makeText(EtapeActivity.this, R.string.location_ok, Toast.LENGTH_SHORT).show();
         mWebView.loadUrl(mEtape.getUrl());
     }

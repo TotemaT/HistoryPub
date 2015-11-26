@@ -1,5 +1,7 @@
 package be.ipl.mobile.projet.historypub.pojo.epreuves;
 
+import android.location.Location;
+
 import be.ipl.mobile.projet.historypub.pojo.Zone;
 
 /**
@@ -14,7 +16,7 @@ public class EpreuvePhoto extends Epreuve {
         this.zone = zone;
     }
 
-    public boolean estDansLaZone(double latitude, double longitude) {
-        return zone.contient(latitude, longitude);
+    public boolean estDansLaZone(Location location) {
+        return zone.contient(location);
     }
 }
