@@ -23,6 +23,7 @@
 package be.ipl.mobile.projet.historypub;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -90,7 +91,14 @@ public class PhotoActivity extends AppCompatActivity {
                     Utils utils = new Utils(PhotoActivity.this);
                     Toast.makeText(PhotoActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
                     utils.augmenterPoints(mEpreuve.getPoints());
-                    utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
+                    int[] duree = util.getDuree();
+                    Resources res = getResources();
+
+                    String heures = res.getQuantityString(R.plurals.heures, duree[0], duree[0]);
+                    String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
+                    String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
+
+                    utils.getDialogExplicatif(mEtape,mEpreuve,res.getString(R.string.duree_finale, heures, minutes, secondes)).show();
                 }
             }
         });

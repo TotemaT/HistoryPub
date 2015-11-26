@@ -22,6 +22,7 @@
 
 package be.ipl.mobile.projet.historypub;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
@@ -177,7 +178,14 @@ public class QcmActivity extends AppCompatActivity {
                 Toast.makeText(QcmActivity.this, "Mauvaise réponse... :(\nLa bonne réponse était : " + bonneReponse, Toast.LENGTH_SHORT).show();
             }
 
-            utils.chargerEpreuveOuEtapeSuivante(mEtape, mEpreuve);
+            int[] duree = util.getDuree();
+            Resources res = getResources();
+
+            String heures = res.getQuantityString(R.plurals.heures, duree[0], duree[0]);
+            String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
+            String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
+
+            utils.getDialogExplicatif(mEtape,mEpreuve,res.getString(R.string.duree_finale, heures, minutes, secondes)).show();
         }
     }
 }

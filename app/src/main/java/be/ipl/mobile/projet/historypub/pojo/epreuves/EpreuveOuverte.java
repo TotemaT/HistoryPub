@@ -32,8 +32,8 @@ public class EpreuveOuverte extends Epreuve {
 
     private final List<Reponse> reponses;
 
-    public EpreuveOuverte(int num, String question, String uri, int points, List<Reponse> reponses) {
-        super(num, question, uri, Type.OUVERTE, points);
+    public EpreuveOuverte(int num, String question, String uri, int points, List<Reponse> reponses, String expliquation) {
+        super(num, question, uri, Type.OUVERTE, points, expliquation);
         this.reponses = reponses;
     }
 

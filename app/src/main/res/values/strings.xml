@@ -33,6 +33,7 @@
     <string name="score_final">%1$s sur %2$d</string>
     <string name="final_duree">Duree</string>
     <string name="partager">Partager</string>
+    <string name="continuer">Continuer</string>
 
     <!-- Partage -->
     <string name="titre_partage_final">J\'ai fini History Pub</string>

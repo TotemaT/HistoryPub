@@ -31,8 +31,8 @@ public class EpreuvePhoto extends Epreuve {
 
     private Zone zone;
 
-    public EpreuvePhoto(int num, String question, String uri, int points, Zone zone) {
-        super(num, question, uri, Type.PHOTO, points);
+    public EpreuvePhoto(int num, String question, String uri, int points, Zone zone, String expliquation) {
+        super(num, question, uri, Type.PHOTO, points, expliquation);
         this.zone = zone;
     }
 

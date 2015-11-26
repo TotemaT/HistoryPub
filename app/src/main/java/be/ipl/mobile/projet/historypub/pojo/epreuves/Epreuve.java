@@ -32,13 +32,15 @@ public abstract class Epreuve {
     private final String uri;
     private final Type type;
     private final int points;
+    private final String explication;
 
-    Epreuve(int num, String question, String uri, Type type, int points) {
+    Epreuve(int num, String question, String uri, Type type, int points, String explication) {
         this.num = num - 1;
         this.question = question;
         this.uri = uri;
         this.type = type;
         this.points = points;
+        this.explication = explication;
     }
 
     public int getNum() {
@@ -59,5 +61,9 @@ public abstract class Epreuve {
 
     public int getPoints() {
         return points;
+    }
+
+    public String getExplication() {
+        return explication;
     }
 }

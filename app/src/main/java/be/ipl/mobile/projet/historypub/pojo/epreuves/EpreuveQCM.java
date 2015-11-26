@@ -33,8 +33,8 @@ public class EpreuveQCM extends Epreuve {
 
     private List<ReponseQCM> reponses;
 
-    public EpreuveQCM(int num, String question, String uri, int points) {
-        super(num, question, uri, Type.QCM, points);
+    public EpreuveQCM(int num, String question, String uri, int points, String expliquation) {
+        super(num, question, uri, Type.QCM, points, expliquation);
         reponses = new ArrayList<>();
     }
 

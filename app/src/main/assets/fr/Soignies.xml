@@ -13,6 +13,7 @@
                 </Question>
                 <Reponse>Cordovero</Reponse>
                 <Reponse>Le Cordovero</Reponse>
+                <Explication>Voici une explication super interessante: vous voilà informé!</Explication>
             </Epreuve>
 
             <Epreuve num="2" points="2" type="OUVERTE"

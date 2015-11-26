@@ -23,7 +23,9 @@
 package be.ipl.mobile.projet.historypub;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -172,6 +174,25 @@ class Utils {
                 context.getString(R.string.contenu_partage_final, duree, score));
         intent = Intent.createChooser(intent, context.getString(R.string.partage_choix));
         context.startActivity(intent);
+    }
+
+    public AlertDialog.Builder getDialogExplicatif(final Etape etape, final Epreuve epreuve, final String durree){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setTitle("Explication")
+                .setMessage(epreuve.getExplication())
+                .setPositiveButton(R.string.continuer, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        chargerEpreuveOuEtapeSuivante(etape, epreuve);
+                    }
+                }).setNeutralButton(R.string.partager, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        partager(durree, context.getResources().getQuantityString(R.plurals.points, getPoints(), getPoints()));
+                        chargerEpreuveOuEtapeSuivante(etape,epreuve);
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info);
+        return builder;
     }
 
 

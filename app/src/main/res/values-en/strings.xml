@@ -36,6 +36,7 @@
     <string name="score_final">%1$s sur %2$d</string>
     <string name="final_duree">Duration</string>
     <string name="partager">Share my score</string>
+    <string name="continuer">Continue</string>
 
     <!-- Partage -->
     <string name="contenu_partage_final">I discovered Soignies thanks to History Pub.\nI finished the game in %1$s and I score %2$s!\nTry to beat me by downloading the app! :)</string>

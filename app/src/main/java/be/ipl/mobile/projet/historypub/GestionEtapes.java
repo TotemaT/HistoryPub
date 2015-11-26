@@ -223,6 +223,7 @@ public class GestionEtapes {
         scoreTotal += points;
         String type = parser.getAttributeValue(Config.NAMESPACE, "type");
         String question = "";
+        String explication="";
         Zone zone = null;
         List<String> mots = new ArrayList<>();
         List<ReponseQCM> reponses = new ArrayList<>();
@@ -245,25 +246,27 @@ public class GestionEtapes {
                 }
             } else if (name.equals("Mot")) {
                 mots.add(parser.nextText());
+            } else if (name.equals("Explication")) {
+               explication = parser.nextText();
             }
         }
 
         type = type.toUpperCase();
         switch (type) {
             case "QCM":
-                EpreuveQCM e1 = new EpreuveQCM(num, question, uri, points);
+                EpreuveQCM e1 = new EpreuveQCM(num, question, uri, points, explication);
                 for (ReponseQCM rep : reponses)
                     e1.addReponse(rep);
                 return e1;
             case "PHOTO":
-                return new EpreuvePhoto(num, question, uri, points, zone);
+                return new EpreuvePhoto(num, question, uri, points, zone, explication);
             case "ATROU":
-                EpreuveATrou e2 = new EpreuveATrou(num, question, uri, points);
+                EpreuveATrou e2 = new EpreuveATrou(num, question, uri, points, explication);
                 for (String mot : mots)
                     e2.addMot(mot);
                 return e2;
             case "OUVERTE":
-                return new EpreuveOuverte(num, question, uri, points, reponsesOuvertes);
+                return new EpreuveOuverte(num, question, uri, points, reponsesOuvertes, explication);
             default:
                 return null;
         }
