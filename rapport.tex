@@ -14,6 +14,7 @@
 \usepackage{scrhack}
 \usepackage{ulem}
 \usepackage{enumitem}
+\usepackage{subfigure}
 
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
@@ -74,7 +75,7 @@
 
     Sur le chemin entre ces différents établissements, vous aurez l'occasion d'en apprendre plus sur l'histoire et le folklore de la ville. Durant les différents arrêts, vous aurez bien entendu l'occasion de profiter des bar et des diverses boissons proposées avant de reprendre le chemin vers d'autres découvertes!\\
 
-    Attention tout de même, l'alcool est à consommer avec modération, sous peine de ne plus pouvoir répondre aux questions données!
+    Attention tout de même, l'alcool est à consommer avec modération, sous peine de ne plus pouvoir répondre aux questions données!\\
 
     \chapter{Mode d'emploi}
     L'utilisation de \textsc{History Pub} est très facile. Une fois l'application lancée, vous recevez les indications vous permettant de trouver la zone de la première étape du jeu.
@@ -86,21 +87,39 @@
     \section{Caractéristiques communes aux épreuves}
     Lors des épreuves de question à choix multiples ou de question ouvertes, votre réponse doit être vérifiée. Cette vérification n'est faite qu'une fois la réponse validée par l'utilisateur, c'est à dire une fois que le bouton OK est pressé. Cette vérification peut mener à trois différents toast possibles :
     \begin{description}[style=nextline]
-        \item[Pas de réponse donnée]Le toast invite l'utilisateur à répondre à la question.
-        \item[Réponse correcte] Le toast félicite l'utilisateur et affiche le nombre de points gagnés.
-        \item[Réponse incorrecte] Le toast se désole de la mauvaise réponse et donne la réponse correcte, permettant à l'utilisateur d'apprendre de ses erreurs.
+        \item[Pas de réponse donnée]Un toast invite l'utilisateur à répondre à la question.
+        \item[Réponse correcte]Une fenêtre popup apparait pour féliciter l'utilisateur et afficher le nombre de points gagnés.
+        \item[Réponse incorrecte]La fenêtre popup se désole de la mauvaise réponse et donne la réponse correcte, permettant à l'utilisateur d'apprendre de ses erreurs.
     \end{description}
+    Dans les deux cas où une réponse est donnée, la fenêtre popup donne de plus ample informations par rapport à la réponse à la question, comme vous pouvez le voir sur la capture d'écran suivante. Cette fenêtre permet aussi de partager l'avancement dans le jeu.
 
     \section{Epreuve Question à Choix Multiple}
-    % mettre un screenshot
+    \begin{figure}[H]
+        \centering
+        \mbox{\subfigure{\includegraphics[scale=.25]{images/qcm1.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.25]{images/qcm2.png}}}
+        \caption{Exemple de question à choix multiple, avant et après avoir sélectionné une réponse}
+    \end{figure}
 
     Pour répondre à une question à choix multiples, il vous suffit de cliquer sur la réponse que vous pensez correcte. Vous pouvez cliquer n'importe où sur la ligne de ce choix, que ce soit sur la checkbox ou sur le texte de la réponse proposée.\\
 
     Un symbole $\surd$ s'affiche dans la checkbox de la réponse sélectionnée. Si celle ci vous convient, vous pouvez confirmer votre choix grâce au bouton OK. Sinon, vous êtes libre de changer ce choix autant de fois que vous le désirez.\\
 
-    \section{Epreuve Question Ouverte}
-    % mettre un screenshot
+    \section{Epreuve de texte à trous}
+    \begin{figure}[H]
+        \centering
+        \mbox{\subfigure{\includegraphics[scale=.25]{images/trou1.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.25]{images/trou2.png}}}
+        \caption{Question à trous, avant et après avoir entré une réponse}
+    \end{figure}
 
+    \section{Epreuve Question Ouverte}
+    \begin{figure}[H]
+        \centering
+        \mbox{\subfigure{\includegraphics[scale=.25]{images/ouverte1.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.25]{images/ouverte2.png}}}
+        \caption{Question ouverte, avant et après avoir entré une réponse}
+    \end{figure}
     Pour répondre à une question ouverte, il vous suffit de taper la réponse demandée. Cette réponse est unique mais peut être entrée de différente manière. Par exemple pour une question dont la réponse attendu serait \og Institut Paul Lambin\fg, la réponse \og IPL\fg serait aussi acceptée.\\
 
     Une fois la réponse entrée, vous pouvez confirmer votre solution avec la bouton entré de votre clavier virtual ou, après avoir quitté ce clavier, avec la bouton OK.
@@ -113,9 +132,27 @@
     Aucune vérification n'est faite sur ce type d'épreuve. Faites donc de votre mieux, on compte sur vous!
 
     \section{Fin du jeu}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=.25]{images/final.png}
+        \caption{Ecran final}
+    \end{figure}
+
     Une fois tout le parcours fini, vous serez face à un écran récapitulatif vous permettant de savoir le nombre de points que vous avez marqués ainsi que le temps que vous avez mis pour finir ce parcours.\\
 
-    Cette page vous permet aussi de partager votre score avec vos connaissance ainsi que de les mettre au défi de vous battre!
+    Cette page vous permet aussi de partager votre score avec vos connaissances ainsi que de les mettre au défi de vous battre!
+
+    \section{Informations générales}
+    \begin{figure}[H]
+        \centering
+        \mbox{\subfigure{\includegraphics[scale=.25]{images/menu.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.25]{images/avancement.png}}}
+        \caption{Menu de la barre d'action et popup d'avancement}
+    \end{figure}
+
+    A tout instant durant le jeu, vous avez la possibilité de voir votre score dans la barre d'action de vottre application.\\
+
+    Vous pouvez aussi, via le menu de cette barre d'action, voir votre avancement ou remettre le jeu à zéro. Ces deux actions sont montrées dans les captures d'écran ci-dessus.
 
     \chapter{Architecture}
 
@@ -123,10 +160,11 @@
     % Aucun bug connu pour le moment :P
 
     \chapter{Utilisation de code open-source}
-    Le code de \textsc{History Pub} reprends, à certains endroits précis, du code open-source. Ces parties de code open-source se retrouvent ci-dessous :
+    Le code de \textsc{History Pub} reprend, à certains endroits précis, du code open-source. Ces parties de code open-source se retrouvent ci-dessous :
 
     \begin{description}[style=nextline]
         \item[EtapeActivity.java et PhotoActivity.java] La partie géolocalisation reprends en grande partie du code fournis par \textsc{Google} sur leur plateforme \url{developer.android.com} ainsi que sur \textsc{Github} à cette adresse: \url{https://github.com/googlesamples/android-play-location}. Ce code est fourni sous la license \textbf{Apache}, permettant son inclusion dans un projet sous license \textbf{GPLv3}.
+        \item[PhotoActivity.java] La partie prise de photo reprends le code fournis par \textsc{Google} sur la plateforme précédemment citée, toujours sous la license \textbf{Apache}.
         \item[Style.css] Le design des boutons, façon Material Design, est repris du \textsc{Codepen} créé par RayCh et trouvable à cette adresse : \url{http://codepen.io/iraycd/pen/dHrxv}. Le code posté sur \textsc{Codepen} est sous license \textbf{MIT}, elle aussi compatible avec la \textbf{GPLv3}.
     \end{description}
 
@@ -153,6 +191,8 @@
     Celà signifie aussi que notre code est fourni sans garantie et que nous ne pouvons donc pas être tenus responsable de problèmes quelconques liés à son utilisation en dehors de \textsc{History Pub}.
     \hfill\\
 
-    \noindent Pour plus d'information, la license complète peut être trouvée à l'adresse suivante : \url{https://www.gnu.org/licenses/gpl.html}
+    \noindent Pour plus d'information, la license complète peut être trouvée à l'adresse suivante : \url{https://www.gnu.org/licenses/gpl.html}\\
+
+    Le code source de l'application peut quant à lui être trouvé sur \textsc{Github} à l'adresse suivant : \url{https://github.com/Crapoo/HistoryPub}. Le code remis avec ce rapport correspond au commit \textsc{hash du commit}.
 
 \end{document}
