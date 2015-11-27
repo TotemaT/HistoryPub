@@ -13,7 +13,7 @@
                 </Question>
                 <Reponse>Cordovero</Reponse>
                 <Reponse>Le Cordovero</Reponse>
-                <Explication>Voici une explication super interessante: vous voilà informé!</Explication>
+                <Explication>Voici une explication super intéressante!</Explication>
             </Epreuve>
 
             <Epreuve num="2" points="2" type="OUVERTE"
@@ -192,12 +192,15 @@
                 <Reponse bonne="true">Le Carabibi</Reponse>
             </Epreuve>
 
-            <Epreuve num="2" points="2" type="QCM"
+            <Epreuve num="2" points="2" type="TROU"
                      uri="http://epreuve17.historypub.mobile.ipl.be/">
-                <Question>Dans ce même cortège, les géants de Soignies sont de sortie. Cependant, l'un de ces noms de géant n'est pas correct. Lequel?</Question>
-                <Reponse bonne="false">Dudule</Reponse>
-                <Reponse bonne="true">Goliath</Reponse>
-                <Reponse bonne="false">Nénesse</Reponse>
+                <Question>Dans ce même cortège, les géants de Soignies sont de sortie. Il y a tout d'abord ..., qui est un ouvrier dans les carrières,
+                    avec le maillet dans une main et le burin de l'autre. Il y a aussi ..., qui est l'épouse de ce dernier. Leur union donna enfin
+                    naissance à une fille, ... et un garçon, ... .</Question>
+                <Mot>Dudule</Mot>
+                <Mot>Josephine</Mot>
+                <Mot>Charlotte</Mot>
+                <Mot>Nenesse</Mot>
             </Epreuve>
         </Epreuves>
     </Etape>

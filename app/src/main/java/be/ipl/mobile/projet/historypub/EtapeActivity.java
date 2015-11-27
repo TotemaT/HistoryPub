@@ -82,6 +82,8 @@ public class EtapeActivity extends BasicActivity {
             intent = new Intent(EtapeActivity.this, QcmActivity.class);
         } else if (type.equals(Type.OUVERTE)) {
             intent = new Intent(EtapeActivity.this, QuestionOuverteActivity.class);
+        } else if (type.equals(Type.ATROU)) {
+            intent = new Intent(EtapeActivity.this, TrouActivity.class);
         } else {
             intent = new Intent(EtapeActivity.this, PhotoActivity.class);
         }

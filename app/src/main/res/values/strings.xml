@@ -4,6 +4,7 @@
 
     <!-- Epreuves -->
     <string name="question_ouverte_hint">Entrez votre réponse ici</string>
+    <string name="question_trou_hint">Séparez chaque mot par une virgule</string>
     <string name="ok">OK</string>
     <string name="prendre_photo">Prendre photo</string>
     <string name="score">Score : %1$d</string>
@@ -52,5 +53,9 @@
 
     <!-- Config -->
     <string name="prefix">fr</string>
+    <string name="title_activity_trou">TrouActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

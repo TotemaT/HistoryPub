@@ -27,6 +27,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
@@ -66,6 +67,9 @@ public class SplashActivity extends AppCompatActivity {
                         intent = new Intent(SplashActivity.this, QcmActivity.class);
                     } else if (ep.getType() == Type.OUVERTE) {
                         intent = new Intent(SplashActivity.this, QuestionOuverteActivity.class);
+                    } else if (ep.getType() == Type.ATROU) {
+                        Log.i("HELLO","PASSED");
+                        intent = new Intent(SplashActivity.this, TrouActivity.class);
                     } else {
                         intent = new Intent(SplashActivity.this, PhotoActivity.class);
                     }

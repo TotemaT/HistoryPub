@@ -44,7 +44,7 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 /**
  * Classe reprenant différentes méthodes utilisées dans les différentes activités épreuve ou étape.
  */
-class BasicActivity extends AppCompatActivity {
+abstract class BasicActivity extends AppCompatActivity {
     private static final String TAG = "BasicActivity";
 
     protected Etape mEtape;
@@ -98,6 +98,8 @@ class BasicActivity extends AppCompatActivity {
                     intent = new Intent(this, QcmActivity.class);
                 } else if (typeSuivant == Type.OUVERTE) {
                     intent = new Intent(this, QuestionOuverteActivity.class);
+                } else if (typeSuivant == Type.ATROU) {
+                    intent = new Intent(this, TrouActivity.class);
                 } else if (typeSuivant == Type.PHOTO) {
                     intent = new Intent(this, PhotoActivity.class);
                 }

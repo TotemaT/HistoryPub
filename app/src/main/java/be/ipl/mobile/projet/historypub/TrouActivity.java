@@ -1,61 +1,43 @@
-/*
-    History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
-    en parcourant cette dernière de bar en bar.
-
-    Copyright (C) 2015
-        Matteo Taroli <contact@matteotaroli.be>
-        Nathan Raspe <raspe_nathan@live.be>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 package be.ipl.mobile.projet.historypub;
 
 import android.content.res.Resources;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+import java.util.List;
+
+import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveATrou;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveOuverte;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Reponse;
 
-/**
- * Activité reprenant une épreuve de question ouverte.
- */
-public class QuestionOuverteActivity extends BasicActivity {
+public class TrouActivity extends BasicActivity {
 
-    private EpreuveOuverte mEpreuveOuverte;
+    private EpreuveATrou mEpreuveATrou;
 
     private EditText mReponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question_ouverte);
+        setContentView(R.layout.activity_trou);
 
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
 
         mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE, 0));
         mEpreuve = mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
-        mEpreuveOuverte = (EpreuveOuverte) mEpreuve;
+        mEpreuveATrou = (EpreuveATrou) mEpreuve;
 
         Button repondre = (Button) findViewById(R.id.reponse_btn);
-        mReponse = (EditText) findViewById(R.id.question_ouverte_edit);
+        mReponse = (EditText) findViewById(R.id.question_trou_edit);
 
         /* Permet de répondre à la question en cliquant sur entré */
         mReponse.setOnKeyListener(new View.OnKeyListener() {
@@ -75,7 +57,7 @@ public class QuestionOuverteActivity extends BasicActivity {
             }
         });
 
-        TextView question = (TextView) findViewById(R.id.question_textView);
+        TextView question = (TextView) findViewById(R.id.question_trou_textView);
         question.setText(mEpreuve.getQuestion());
         repondre.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,13 +73,14 @@ public class QuestionOuverteActivity extends BasicActivity {
      */
     private void verifierReponse() {
         if (mReponse.getText().toString().isEmpty() || mReponse.getText().toString().equals("")) {
-            Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TrouActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
-            if (mEpreuveOuverte.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
+            List<String> mots = Arrays.asList(mReponse.getText().toString().split(",[ ]*"));
+            if(mEpreuveATrou.estRéponseCorrecte(mots)) {
                 augmenterPoints(mEpreuve.getPoints());
-                Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
+                Toast.makeText(TrouActivity.this, "Bonnes réponses! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuveOuverte.getReponse().getReponse(), Toast.LENGTH_LONG).show();
+                //Faire un Toast affichant les réponses ici
             }
             int[] duree = getDuree();
             Resources res = getResources();

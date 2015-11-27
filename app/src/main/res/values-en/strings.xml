@@ -4,6 +4,7 @@
 
     <!-- Epreuves -->
     <string name="question_ouverte_hint">Enter your answer here</string>
+    <string name="question_trou_hint">Separate each word with a comma</string>
     <string name="ok">OK</string>
     <string name="prendre_photo">Take a picture</string>
     <string name="score">Score : %1$d</string>

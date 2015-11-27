@@ -49,4 +49,8 @@ public class EpreuveATrou extends Epreuve {
         }
         return true;
     }
+
+    public List<String> getMots(){
+        return this.mots;
+    }
 }
