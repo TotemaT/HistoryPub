@@ -22,14 +22,15 @@
 
 package be.ipl.mobile.projet.historypub;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -43,15 +44,37 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 /**
  * Classe reprenant différentes méthodes utilisées dans les différentes activités épreuve ou étape.
  */
-class Utils {
-    private static final String TAG = "Utils";
+class BasicActivity extends AppCompatActivity {
+    private static final String TAG = "BasicActivity";
 
-    private Context context;
-    private SharedPreferences prefs;
+    protected Etape mEtape;
+    protected Epreuve mEpreuve;
 
-    public Utils(Context context) {
-        this.context = context;
-        prefs = context.getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, getPoints()));
+        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                resetPartie();
+                return false;
+            }
+        });
+        (menu.findItem(R.id.avancement)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                showAvancement(mEtape, mEpreuve);
+                return false;
+            }
+        });
+        return true;
     }
 
     /**
@@ -65,37 +88,37 @@ class Utils {
     public void chargerEpreuveOuEtapeSuivante(Etape etape, Epreuve epreuve) {
         Intent intent = new Intent();
         if (etape == null || epreuve == null) {
-            intent = new Intent(context, EtapeActivity.class);
+            intent = new Intent(this, EtapeActivity.class);
             intent.putExtra(Config.PREF_ETAPE_COURANTE, 0);
         } else {
             Epreuve epreuveSuivante = etape.getEpreuve(epreuve.getNum() + 1);
             if (epreuveSuivante != null) {
                 Type typeSuivant = epreuveSuivante.getType();
                 if (typeSuivant == Type.QCM) {
-                    intent = new Intent(context, QcmActivity.class);
+                    intent = new Intent(this, QcmActivity.class);
                 } else if (typeSuivant == Type.OUVERTE) {
-                    intent = new Intent(context, QuestionOuverteActivity.class);
+                    intent = new Intent(this, QuestionOuverteActivity.class);
                 } else if (typeSuivant == Type.PHOTO) {
-                    intent = new Intent(context, PhotoActivity.class);
+                    intent = new Intent(this, PhotoActivity.class);
                 }
                 intent.putExtra(Config.EXTRA_ETAPE, etape.getNum());
                 intent.putExtra(Config.EXTRA_EPREUVE, epreuveSuivante.getUri());
 
-                prefs.edit()
+                getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit()
                         .putString(Config.PREF_EPREUVE_COURANTE, epreuveSuivante.getUri())
                         .apply();
             } else {
-                Etape etapeSuivante = GestionEtapes.getInstance(context).getEtape(etape.getNum() + 1);
+                Etape etapeSuivante = GestionEtapes.getInstance(this).getEtape(etape.getNum() + 1);
                 if (etapeSuivante == null) {
-                    intent = new Intent(context, FinalActivity.class);
-                    prefs.edit()
+                    intent = new Intent(this, FinalActivity.class);
+                    getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit()
                             .putInt(Config.PREF_ETAPE_COURANTE, 0)
                             .putString(Config.PREF_EPREUVE_COURANTE, null)
                             .apply();
                 } else {
                     Log.d(TAG, "charge etape num : " + etapeSuivante.getNum());
-                    intent = new Intent(context, EtapeActivity.class);
-                    prefs.edit()
+                    intent = new Intent(this, EtapeActivity.class);
+                    getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit()
                             .putInt(Config.PREF_ETAPE_COURANTE, etape.getNum() + 1)
                             .putString(Config.PREF_EPREUVE_COURANTE, null)
                             .apply();
@@ -103,8 +126,8 @@ class Utils {
                 }
             }
         }
-        context.startActivity(intent);
-        ((Activity) context).finish();
+        startActivity(intent);
+        finish();
     }
 
     /**
@@ -113,8 +136,8 @@ class Utils {
      * @param pointsAjouter Nombre de points à ajouter au score total
      */
     public void augmenterPoints(int pointsAjouter) {
-        int pointsTot = prefs.getInt(Config.PREF_SCORE, 0) + pointsAjouter;
-        prefs.edit()
+        int pointsTot = getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).getInt(Config.PREF_SCORE, 0) + pointsAjouter;
+        getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit()
                 .putInt(Config.PREF_SCORE, pointsTot)
                 .apply();
         Log.d(TAG, "Points totaux : " + pointsTot);
@@ -126,7 +149,7 @@ class Utils {
      * @return Score total
      */
     public int getPoints() {
-        return prefs.getInt(Config.PREF_SCORE, 0);
+        return getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).getInt(Config.PREF_SCORE, 0);
     }
 
     /**
@@ -134,7 +157,7 @@ class Utils {
      * étape du jeu.
      */
     public void resetPartie() {
-        prefs.edit()
+        getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).edit()
                 .clear()
                 .apply();
         chargerEpreuveOuEtapeSuivante(null, null);
@@ -148,7 +171,7 @@ class Utils {
      * @return Durée du jeu
      */
     public int[] getDuree() {
-        long debut = prefs.getLong(Config.PREF_TEMPS_DEBUT, 0);
+        long debut = getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE).getLong(Config.PREF_TEMPS_DEBUT, 0);
         long fin = new Date().getTime();
         long difference = fin - debut;
 
@@ -177,8 +200,8 @@ class Utils {
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, titre);
         intent.putExtra(Intent.EXTRA_TEXT, contenu);
-        intent = Intent.createChooser(intent, context.getString(R.string.partage_choix));
-        context.startActivity(intent);
+        intent = Intent.createChooser(intent, getString(R.string.partage_choix));
+        startActivity(intent);
     }
 
     /**
@@ -188,8 +211,8 @@ class Utils {
      * @param score Score totale marqué lors du jeu
      */
     public void partagerFinal(String duree, String score) {
-        partager(context.getString(R.string.titre_partage_final),
-                context.getString(R.string.contenu_partage_final, duree, score));
+        partager(getString(R.string.titre_partage_final),
+                getString(R.string.contenu_partage_final, duree, score));
     }
 
     /**
@@ -202,8 +225,8 @@ class Utils {
      * @param points  Nombre de points gagné jusqu'à maintenant
      */
     public void partagerEpreuve(int epreuve, int etape, String duree, String points) {
-        partager(context.getString(R.string.titre_partage_epreuve),
-                context.getString(R.string.contenu_partage_epreuve, epreuve, etape, duree, points));
+        partager(getString(R.string.titre_partage_epreuve),
+                getString(R.string.contenu_partage_epreuve, epreuve, etape, duree, points));
     }
 
     /**
@@ -215,8 +238,8 @@ class Utils {
      * @param duree   Duree entre le début du jeu et maintenant
      */
     public void getDialogExplicatif(final Etape etape, final Epreuve epreuve, final String duree) {
-        AlertDialog dialog = new AlertDialog.Builder(context)
-                .setTitle(context.getString(R.string.explication))
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.explication))
                 .setMessage(epreuve.getExplication())
                 .setPositiveButton(R.string.continuer, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -246,21 +269,21 @@ class Utils {
                     l'utilisateur sur la question à son retour, lui permettant de répondre à nouveau.
                  */
                 partagerEpreuve(epreuve.getNum(), etape.getNum(), duree,
-                        context.getResources().getQuantityString(R.plurals.points, getPoints(), getPoints()));
+                        getResources().getQuantityString(R.plurals.points, getPoints(), getPoints()));
             }
         });
     }
 
     public void showAvancement(Etape etape, Epreuve epreuve) {
-        AlertDialog dialog = new AlertDialog.Builder(context)
-                .setTitle(context.getString(R.string.avancement_etape, etape.getNum() + 1, GestionEtapes.getInstance(context).getNombreEtapes()))
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.avancement_etape, etape.getNum() + 1, GestionEtapes.getInstance(this).getNombreEtapes()))
                 .setView(R.layout.dialog_avancement)
                 .setPositiveButton(R.string.ok, null) /* dismiss le dialog */
                 .create();
         dialog.show();
 
         TextView etapeTv = (TextView) dialog.findViewById(R.id.etape_textview);
-        etapeTv.setText(context.getString(R.string.avancement_text));
+        etapeTv.setText(getString(R.string.avancement_text));
         ProgressBar progress = (ProgressBar) dialog.findViewById(R.id.avancement);
         progress.setMax(etape.getNombreEpreuves());
         if (epreuve != null) {

@@ -24,7 +24,6 @@ package be.ipl.mobile.projet.historypub;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,10 +34,9 @@ import android.widget.TextView;
 /**
  * Activité présentant un résumé de la partie à l'utilisateur.
  */
-public class FinalActivity extends AppCompatActivity {
+public class FinalActivity extends BasicActivity {
     private TextView mScoreFinalTv;
     private TextView mTempsFinalTv;
-    private Utils util;
 
     private String mScore;
     private String mDuree;
@@ -48,8 +46,6 @@ public class FinalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
 
-        util = new Utils(this);
-
         mScoreFinalTv = (TextView) findViewById(R.id.score_final);
         mTempsFinalTv = (TextView) findViewById(R.id.temps_total);
 
@@ -57,7 +53,7 @@ public class FinalActivity extends AppCompatActivity {
         partagerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                util.partagerFinal(mDuree, mScore);
+                partagerFinal(mDuree, mScore);
             }
         });
         remplirStatsFinales();
@@ -66,7 +62,7 @@ public class FinalActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        util.resetPartie();
+        resetPartie();
     }
 
     @Override
@@ -78,11 +74,11 @@ public class FinalActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
+        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, getPoints()));
         (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                util.resetPartie();
+                resetPartie();
                 return false;
             }
         });
@@ -93,7 +89,7 @@ public class FinalActivity extends AppCompatActivity {
      * Affiche le score final et la durée totale du jeu.
      */
     private void remplirStatsFinales() {
-        int[] duree = util.getDuree();
+        int[] duree = getDuree();
         Resources res = getResources();
 
         String heures = res.getQuantityString(R.plurals.heures, duree[0], duree[0]);
@@ -101,7 +97,7 @@ public class FinalActivity extends AppCompatActivity {
         String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
         mScore = res.getString(R.string.score_final,
-                res.getQuantityString(R.plurals.points, util.getPoints(), util.getPoints()),
+                res.getQuantityString(R.plurals.points, getPoints(), getPoints()),
                 GestionEtapes.getInstance(this).getScoreTotal());
         mDuree = res.getString(R.string.duree_finale, heures, minutes, secondes);
 

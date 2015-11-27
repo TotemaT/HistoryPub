@@ -24,43 +24,35 @@ package be.ipl.mobile.projet.historypub;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveOuverte;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Reponse;
 
 /**
  * Activité reprenant une épreuve de question ouverte.
  */
-public class QuestionOuverteActivity extends AppCompatActivity {
-    private Etape mEtape;
-    private EpreuveOuverte mEpreuve;
+public abstract class QuestionOuverteActivity extends BasicActivity {
+
+    private EpreuveOuverte mEpreuveOuverte;
 
     private EditText mReponse;
-
-    private Utils util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_ouverte);
 
-        util = new Utils(this);
-
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
 
         mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE, 0));
-        mEpreuve = (EpreuveOuverte) mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
+        mEpreuve = mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
+        mEpreuveOuverte = (EpreuveOuverte) mEpreuve;
 
         Button repondre = (Button) findViewById(R.id.reponse_btn);
         mReponse = (EditText) findViewById(R.id.question_ouverte_edit);
@@ -93,33 +85,6 @@ public class QuestionOuverteActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
-        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                util.resetPartie();
-                return false;
-            }
-        });
-        (menu.findItem(R.id.avancement)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                util.showAvancement(mEtape, mEpreuve);
-                return false;
-            }
-        });
-        return true;
-    }
-
     /**
      * Vérifie la réponse donnée ou demande de répondre.
      * Préviens l'utilisateur si la réponse est correcte ou non et lance l'épreuve ou étape suivante
@@ -128,21 +93,20 @@ public class QuestionOuverteActivity extends AppCompatActivity {
         if (mReponse.getText().toString().isEmpty() || mReponse.getText().toString().equals("")) {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
-            Utils utils = new Utils(this);
-            if (mEpreuve.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
-                utils.augmenterPoints(mEpreuve.getPoints());
+            if (mEpreuveOuverte.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
+                augmenterPoints(mEpreuve.getPoints());
                 Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuve.getReponse().getReponse(), Toast.LENGTH_LONG).show();
+                Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuveOuverte.getReponse().getReponse(), Toast.LENGTH_LONG).show();
             }
-            int[] duree = util.getDuree();
+            int[] duree = getDuree();
             Resources res = getResources();
 
             String heures = res.getQuantityString(R.plurals.heures, duree[0], duree[0]);
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            utils.getDialogExplicatif(mEtape,mEpreuve,res.getString(R.string.duree_finale, heures, minutes, secondes));
+            getDialogExplicatif(mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 }

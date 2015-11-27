@@ -13,17 +13,14 @@
     <!-- Ecran final -->
     <string name="message_final">Congratulations, you\'ve completed the journey!</string>
     <plurals name="heures">
-        <item quantity="zero">%1$d hour</item>
         <item quantity="one">%1$d hour</item>
         <item quantity="other">%1$d hours</item>
     </plurals>
     <plurals name="minutes">
-        <item quantity="zero">%1$d minute</item>
         <item quantity="one">%1$d minute</item>
         <item quantity="other">%1$d minutes</item>
     </plurals>
     <plurals name="secondes">
-        <item quantity="zero">%1$d second</item>
         <item quantity="one">%1$d second</item>
         <item quantity="other">%1$d seconds</item>
     </plurals>
@@ -40,7 +37,7 @@
 
     <!-- Partage -->
     <string name="titre_partage_epreuve">I progressed in History Pub</string>
-    <string name="contenu_partage_epreuve">I finished the question %1$d of History Pub! It took me %3$s to get there and I scored %4$s till now! Try to beat me! :)</string>
+    <string name="contenu_partage_epreuve">I finished the question %1$d of the stage %2$d of History Pub! It took me %3$s to get there and I scored %4$s till now! Try to beat me! :)</string>
 
     <string name="contenu_partage_final">I discovered Soignies thanks to History Pub.\nI finished the game in %1$s and I score %2$s!\nTry to beat me by downloading the app! :)</string>
     <string name="titre_partage_final">I finished History Pub</string>
@@ -49,7 +46,7 @@
     <string name="prefix">en</string>
     <string name="partage_choix">How do you want to share your final score?</string>
     <string name="avancement">Progression</string>
-    <string name="avancement_etape">Stage %1$d out of %2$s</string>
+    <string name="avancement_etape">Stage %1$d out of %2$d</string>
     <string name="avancement_text">Your progression in this stage : </string>
     <string name="explication">Explanation</string>
 </resources>

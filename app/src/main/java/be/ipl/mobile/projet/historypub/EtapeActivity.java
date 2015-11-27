@@ -23,38 +23,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.io.File;
 import java.util.Date;
 
-
-import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 
 /**
  * Activité présentant une étape du jeu à l'utilisateur.
  */
-public class EtapeActivity extends AppCompatActivity {
+public class EtapeActivity extends BasicActivity {
     private static final String TAG = "EtapeActivity";
 
     private WebView mWebView;
-
-    private Etape mEtape;
-    private Utils util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etape);
-
-        util = new Utils(this);
 
         mWebView = (WebView) findViewById(R.id.webView);
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
@@ -63,33 +52,6 @@ public class EtapeActivity extends AppCompatActivity {
         Log.d(TAG, "chargement de : " + mEtape.getUrl());
 
         setupWebview();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
-        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                util.resetPartie();
-                return false;
-            }
-        });
-        (menu.findItem(R.id.avancement)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                util.showAvancement(mEtape, null);
-                return false;
-            }
-        });
-        return true;
     }
 
     /**

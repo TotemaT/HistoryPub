@@ -66,7 +66,7 @@ public class Etape {
                 return epreuve;
             }
         }
-        throw new IllegalArgumentException("L'uri n'existe pas");
+        throw new IllegalArgumentException("L'uri n'existe pas : " + uri);
     }
 
     public Epreuve getEpreuve(int num) {

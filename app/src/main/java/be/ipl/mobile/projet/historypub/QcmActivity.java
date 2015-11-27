@@ -24,11 +24,7 @@ package be.ipl.mobile.projet.historypub;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,36 +32,31 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
 
 /**
  * Activité reprenant une épreuve de question à choix multiples.
  */
-public class QcmActivity extends AppCompatActivity {
+public class QcmActivity extends BasicActivity {
     private static final String TAG = "QcmActivity";
 
-    private Etape mEtape;
-    private EpreuveQCM mEpreuve;
+    private EpreuveQCM mEpreuveQCM;
 
     private AppCompatCheckBox mCheckBoxUn;
     private AppCompatCheckBox mCheckBoxDeux;
     private AppCompatCheckBox mCheckBoxTrois;
-
-    private Utils util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.epreuve_qcm);
 
-        util = new Utils(this);
-
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
 
         mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE, 0));
-        mEpreuve = (EpreuveQCM) mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
+        mEpreuve = mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
+        mEpreuveQCM = (EpreuveQCM) mEpreuve;
 
         View choixUn = findViewById(R.id.choix_1);
         View choixDeux = findViewById(R.id.choix_2);
@@ -105,40 +96,13 @@ public class QcmActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
-        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                util.resetPartie();
-                return false;
-            }
-        });
-        (menu.findItem(R.id.avancement)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                util.showAvancement(mEtape, mEpreuve);
-                return false;
-            }
-        });
-        return true;
-    }
-
     /**
      * Affiche la question et les différents choix de réponses à cette dernière.
      */
     private void setQuestion() {
         ((TextView) findViewById(R.id.question_textView)).setText(mEpreuve.getQuestion());
 
-        List<ReponseQCM> reponses = mEpreuve.getReponses();
+        List<ReponseQCM> reponses = mEpreuveQCM.getReponses();
 
         View choixUn = findViewById(R.id.choix_1);
         ((TextView) choixUn.findViewById(R.id.reponse_textView)).setText(reponses.get(0).getReponse());
@@ -169,30 +133,28 @@ public class QcmActivity extends AppCompatActivity {
         } else {
 
             String bonneReponse = "";
-            for (ReponseQCM reponse : mEpreuve.getReponses()) {
+            for (ReponseQCM reponse : mEpreuveQCM.getReponses()) {
                 if (reponse.estBonne()) {
                     bonneReponse = reponse.getReponse();
                     break;
                 }
             }
 
-            Utils utils = new Utils(this);
-
-            if (mEpreuve.getReponses().get(reponseChoisie).estBonne()) {
+            if (mEpreuveQCM.getReponses().get(reponseChoisie).estBonne()) {
                 Toast.makeText(QcmActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
-                utils.augmenterPoints(mEpreuve.getPoints());
+                augmenterPoints(mEpreuve.getPoints());
             } else {
                 Toast.makeText(QcmActivity.this, "Mauvaise réponse... :(\nLa bonne réponse était : " + bonneReponse, Toast.LENGTH_SHORT).show();
             }
 
-            int[] duree = util.getDuree();
+            int[] duree = getDuree();
             Resources res = getResources();
 
             String heures = res.getQuantityString(R.plurals.heures, duree[0], duree[0]);
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            utils.getDialogExplicatif(mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
+            getDialogExplicatif(mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 }
