@@ -239,9 +239,9 @@ abstract class BasicActivity extends AppCompatActivity {
      * @param epreuve Epreuve courante
      * @param duree   Duree entre le début du jeu et maintenant
      */
-    public void getDialogExplicatif(final Etape etape, final Epreuve epreuve, final String duree) {
+    public void getDialogExplicatif(final String title, final Etape etape, final Epreuve epreuve, final String duree) {
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.explication))
+                .setTitle(title)
                 .setMessage(epreuve.getExplication())
                 .setPositiveButton(R.string.continuer, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

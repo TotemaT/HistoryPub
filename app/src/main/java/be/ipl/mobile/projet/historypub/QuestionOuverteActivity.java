@@ -90,14 +90,15 @@ public class QuestionOuverteActivity extends BasicActivity {
      * Préviens l'utilisateur si la réponse est correcte ou non et lance l'épreuve ou étape suivante
      */
     private void verifierReponse() {
+        String title;
         if (mReponse.getText().toString().isEmpty() || mReponse.getText().toString().equals("")) {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
             if (mEpreuveOuverte.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
                 augmenterPoints(mEpreuve.getPoints());
-                Toast.makeText(QuestionOuverteActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
+               title = "Bonne réponse! +" + mEpreuve.getPoints() + " points.";
             } else {
-                Toast.makeText(QuestionOuverteActivity.this, "Mauvaise réponse! La bonne réponse était " + mEpreuveOuverte.getReponse().getReponse(), Toast.LENGTH_LONG).show();
+               title = "Mauvaise réponse! La bonne réponse était " + mEpreuveOuverte.getReponse().getReponse();
             }
             int[] duree = getDuree();
             Resources res = getResources();
@@ -106,7 +107,7 @@ public class QuestionOuverteActivity extends BasicActivity {
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            getDialogExplicatif(mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
+            getDialogExplicatif(title,mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 }

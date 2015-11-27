@@ -75,12 +75,16 @@ public class TrouActivity extends BasicActivity {
         if (mReponse.getText().toString().isEmpty() || mReponse.getText().toString().equals("")) {
             Toast.makeText(TrouActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
+            String title;
             List<String> mots = Arrays.asList(mReponse.getText().toString().split(",[ ]*"));
             if(mEpreuveATrou.estRéponseCorrecte(mots)) {
                 augmenterPoints(mEpreuve.getPoints());
-                Toast.makeText(TrouActivity.this, "Bonnes réponses! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
+                title = "Bonnes réponses! +" + mEpreuve.getPoints() + " points.";
             } else {
-                //Faire un Toast affichant les réponses ici
+                title = "Mauvaise réponse! Les bonnes réponses était ";
+                for (String mot: mEpreuveATrou.getMots())
+                    title+=mot+",";
+                title = title.substring(0,title.length()-2);
             }
             int[] duree = getDuree();
             Resources res = getResources();
@@ -89,7 +93,7 @@ public class TrouActivity extends BasicActivity {
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            getDialogExplicatif(mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
+            getDialogExplicatif(title,mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 }

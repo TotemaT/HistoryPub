@@ -131,7 +131,7 @@ public class QcmActivity extends BasicActivity {
         if (reponseChoisie == -1) {
             Toast.makeText(QcmActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
-
+            String title;
             String bonneReponse = "";
             for (ReponseQCM reponse : mEpreuveQCM.getReponses()) {
                 if (reponse.estBonne()) {
@@ -141,10 +141,10 @@ public class QcmActivity extends BasicActivity {
             }
 
             if (mEpreuveQCM.getReponses().get(reponseChoisie).estBonne()) {
-                Toast.makeText(QcmActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
+                title = "Bonne réponse! +" + mEpreuve.getPoints() + " points.";
                 augmenterPoints(mEpreuve.getPoints());
             } else {
-                Toast.makeText(QcmActivity.this, "Mauvaise réponse... :(\nLa bonne réponse était : " + bonneReponse, Toast.LENGTH_SHORT).show();
+                title = "Mauvaise réponse! La bonne réponse était : " + bonneReponse;
             }
 
             int[] duree = getDuree();
@@ -154,7 +154,7 @@ public class QcmActivity extends BasicActivity {
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            getDialogExplicatif(mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
+            getDialogExplicatif(title,mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 }

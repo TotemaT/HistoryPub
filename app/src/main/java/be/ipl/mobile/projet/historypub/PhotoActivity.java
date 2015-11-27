@@ -78,7 +78,7 @@ public class PhotoActivity extends BasicActivity {
                 if (!photoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    Toast.makeText(PhotoActivity.this, "Bonne réponse! +" + mEpreuve.getPoints() + " points.", Toast.LENGTH_LONG).show();
+                    String title = "Bonne réponse! +" + mEpreuve.getPoints() + " points.";
                     augmenterPoints(mEpreuve.getPoints());
                     int[] duree = getDuree();
                     Resources res = getResources();
@@ -87,7 +87,7 @@ public class PhotoActivity extends BasicActivity {
                     String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
                     String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-                    getDialogExplicatif(mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
+                    getDialogExplicatif(title, mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
                 }
             }
         });
