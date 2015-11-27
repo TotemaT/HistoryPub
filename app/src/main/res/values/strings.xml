@@ -53,9 +53,4 @@
 
     <!-- Config -->
     <string name="prefix">fr</string>
-    <string name="title_activity_trou">TrouActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
 </resources>
