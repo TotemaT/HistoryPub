@@ -77,7 +77,7 @@
     Attention tout de même, l'alcool est à consommer avec modération, sous peine de ne plus pouvoir répondre aux questions données!
 
     \chapter{Mode d'emploi}
-    L'utilisation de \textsc{History Pub} est très facile. Une fois l'application lancée, le jeu ne démarre réellement qu'une fois que vous vous trouvez dans la zone de jeu, qui vous est logiquement donnée.
+    L'utilisation de \textsc{History Pub} est très facile. Une fois l'application lancée, vous recevez les indications vous permettant de trouver la zone de la première étape du jeu.
 
     % Afficher une screenshot de EtapeActivité demandant de se déplacer dans la zone
 
@@ -86,7 +86,7 @@
     \section{Caractéristiques communes aux épreuves}
     Lors des épreuves de question à choix multiples ou de question ouvertes, votre réponse doit être vérifiée. Cette vérification n'est faite qu'une fois la réponse validée par l'utilisateur, c'est à dire une fois que le bouton OK est pressé. Cette vérification peut mener à trois différents toast possibles :
     \begin{description}[style=nextline]
-        \item[Pas de réponse donnée]Le toast invitera l'utilisateur à répondre à la question.
+        \item[Pas de réponse donnée]Le toast invite l'utilisateur à répondre à la question.
         \item[Réponse correcte] Le toast félicite l'utilisateur et affiche le nombre de points gagnés.
         \item[Réponse incorrecte] Le toast se désole de la mauvaise réponse et donne la réponse correcte, permettant à l'utilisateur d'apprendre de ses erreurs.
     \end{description}
@@ -123,11 +123,12 @@
     % Aucun bug connu pour le moment :P
 
     \chapter{Utilisation de code open-source}
-    Le code de \textsc{History Pub} n'utilise pas réellement de code open-source à proprement parler. Cependant, certaines parties sont fortement inspirées, voire même simplement reprises, des exemples et tutoriels fournis par \textsc{Google} sur leur plateforme \url{developer.android.com}.\\
+    Le code de \textsc{History Pub} reprends, à certains endroits précis, du code open-source. Ces parties de code open-source se retrouvent ci-dessous :
 
-    La partie géolocalisation par exemple est principalement une copie de leur exemple, adapté à nos besoins.\\
-
-    De plus, le CSS utilisé pour les boutons des parties HTML est fortement basé sur le codepen fait par RayCh et trouvé à cette adresse : \url{http://codepen.io/iraycd/pen/dHrxv}.
+    \begin{description}[style=nextline]
+        \item[EtapeActivity.java et PhotoActivity.java] La partie géolocalisation reprends en grande partie du code fournis par \textsc{Google} sur leur plateforme \url{developer.android.com} ainsi que sur \textsc{Github} à cette adresse: \url{https://github.com/googlesamples/android-play-location}. Ce code est fourni sous la license \textbf{Apache}, permettant son inclusion dans un projet sous license \textbf{GPLv3}.
+        \item[Style.css] Le design des boutons, façon Material Design, est repris du \textsc{Codepen} créé par RayCh et trouvable à cette adresse : \url{http://codepen.io/iraycd/pen/dHrxv}. Le code posté sur \textsc{Codepen} est sous license \textbf{MIT}, elle aussi compatible avec la \textbf{GPLv3}.
+    \end{description}
 
     \chapter{License}
 
