@@ -112,6 +112,7 @@
         \subfigure{\includegraphics[scale=.25]{images/trou2.png}}}
         \caption{Question à trous, avant et après avoir entré une réponse}
     \end{figure}
+    Pour réponse à une question de texte à trous, il vous suffit d'entrer les différents mots manquants dans l'unique champs de texte. Ces différents mots doivent être séparés par une virgule. Seules les réponses comprenant tous les mots corrects sont acceptées.
 
     \section{Epreuve Question Ouverte}
     \begin{figure}[H]
@@ -155,6 +156,29 @@
     Vous pouvez aussi, via le menu de cette barre d'action, voir votre avancement ou remettre le jeu à zéro. Ces deux actions sont montrées dans les captures d'écran ci-dessus.
 
     \chapter{Architecture}
+    L'architecture de l'application suit, autant que faire se peut, les règles énoncées par \textsc{Google}.\\
+
+    Les messages et autres chaines de caractères affichées à l'utilisateur sont reprises dans le fichier \textit{string.xml}, permettant une traduction et donc une localisation aisée. Certains éléments visuels ont un style et des caractéristiques communs repris dans le fichier \textit{styles.xml}, permettant de mettre à jour le design de l'application de façon simple et sans devoir fouiller dans les différents fichiers de layout.\\
+
+    Concernant le code java, nous avons suivi les conventions de nommage des attributs énoncés par l' \textsc{Android Open Source.Project}. C'est à dire que :
+    \begin{itemize}
+        \item les attributs \textbf{non public}, \textbf{non static} commencent par un m
+        \item les attributs \textbf{static} commencent par un s
+        \item les autres attributs commencent par une lettre minuscule
+        \item les attributs \textbf{public static final} s'écrivent en MAJUSCULE\_AVEC\_UNDERSCORES
+    \end{itemize}
+
+    Le code est de plus, bien entendu, commenté et contient de la javadoc la plus compréhensible possible.\\
+
+    Concernant les classes java, nous avons séparé les classes dite \og POJO\fg, qui sont de simples objets Java de classes relative à \textsc{Android}, c'est à dire les activités ainsi que des \og User Case Controller\fg{} \textbf{???????} , correspondant ici à la classe gérant le fichier XML et par la même le déroulement du jeu.
+
+    Dans les POJO, nous avons différentes classes, correspondantes aux différentes épreuves, aux étapes ainsi qu'à une zone autour d'un point géographique.
+
+    Les activités elles correspondent chacune à une étape, épreuve ou autre écran affiché à l'écran. Elles gèrent donc l'interaction entre l'utilisateur et l'interface visuelle. L'interface en elle-même étant gérées par les fichier XML du dossier layout.
+
+    L'UCC gère le chargement du fichier XML et est implémenté en tant que \textbf{singleton}. Celà permet de charger une fois le jeu complet (comprenez les différentes étapes, épreuves et tout ce qui les compose) et de permettre par la suite à toutes les activités de piocher l'étape et/ou l'épreuve qui lui est nécessaire.
+
+    Nous avons bien conscience que le pattern Singletonn'est plus vu comme une bonne pratique voire même comme un anti-pattern, mais n'ayant aucune connaissance en injection de dépendance sur la plateforme d'Android, nous avons finalement opté pour ce pattern.
 
     \chapter{Bugs connus}
     % Aucun bug connu pour le moment :P
