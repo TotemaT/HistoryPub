@@ -29,16 +29,17 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -56,9 +57,9 @@ public class PhotoActivity extends BasicActivity {
     private Button mButton;
     private ImageView mPhoto;
 
-    private Uri uri;
-    private boolean photoPrise = false;
-    private int pointsAEnlever=0;
+    private Uri mUri;
+    private boolean mPhotoPrise = false;
+    private int mPointsAEnlever = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +72,8 @@ public class PhotoActivity extends BasicActivity {
 
         /* Gestion de la prise de photo */
         final Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        uri = getOutputMediaFileUri();
-        i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        mUri = getOutputMediaFileUri();
+        i.putExtra(MediaStore.EXTRA_OUTPUT, mUri);
 
         mButton = (Button) findViewById(R.id.picture_btn);
         final Button cheat = (Button) findViewById(R.id.cheat_btn);
@@ -80,11 +81,11 @@ public class PhotoActivity extends BasicActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!photoPrise) {
+                if (!mPhotoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    String title = "Bonne réponse! +" + (mEpreuve.getPoints()-pointsAEnlever) + " points.";
-                    augmenterPoints((mEpreuve.getPoints()-pointsAEnlever));
+                    String title = "Bonne réponse! +" + (mEpreuve.getPoints() - mPointsAEnlever) + " points.";
+                    augmenterPoints((mEpreuve.getPoints() - mPointsAEnlever));
                     int[] duree = getDuree();
                     Resources res = getResources();
 
@@ -105,14 +106,11 @@ public class PhotoActivity extends BasicActivity {
             public void onClick(View v) {
                 cheat.setEnabled(false);
                 help.setEnabled(false);
-                pointsAEnlever=mEpreuvePhoto.getPoints();
-                mPhoto.setImageBitmap(BitmapFactory.decodeFile("file:///android_assets/images/"+mEpreuvePhoto.getReponse().getReponse()));
-                try {
-                    wait(5000);
-                    mPhoto.setImageBitmap(null);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                mPointsAEnlever = mEpreuvePhoto.getPoints();
+                showReponseImage();
+
+                mButton.setText(R.string.ok);
+                mPhotoPrise = true;
             }
         });
 
@@ -120,10 +118,34 @@ public class PhotoActivity extends BasicActivity {
             @Override
             public void onClick(View v) {
                 help.setEnabled(false);
-                mPhoto.setImageBitmap(BitmapFactory.decodeFile("file:///android_assets/images/"+mEpreuvePhoto.getReponse().getReponse()));
-                pointsAEnlever=(mEpreuve.getPoints()/2);
+                mPointsAEnlever = (mEpreuve.getPoints() / 2);
+                showReponseImage();
+
+                /* Efface l'image après 5secondes */
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPhoto.setImageBitmap(null);
+                    }
+                }, 5000);
+
             }
         });
+    }
+
+    /**
+     * Charge et affiche l'image correspondant à la réponse de l'épreuve.
+     */
+    private void showReponseImage() {
+        try {
+            InputStream ims = getAssets().open("images/" + mEpreuvePhoto.getReponse().getReponse());
+            Bitmap bitmap = BitmapFactory.decodeStream(ims);
+            Log.d(TAG, bitmap.toString());
+            mPhoto.setImageBitmap(bitmap);
+            mPhoto.setVisibility(View.VISIBLE);
+        } catch (IOException e) {
+            Log.e(TAG, "Impossible d'afficher la réponse photo - " + e.toString());
+        }
     }
 
     /**
@@ -161,12 +183,12 @@ public class PhotoActivity extends BasicActivity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 try {
-                    mPhoto.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri));
+                    mPhoto.setImageBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), mUri));
                     mPhoto.setVisibility(View.VISIBLE);
                 } catch (IOException e) {
                     Log.d(TAG, "Impossible d'afficher la photo");
                 }
-                photoPrise = true;
+                mPhotoPrise = true;
                 mButton.setText(R.string.ok);
             } else if (resultCode == RESULT_CANCELED) {
 
