@@ -23,23 +23,11 @@ p {
     line-height: 32px;
     border-radius: 2px;
     font-size: 0.9em;
-    background-color: #D6D7D7;
 }
 
-.button.raised {
-    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    transition-delay: 0.2s;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-}
-
-.button.raised:active {
+a:active {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
     transition-delay: 0s;
-}
-
-.button > paper-ripple {
-    border-radius: 2px;
-    overflow: hidden;
 }
 
 .center {
@@ -47,6 +35,9 @@ p {
 }
 
 a {
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.2s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     float: right;
     margin-bottom: 10px;
     color: black;
@@ -54,4 +45,6 @@ a {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
+    padding: 5px;
+    background-color: #D6D7D7;
 }

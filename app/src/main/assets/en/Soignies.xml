@@ -16,20 +16,8 @@
                 <Explication>Ceci est une librairie. Rien d'intéressant, c'est juste pour que vous puissiez avoir un aperçu du fonctionnement de l'application.</Explication>
             </Epreuve>
 
-            <Epreuve num="2" points="2" type="PHOTO"
+            <Epreuve num="2" points="2" type="OUVERTE"
                      uri="http://epreuve2.historypub.mobile.ipl.be/">
-                <Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.
-                </Question>
-                <Zone>
-                    <Latitude>50.34477</Latitude>
-                    <Longitude>4.04244</Longitude>
-                    <Rayon>5</Rayon>
-                </Zone>
-                <Reponse>le lien de l'image ici</Reponse>
-            </Epreuve>
-
-            <Epreuve num="3" points="2" type="OUVERTE"
-                     uri="http://epreuve3.historypub.mobile.ipl.be/">
                 <Question>En face du Cordovero se trouve une école. Donnez son nom.</Question>
                 <Reponse>DOA</Reponse>
                 <Reponse>Le DOA</Reponse>
@@ -231,6 +219,17 @@
     </Etape>
 
     <!-- Appartient à l'étape 1
+    <Epreuve num="2" points="2" type="PHOTO"
+                     uri="http://epreuve2.historypub.mobile.ipl.be/">
+                <Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.
+                </Question>
+                <Zone>
+                    <Latitude>50.34477</Latitude>
+                    <Longitude>4.04244</Longitude>
+                    <Rayon>5</Rayon>
+                </Zone>
+            </Epreuve>
+
 
             Appartient à l'étape 3
             <Epreuve num="2" points="2" type="PHOTO"
@@ -241,7 +240,6 @@
                     <Longitude>4.071242</Longitude>
                     <Rayon>5</Rayon>
                 </Zone>
-                <Reponse>le lien de l'image ici</Reponse>
             </Epreuve>
 
             Appartient à l'étape 5
@@ -255,7 +253,6 @@
                     <Longitude>4.068778</Longitude>
                     <Rayon>5</Rayon>
                 </Zone>
-                <Reponse>le lien de l'image ici</Reponse>
             </Epreuve>
     -->
 </Jeu>

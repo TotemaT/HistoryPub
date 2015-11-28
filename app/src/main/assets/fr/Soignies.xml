@@ -7,7 +7,7 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="1" points="3" type="OUVERTE"
+            <Epreuve num="1" points="1" type="OUVERTE"
                      uri="http://epreuve1.historypub.mobile.ipl.be/">
                 <Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de Scarmure?
                 </Question>
@@ -16,7 +16,7 @@
                 <Explication>Ceci est une librairie. Rien d'intéressant, c'est juste pour que vous puissiez avoir un aperçu du fonctionnement de l'application.</Explication>
             </Epreuve>
 
-            <Epreuve num="2" points="3" type="PHOTO"
+            <Epreuve num="2" points="2" type="PHOTO"
                      uri="http://epreuve2.historypub.mobile.ipl.be/">
                 <Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.
                 </Question>
@@ -25,10 +25,9 @@
                     <Longitude>4.04244</Longitude>
                     <Rayon>5</Rayon>
                 </Zone>
-                <Reponse>cordovero.jpg</Reponse>
             </Epreuve>
 
-            <Epreuve num="3" points="4" type="OUVERTE"
+            <Epreuve num="3" points="2" type="OUVERTE"
                      uri="http://epreuve3.historypub.mobile.ipl.be/">
                 <Question>En face du Cordovero se trouve une école. Donnez son nom.</Question>
                 <Reponse>DOA</Reponse>
@@ -49,7 +48,7 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="1" points="5" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
+            <Epreuve num="1" points="2" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
                 <Question>Vous êtes et serez en train de suivre l'itinéraire du Tour Saint Vincent, qui porte également comme nom ...
                 </Question>
                 <Reponse bonne="false">Le Demi Tour</Reponse>
@@ -57,7 +56,7 @@
                 <Reponse bonne="true">Le Grand Tour</Reponse>
                 <Explication>Le Petit Tour, qui existe également dans la même procession, est un prélude au Grand Tour.</Explication>
             </Epreuve>
-            <Epreuve num="2" points="2" type="OUVERTE"
+            <Epreuve num="2" points="1" type="OUVERTE"
                      uri="http://epreuve5.historypub.mobile.ipl.be/">
                 <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?
                 </Question>
@@ -66,7 +65,7 @@
                 <Reponse>Vincent</Reponse>
                 <Explication>Saint-Vincent, est le fondateur de la ville qui allait devenir Soignies, il s'appelait Madelgaire de Famars de Hainaut. Il était le fils de Mauger et d'Onugerra (Omigère)</Explication>
             </Epreuve>
-            <Epreuve num="3" points="3" type="QCM"
+            <Epreuve num="3" points="2" type="QCM"
                      uri="http://epreuve6.historypub.mobile.ipl.be/">
                 <Question>Quel est le nom complet de Saint Vincent?</Question>
                 <Reponse bonne="true">Saint Vincent Madelgaire</Reponse>
@@ -86,7 +85,7 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="1" points="2" type="OUVERTE"
+            <Epreuve num="1" points="1" type="OUVERTE"
                      uri="http://epreuve7.historypub.mobile.ipl.be/">
                 <Question>En face de vous se trouve une Collégiale. Quel est le nom de celle-ci?
                 </Question>
@@ -103,7 +102,7 @@
                 <Explication>L'histoire de cette collégiale débute par la construction d'une église primitive sur le site même de la collégiale au 5ème siècle. La véritable collégiale fut probablement construite au dessus de l'ancienne.</Explication>
             </Epreuve>
 
-            <Epreuve num="2" points="5" type="QCM" uri="http://epreuve8.historypub.mobile.ipl.be/">
+            <Epreuve num="2" points="2" type="QCM" uri="http://epreuve8.historypub.mobile.ipl.be/">
                 <Question>A quel type d'art appartient la Collégiale de Soignies?</Question>
                 <Reponse bonne="false">l'art gothique</Reponse>
                 <Reponse bonne="true">l'art roman</Reponse>
@@ -111,7 +110,7 @@
                 <Explication>Il est possible de la caractériser par la réinterprétation de la voûte romaine antique, généralement en plein cintre. Les colonnes qui supportent les arcs sont typiquement cylindriques et surmontées de chapiteaux souvent sculptés avec des représentations d'animaux, de plantes ou encore de symboles plus ou moins géométriques.</Explication>
             </Epreuve>
 
-            <Epreuve num="3" points="3" type="QCM" uri="http://epreuve9.historypub.mobile.ipl.be/">
+            <Epreuve num="3" points="2" type="QCM" uri="http://epreuve9.historypub.mobile.ipl.be/">
                 <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant le 3ème dimanche d'octobre.Lequel?</Question>
                 <Reponse bonne="false">l'Oktoberfest</Reponse>
                 <Reponse bonne="true">le brûlage de Simpélourd</Reponse>
@@ -131,7 +130,7 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="1" points="3" type="OUVERTE"
+            <Epreuve num="1" points="2" type="OUVERTE"
                      uri="http://epreuve10.historypub.mobile.ipl.be/">
                 <Question>Dans cette Collégiale se trouve un musée. Donnez son nom</Question>
                 <Reponse>Le musée du Chapitre</Reponse>
@@ -142,7 +141,7 @@
                 <Explication>le musée du chapitre fait revivre les trésors des chanoines. Il propose une collection d'œuvres variées datant du Xe siècle au XVIIIe siècle</Explication>
             </Epreuve>
 
-            <Epreuve num="2" points="4" type="QCM"
+            <Epreuve num="2" points="2" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
                 <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?
                 </Question>
@@ -152,7 +151,7 @@
                 <Explication>Dès 1987, la population sonégienne et les nombreux visiteurs venant de l'extérieur auront l'occasion de voir défiler dans les rues de Soignies, alors que le soir est tombé et que les lumières se font faiblardes, une gigantesque araignée qui asperge les badauds de son venin tout en distribuant des friandises aux plus petits.</Explication>
             </Epreuve>
 
-            <Epreuve num="3" points="3" type="QCM"
+            <Epreuve num="3" points="1" type="QCM"
                      uri="http://epreuve12.historypub.mobile.ipl.be/">
                 <Question>Soignies n'est pas connue que pour ses festivités et ses constructions. Elle est également la capitale européenne de...
                 </Question>
@@ -172,7 +171,7 @@
         </Zone>
 
         <Epreuves>
-            <Epreuve num="1" points="3" type="QCM"
+            <Epreuve num="1" points="1" type="QCM"
                      uri="http://epreuve13.historypub.mobile.ipl.be/">
                 <Question>Lors de la Simpélourd, un évenement est organisé sur la place verte. Lequel?
                 </Question>
@@ -182,7 +181,7 @@
                 <Explication>La ducasse est une fête populaire annuelle de villages et petites villes, en Belgique et dans le nord de la France, organisée généralement le jour de la fête du saint patron de l'entité. Les régions davantage influencées par la langue flamande parlent équivalemment de « Kermesse ». Dans le nord de la France ducasse se traduit aujourd'hui par Fête Foraine</Explication>
             </Epreuve>
 
-            <Epreuve num="2" points="3" type="QCM"
+            <Epreuve num="2" points="2" type="QCM"
                      uri="http://epreuve14.historypub.mobile.ipl.be/">
                 <Question>De quelle contraction provient le nom Simpélourd?</Question>
                 <Reponse bonne="true">Simple et lourd</Reponse>
@@ -191,7 +190,7 @@
                 <Explication>Les origines de Simpélourd ne sont pas à rechercher dans un quelconque dictionnaire. Le « Saint Pélourd » tant apprécié des touristes mal informés n’a, en effet, rien d’un personnage vertueux digne des plus grands hommages. Celui dont on célèbre la simplicité et la lourdeur n’est en fait que la victime d’un vaste canular qui tend à démentir la morosité et la froideur du peuple de « Sougnies »</Explication>
             </Epreuve>
 
-            <Epreuve num="3" points="4" type="OUVERTE"
+            <Epreuve num="3" points="2" type="OUVERTE"
                      uri="http://epreuve15.historypub.mobile.ipl.be/">
                 <Question>Quel est le surnom de Simpélourd?</Question>
                 <Reponse>Mononk</Reponse>
@@ -208,7 +207,7 @@
             <Rayon>5</Rayon>
         </Zone>
         <Epreuves>
-            <Epreuve num="1" points="4" type="QCM"
+            <Epreuve num="1" points="2" type="QCM"
                      uri="http://epreuve16.historypub.mobile.ipl.be/">
                 <Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le nom de ce bonbon?
                 </Question>
@@ -218,7 +217,7 @@
                 <Explication>la réalisation de ce caramel un peu particulier nécessite un véritable savoir-faire et beaucoup de patience. La pâte très chaude, faite à base de sucre, est lancée sur un crochet et étirée plusieurs fois jusqu'à ce qu'elle obtienne sa couleur claire. Une fois cette étape réussie, il faut ensuite en rouler de longs boudins qu'on coupe aux ciseaux avant de les emballer dans un papier spécial pour les empêcher de fondre. Schez cependant que les carabibis distribués lors du cortège sont plus traditionnels que les originaux. Seul une pâtisserie réalise encore à Soignies les carabibis originaux.</Explication>
             </Epreuve>
 
-            <Epreuve num="2" points="6" type="ATROU"
+            <Epreuve num="2" points="2" type="ATROU"
                      uri="http://epreuve17.historypub.mobile.ipl.be/">
                 <Question>Dans ce même cortège, les géants de Soignies sont de sortie. Il y a tout d'abord ..., qui est un ouvrier dans les carrières, avec le maillet dans une main et le burin de l'autre. Il y a aussi ..., qui est l'épouse de ce dernier. Leur union donna enfin naissance à une fille, ... et un garçon, ... .</Question>
                 <Mot>Dudule</Mot>
@@ -232,6 +231,8 @@
 
     <!-- Appartient à l'étape 1
 
+
+
             Appartient à l'étape 3
             <Epreuve num="2" points="2" type="PHOTO"
                      uri="http://epreuve7.historypub.mobile.ipl.be/">
@@ -241,7 +242,6 @@
                     <Longitude>4.071242</Longitude>
                     <Rayon>5</Rayon>
                 </Zone>
-                <Reponse>le lien de l'image ici</Reponse>
             </Epreuve>
 
             Appartient à l'étape 5
@@ -255,7 +255,6 @@
                     <Longitude>4.068778</Longitude>
                     <Rayon>5</Rayon>
                 </Zone>
-                <Reponse>le lien de l'image ici</Reponse>
             </Epreuve>
     -->
 </Jeu>
