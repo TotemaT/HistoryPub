@@ -53,7 +53,7 @@ public class QcmActivity extends EpreuveActivity {
     private View choixDeux;
     private View choixTrois;
 
-    private void initChoix(){
+    private void initChoix() {
         choixUn = findViewById(R.id.choix_1);
         choixDeux = findViewById(R.id.choix_2);
         choixTrois = findViewById(R.id.choix_3);
@@ -150,8 +150,8 @@ public class QcmActivity extends EpreuveActivity {
             }
 
             if (mEpreuveQCM.getReponses().get(reponseChoisie).estBonne()) {
-                title = "Bonne réponse! +" +(mEpreuve.getPoints()-mPointsAEnlever) + " points.";
-                augmenterPoints((mEpreuve.getPoints()-mPointsAEnlever));
+                title = "Bonne réponse! +" + (mEpreuve.getPoints() - mPointsAEnlever) + " points.";
+                augmenterPoints((mEpreuve.getPoints() - mPointsAEnlever));
             } else {
                 title = "Mauvaise réponse! La bonne réponse était : " + bonneReponse;
             }
@@ -163,27 +163,27 @@ public class QcmActivity extends EpreuveActivity {
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            getDialogExplicatif(title,mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
+            getDialogExplicatif(title, mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 
     @Override
     public void doHelp() {
-        int nbRand=-1;
-        int nbRep=0;
+        int nbRand = -1;
+        int nbRep = 0;
         ReponseQCM repQcm;
-        for(ReponseQCM rep: mEpreuveQCM.getReponses()){
-            if(rep.estBonne()) {
+        for (ReponseQCM rep : mEpreuveQCM.getReponses()) {
+            if (rep.estBonne()) {
                 repQcm = rep;
                 break;
             }
             nbRep++;
         }
-        nbRand=nbRep;
-        while(nbRand==nbRep||nbRand<0)
-            nbRand=new Random().nextInt()%3;
-        Log.i("RAND",nbRand+"");
-        switch (nbRand){
+        nbRand = nbRep;
+        while (nbRand == nbRep || nbRand < 0)
+            nbRand = new Random().nextInt() % 3;
+        Log.i("RAND", nbRand + "");
+        switch (nbRand) {
             case 0:
                 choixUn.setVisibility(View.INVISIBLE);
                 break;
@@ -198,10 +198,10 @@ public class QcmActivity extends EpreuveActivity {
 
     @Override
     public void doCheat() {
-        int numReponse=1;
+        int numReponse = 1;
         for (ReponseQCM reponse : mEpreuveQCM.getReponses()) {
             if (reponse.estBonne()) {
-                switch (numReponse){
+                switch (numReponse) {
                     case 1:
                         choixDeux.setVisibility(View.INVISIBLE);
                         choixTrois.setVisibility(View.INVISIBLE);

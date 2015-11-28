@@ -45,6 +45,7 @@ import java.util.Date;
 
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuvePhoto;
 /*La gestion de prise de photo est grâcieusement expliquée et disponible sur developer.android.com*/
+
 /**
  * Activité reprenant une épreuve de photographie.
  */
@@ -158,6 +159,8 @@ public class PhotoActivity extends EpreuveActivity {
                     Log.d(TAG, "Impossible d'afficher la photo");
                 }
                 mPhotoPrise = true;
+                mCheatButton.setEnabled(false);
+                mHelpButton.setEnabled(false);
                 mButton.setText(R.string.ok);
             } else if (resultCode == RESULT_CANCELED) {
 

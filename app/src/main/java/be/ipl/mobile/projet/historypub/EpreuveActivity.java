@@ -6,16 +6,16 @@ import android.widget.Button;
 /**
  * Classe reprenant différentes méthodes utilisées dans les différentes activités épreuve uniquement.
  */
-public abstract class EpreuveActivity extends BasicActivity{
+public abstract class EpreuveActivity extends BasicActivity {
 
     protected Button mCheatButton;
     protected Button mHelpButton;
-    protected int mPointsAEnlever=0;
+    protected int mPointsAEnlever = 0;
 
     /**
      * Initialise le bouton de triche dans les différentes épreuves.
      */
-    protected void initCheatButton(){
+    protected void initCheatButton() {
         mCheatButton = (Button) findViewById(R.id.cheat_btn);
         mCheatButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -23,7 +23,7 @@ public abstract class EpreuveActivity extends BasicActivity{
                 mHelpButton.setEnabled(false);
                 mCheatButton.setEnabled(false);
                 doCheat();
-                mPointsAEnlever=mEpreuve.getPoints();
+                mPointsAEnlever = mEpreuve.getPoints();
             }
         });
     }
@@ -31,14 +31,14 @@ public abstract class EpreuveActivity extends BasicActivity{
     /**
      * Initialise le bouton d'aide dans les différentes épreuves.
      */
-    protected Button initgetHelpButton(){
+    protected Button initgetHelpButton() {
         mHelpButton = (Button) findViewById(R.id.help_btn);
         mHelpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mHelpButton.setEnabled(false);
                 doHelp();
-                mPointsAEnlever=(mEpreuve.getPoints()/2);
+                mPointsAEnlever = (mEpreuve.getPoints() / 2);
             }
         });
         return mHelpButton;

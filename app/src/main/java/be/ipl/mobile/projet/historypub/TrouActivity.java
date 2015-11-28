@@ -78,14 +78,14 @@ public class TrouActivity extends EpreuveActivity {
         } else {
             String title;
             List<String> mots = Arrays.asList(mReponse.getText().toString().split(",[ ]*"));
-            if(mEpreuveATrou.estRéponseCorrecte(mots)) {
-                augmenterPoints((mEpreuve.getPoints()-mPointsAEnlever));
-                title = "Bonnes réponses! +" + (mEpreuve.getPoints()-mPointsAEnlever) + " points.";
+            if (mEpreuveATrou.estRéponseCorrecte(mots)) {
+                augmenterPoints((mEpreuve.getPoints() - mPointsAEnlever));
+                title = "Bonnes réponses! +" + (mEpreuve.getPoints() - mPointsAEnlever) + " points.";
             } else {
                 title = "Mauvaise réponse! Les bonnes réponses était ";
-                for (String mot: mEpreuveATrou.getMots())
-                    title+=mot+",";
-                title = title.substring(0,title.length()-1);
+                for (String mot : mEpreuveATrou.getMots())
+                    title += mot + ",";
+                title = title.substring(0, title.length() - 1);
             }
             int[] duree = getDuree();
             Resources res = getResources();
@@ -94,25 +94,25 @@ public class TrouActivity extends EpreuveActivity {
             String minutes = res.getQuantityString(R.plurals.minutes, duree[1], duree[1]);
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
-            getDialogExplicatif(title,mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
+            getDialogExplicatif(title, mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
     }
 
     @Override
     public void doHelp() {
-        for(String rep: mEpreuveATrou.getMots()){
-            mReponse.setText(mReponse.getText().toString()+rep.substring(0,1)+",");
+        for (String rep : mEpreuveATrou.getMots()) {
+            mReponse.setText(mReponse.getText().toString() + rep.substring(0, 1) + ",");
         }
-        mReponse.setText(mReponse.getText().toString().substring(0,mReponse.getText().toString().length()-1));
+        mReponse.setText(mReponse.getText().toString().substring(0, mReponse.getText().toString().length() - 1));
     }
 
     @Override
     public void doCheat() {
         mReponse.setText("");
-        for(String rep: mEpreuveATrou.getMots()){
-            mReponse.setText(mReponse.getText().toString()+rep+",");
+        for (String rep : mEpreuveATrou.getMots()) {
+            mReponse.setText(mReponse.getText().toString() + rep + ",");
         }
-        mReponse.setText(mReponse.getText().toString().substring(0,mReponse.getText().toString().length()-1));
+        mReponse.setText(mReponse.getText().toString().substring(0, mReponse.getText().toString().length() - 1));
         mReponse.setEnabled(false);
     }
 }
