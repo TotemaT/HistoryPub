@@ -40,8 +40,8 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Reponse;
 public class QuestionOuverteActivity extends BasicActivity {
 
     private EpreuveOuverte mEpreuveOuverte;
-
     private EditText mReponse;
+    private int pointsAEnlever=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,8 @@ public class QuestionOuverteActivity extends BasicActivity {
         mEpreuveOuverte = (EpreuveOuverte) mEpreuve;
 
         Button repondre = (Button) findViewById(R.id.reponse_btn);
+        final Button cheat = (Button) findViewById(R.id.cheat_btn);
+        final Button help = (Button) findViewById(R.id.help_btn);
         mReponse = (EditText) findViewById(R.id.question_ouverte_edit);
 
         /* Permet de répondre à la question en cliquant sur entré */
@@ -83,6 +85,27 @@ public class QuestionOuverteActivity extends BasicActivity {
                 verifierReponse();
             }
         });
+
+        cheat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cheat.setEnabled(false);
+                help.setEnabled(false);
+                mReponse.setText(mEpreuveOuverte.getReponse().getReponse());
+                mReponse.setEnabled(false);
+                pointsAEnlever=mEpreuve.getPoints();
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                help.setEnabled(false);
+                mReponse.setText(mEpreuveOuverte.getReponse().getReponse().substring(0, 1));
+                //TODO empêcher l'utilisateur de delete la première lettre ainsi révélée
+                pointsAEnlever=(mEpreuve.getPoints()/2);
+            }
+        });
     }
 
     /**
@@ -95,8 +118,9 @@ public class QuestionOuverteActivity extends BasicActivity {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
             if (mEpreuveOuverte.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
-                augmenterPoints(mEpreuve.getPoints());
-               title = "Bonne réponse! +" + mEpreuve.getPoints() + " points.";
+                augmenterPoints(mEpreuve.getPoints()-pointsAEnlever);
+                title = "Bonne réponse! +" + (mEpreuve.getPoints()-pointsAEnlever) + " points.";
+                pointsAEnlever=0;
             } else {
                title = "Mauvaise réponse! La bonne réponse était " + mEpreuveOuverte.getReponse().getReponse();
             }

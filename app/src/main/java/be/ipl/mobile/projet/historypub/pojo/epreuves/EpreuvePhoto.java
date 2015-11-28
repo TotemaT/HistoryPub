@@ -30,13 +30,19 @@ import be.ipl.mobile.projet.historypub.pojo.Zone;
 public class EpreuvePhoto extends Epreuve {
 
     private Zone zone;
+    private Reponse reponse;
 
-    public EpreuvePhoto(int num, String question, String uri, int points, Zone zone, String expliquation) {
+    public EpreuvePhoto(int num, String question, String uri, int points, Zone zone, String expliquation, Reponse reponse) {
         super(num, question, uri, Type.PHOTO, points, expliquation);
         this.zone = zone;
+        this.reponse = reponse;
     }
 
     public Zone getZone() {
         return zone;
+    }
+
+    public Reponse getReponse(){
+        return this.reponse;
     }
 }

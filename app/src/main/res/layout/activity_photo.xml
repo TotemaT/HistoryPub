@@ -15,8 +15,21 @@
         android:visibility="invisible"
         android:contentDescription="@string/photo_prise"/>
 
-    <Button
-        android:id="@+id/picture_btn"
-        style="@style/BoutonReponse"
-        android:text="@string/prendre_photo"/>
+    <LinearLayout
+        style="@style/LinearButtonsEpreuve">
+        <Button
+            android:id="@+id/help_btn"
+            style="@style/BoutonHelp"/>
+
+        <Button
+            android:id="@+id/cheat_btn"
+            style="@style/BoutonCheat"/>
+
+        <Button
+            android:id="@+id/picture_btn"
+            style="@style/BoutonReponse"
+            android:text="@string/prendre_photo"/>
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -22,7 +22,7 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Reponse;
 public class TrouActivity extends BasicActivity {
 
     private EpreuveATrou mEpreuveATrou;
-
+    private int pointsAEnlever=0;
     private EditText mReponse;
 
     @Override
@@ -37,6 +37,8 @@ public class TrouActivity extends BasicActivity {
         mEpreuveATrou = (EpreuveATrou) mEpreuve;
 
         Button repondre = (Button) findViewById(R.id.reponse_btn);
+        final Button cheat = (Button) findViewById(R.id.cheat_btn);
+        final Button help = (Button) findViewById(R.id.help_btn);
         mReponse = (EditText) findViewById(R.id.question_trou_edit);
 
         /* Permet de répondre à la question en cliquant sur entré */
@@ -65,6 +67,33 @@ public class TrouActivity extends BasicActivity {
                 verifierReponse();
             }
         });
+        cheat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cheat.setEnabled(false);
+                help.setEnabled(false);
+                mReponse.setText("");
+                for(String rep: mEpreuveATrou.getMots()){
+                    mReponse.setText(mReponse.getText().toString()+rep+",");
+                }
+                mReponse.setText(mReponse.getText().toString().substring(0,mReponse.getText().toString().length()-1));
+                mReponse.setEnabled(false);
+                pointsAEnlever=mEpreuveATrou.getPoints();
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                help.setEnabled(false);
+                for(String rep: mEpreuveATrou.getMots()){
+                    mReponse.setText(mReponse.getText().toString()+rep.substring(0,1)+",");
+                }
+                mReponse.setText(mReponse.getText().toString().substring(0,mReponse.getText().toString().length()-1));
+                pointsAEnlever=(mEpreuve.getPoints()/2);
+                //TODO empêcher l'utilisateur de delete la première lettre ainsi révélée + ajouter premiere lettre aux mots
+            }
+        });
     }
 
     /**
@@ -78,13 +107,13 @@ public class TrouActivity extends BasicActivity {
             String title;
             List<String> mots = Arrays.asList(mReponse.getText().toString().split(",[ ]*"));
             if(mEpreuveATrou.estRéponseCorrecte(mots)) {
-                augmenterPoints(mEpreuve.getPoints());
-                title = "Bonnes réponses! +" + mEpreuve.getPoints() + " points.";
+                augmenterPoints((mEpreuve.getPoints()-pointsAEnlever));
+                title = "Bonnes réponses! +" + (mEpreuve.getPoints()-pointsAEnlever) + " points.";
             } else {
                 title = "Mauvaise réponse! Les bonnes réponses était ";
                 for (String mot: mEpreuveATrou.getMots())
                     title+=mot+",";
-                title = title.substring(0,title.length()-2);
+                title = title.substring(0,title.length()-1);
             }
             int[] duree = getDuree();
             Resources res = getResources();

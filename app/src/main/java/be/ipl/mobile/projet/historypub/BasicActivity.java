@@ -87,7 +87,7 @@ abstract class BasicActivity extends AppCompatActivity {
      */
     public void chargerEpreuveOuEtapeSuivante(Etape etape, Epreuve epreuve) {
         Intent intent = new Intent();
-        if (etape == null || epreuve == null) {
+        if (etape == null) {
             intent = new Intent(this, EtapeActivity.class);
             intent.putExtra(Config.PREF_ETAPE_COURANTE, 0);
         } else {

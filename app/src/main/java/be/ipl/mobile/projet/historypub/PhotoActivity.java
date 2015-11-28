@@ -24,6 +24,8 @@ package be.ipl.mobile.projet.historypub;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -56,6 +58,7 @@ public class PhotoActivity extends BasicActivity {
 
     private Uri uri;
     private boolean photoPrise = false;
+    private int pointsAEnlever=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +75,16 @@ public class PhotoActivity extends BasicActivity {
         i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 
         mButton = (Button) findViewById(R.id.picture_btn);
+        final Button cheat = (Button) findViewById(R.id.cheat_btn);
+        final Button help = (Button) findViewById(R.id.help_btn);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!photoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    String title = "Bonne réponse! +" + mEpreuve.getPoints() + " points.";
-                    augmenterPoints(mEpreuve.getPoints());
+                    String title = "Bonne réponse! +" + (mEpreuve.getPoints()-pointsAEnlever) + " points.";
+                    augmenterPoints((mEpreuve.getPoints()-pointsAEnlever));
                     int[] duree = getDuree();
                     Resources res = getResources();
 
@@ -95,7 +100,30 @@ public class PhotoActivity extends BasicActivity {
         TextView question = (TextView) findViewById(R.id.question_textView);
         question.setText(mEpreuve.getQuestion());
         mPhoto = (ImageView) findViewById(R.id.photo_imageview);
+        cheat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cheat.setEnabled(false);
+                help.setEnabled(false);
+                pointsAEnlever=mEpreuvePhoto.getPoints();
+                mPhoto.setImageBitmap(BitmapFactory.decodeFile("file:///android_assets/images/"+mEpreuvePhoto.getReponse().getReponse()));
+                try {
+                    wait(5000);
+                    mPhoto.setImageBitmap(null);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                help.setEnabled(false);
+                mPhoto.setImageBitmap(BitmapFactory.decodeFile("file:///android_assets/images/"+mEpreuvePhoto.getReponse().getReponse()));
+                pointsAEnlever=(mEpreuve.getPoints()/2);
+            }
+        });
     }
 
     /**

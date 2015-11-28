@@ -19,7 +19,5 @@
         android:id="@+id/choix_3"
         layout="@layout/qcm_reponse"/>
 
-    <Button
-        android:id="@+id/reponse_btn"
-        style="@style/BoutonReponse"/>
+    <include layout="@layout/buttons_epreuves"/>
 </LinearLayout>

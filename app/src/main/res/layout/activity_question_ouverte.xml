@@ -16,7 +16,5 @@
         android:hint="@string/question_ouverte_hint"
         android:inputType="text"/>
 
-    <Button
-        android:id="@+id/reponse_btn"
-        style="@style/BoutonReponse"/>
+    <include layout="@layout/buttons_epreuves"/>
 </LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/LinearButtonsEpreuve"
+              android:id="@+id/boutons_layout"
+              >
+
+    <Button
+        android:id="@+id/help_btn"
+        style="@style/BoutonHelp"/>
+
+    <Button
+        android:id="@+id/cheat_btn"
+        style="@style/BoutonCheat"/>
+
+    <Button
+        android:id="@+id/reponse_btn"
+        style="@style/BoutonReponse"/>
+
+</LinearLayout>

@@ -263,7 +263,7 @@ public class GestionEtapes {
                     e1.addReponse(rep);
                 return e1;
             case "PHOTO":
-                return new EpreuvePhoto(num, question, uri, points, zone, explication);
+                return new EpreuvePhoto(num, question, uri, points, zone, explication,reponsesOuvertes.get(0));
             case "ATROU":
                 EpreuveATrou e2 = new EpreuveATrou(num, question, uri, points, explication);
                 for (String mot : mots)
