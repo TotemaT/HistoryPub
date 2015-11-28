@@ -34,13 +34,14 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.Random;
 
+import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
 
 /**
  * Activité reprenant une épreuve de question à choix multiples.
  */
-public class QcmActivity extends BasicActivity {
+public class QcmActivity extends EpreuveActivity {
     private static final String TAG = "QcmActivity";
 
     private EpreuveQCM mEpreuveQCM;
@@ -48,23 +49,26 @@ public class QcmActivity extends BasicActivity {
     private AppCompatCheckBox mCheckBoxUn;
     private AppCompatCheckBox mCheckBoxDeux;
     private AppCompatCheckBox mCheckBoxTrois;
-    private int pointsAEnlever=0;
+    private View choixUn;
+    private View choixDeux;
+    private View choixTrois;
+
+    private void initChoix(){
+        choixUn = findViewById(R.id.choix_1);
+        choixDeux = findViewById(R.id.choix_2);
+        choixTrois = findViewById(R.id.choix_3);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.epreuve_qcm);
-
+        initChoix();
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
 
         mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE, 0));
         mEpreuve = mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
         mEpreuveQCM = (EpreuveQCM) mEpreuve;
-
-        final View choixUn = findViewById(R.id.choix_1);
-        final View choixDeux = findViewById(R.id.choix_2);
-        final View choixTrois = findViewById(R.id.choix_3);
-
 
         mCheckBoxUn = (AppCompatCheckBox) choixUn.findViewById(R.id.qcm_checkbox);
         mCheckBoxDeux = (AppCompatCheckBox) choixDeux.findViewById(R.id.qcm_checkbox);
@@ -97,77 +101,8 @@ public class QcmActivity extends BasicActivity {
                 verifieReponse();
             }
         });
-
-        final Button cheat = (Button) findViewById(R.id.cheat_btn);
-        final Button help = (Button) findViewById(R.id.help_btn);
-        cheat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cheat.setEnabled(false);
-                help.setEnabled(false);
-                int numReponse=1;
-                for (ReponseQCM reponse : mEpreuveQCM.getReponses()) {
-                    if (reponse.estBonne()) {
-                        switch (numReponse){
-                            case 1:
-                                choixDeux.setVisibility(View.INVISIBLE);
-                                choixTrois.setVisibility(View.INVISIBLE);
-                                choixUn.callOnClick();
-                                break;
-                            case 2:
-                                choixUn.setVisibility(View.INVISIBLE);
-                                choixTrois.setVisibility(View.INVISIBLE);
-                                choixDeux.callOnClick();
-                                break;
-                            case 3:
-                                choixUn.setVisibility(View.INVISIBLE);
-                                choixDeux.setVisibility(View.INVISIBLE);
-                                choixTrois.callOnClick();
-                                break;
-                        }
-                        choixUn.setEnabled(false);
-                        choixDeux.setEnabled(false);
-                        choixTrois.setEnabled(false);
-                        break;
-                    }
-                    numReponse++;
-                }
-                pointsAEnlever = mEpreuveQCM.getPoints();
-            }
-        });
-
-        help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                help.setEnabled(false);
-                int nbRand=-1;
-                int nbRep=0;
-                ReponseQCM repQcm;
-                for(ReponseQCM rep: mEpreuveQCM.getReponses()){
-                    if(rep.estBonne()) {
-                        repQcm = rep;
-                        break;
-                    }
-                    nbRep++;
-                }
-                nbRand=nbRep;
-                while(nbRand==nbRep||nbRand<0)
-                    nbRand=new Random().nextInt()%3;
-                Log.i("RAND",nbRand+"");
-                switch (nbRand){
-                    case 0:
-                        choixUn.setVisibility(View.INVISIBLE);
-                        break;
-                    case 1:
-                        choixDeux.setVisibility(View.INVISIBLE);
-                        break;
-                    case 2:
-                        choixTrois.setVisibility(View.INVISIBLE);
-                        break;
-                }
-                pointsAEnlever=(mEpreuve.getPoints()/2);
-            }
-        });
+        initCheatButton();
+        initgetHelpButton();
     }
 
     /**
@@ -229,6 +164,66 @@ public class QcmActivity extends BasicActivity {
             String secondes = res.getQuantityString(R.plurals.secondes, duree[2], duree[2]);
 
             getDialogExplicatif(title,mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
+        }
+    }
+
+    @Override
+    public void doHelp() {
+        int nbRand=-1;
+        int nbRep=0;
+        ReponseQCM repQcm;
+        for(ReponseQCM rep: mEpreuveQCM.getReponses()){
+            if(rep.estBonne()) {
+                repQcm = rep;
+                break;
+            }
+            nbRep++;
+        }
+        nbRand=nbRep;
+        while(nbRand==nbRep||nbRand<0)
+            nbRand=new Random().nextInt()%3;
+        Log.i("RAND",nbRand+"");
+        switch (nbRand){
+            case 0:
+                choixUn.setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                choixDeux.setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+                choixTrois.setVisibility(View.INVISIBLE);
+                break;
+        }
+    }
+
+    @Override
+    public void doCheat() {
+        int numReponse=1;
+        for (ReponseQCM reponse : mEpreuveQCM.getReponses()) {
+            if (reponse.estBonne()) {
+                switch (numReponse){
+                    case 1:
+                        choixDeux.setVisibility(View.INVISIBLE);
+                        choixTrois.setVisibility(View.INVISIBLE);
+                        choixUn.callOnClick();
+                        break;
+                    case 2:
+                        choixUn.setVisibility(View.INVISIBLE);
+                        choixTrois.setVisibility(View.INVISIBLE);
+                        choixDeux.callOnClick();
+                        break;
+                    case 3:
+                        choixUn.setVisibility(View.INVISIBLE);
+                        choixDeux.setVisibility(View.INVISIBLE);
+                        choixTrois.callOnClick();
+                        break;
+                }
+                choixUn.setEnabled(false);
+                choixDeux.setEnabled(false);
+                choixTrois.setEnabled(false);
+                break;
+            }
+            numReponse++;
         }
     }
 }

@@ -32,6 +32,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -49,6 +50,9 @@ abstract class BasicActivity extends AppCompatActivity {
 
     protected Etape mEtape;
     protected Epreuve mEpreuve;
+    protected Button mCheatButton;
+    protected Button mHelpButton;
+    protected int pointsAEnlever=0;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -48,7 +48,7 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuvePhoto;
 /**
  * Activité reprenant une épreuve de photographie.
  */
-public class PhotoActivity extends BasicActivity {
+public class PhotoActivity extends EpreuveActivity {
     private static final String TAG = "PhotoActivity";
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 
@@ -59,7 +59,6 @@ public class PhotoActivity extends BasicActivity {
 
     private Uri mUri;
     private boolean mPhotoPrise = false;
-    private int mPointsAEnlever = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,16 +75,14 @@ public class PhotoActivity extends BasicActivity {
         i.putExtra(MediaStore.EXTRA_OUTPUT, mUri);
 
         mButton = (Button) findViewById(R.id.picture_btn);
-        final Button cheat = (Button) findViewById(R.id.cheat_btn);
-        final Button help = (Button) findViewById(R.id.help_btn);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!mPhotoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    String title = "Bonne réponse! +" + (mEpreuve.getPoints() - mPointsAEnlever) + " points.";
-                    augmenterPoints((mEpreuve.getPoints() - mPointsAEnlever));
+                    String title = "Bonne réponse! +" + (mEpreuve.getPoints() - pointsAEnlever) + " points.";
+                    augmenterPoints((mEpreuve.getPoints() - pointsAEnlever));
                     int[] duree = getDuree();
                     Resources res = getResources();
 
@@ -101,36 +98,8 @@ public class PhotoActivity extends BasicActivity {
         TextView question = (TextView) findViewById(R.id.question_textView);
         question.setText(mEpreuve.getQuestion());
         mPhoto = (ImageView) findViewById(R.id.photo_imageview);
-        cheat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cheat.setEnabled(false);
-                help.setEnabled(false);
-                mPointsAEnlever = mEpreuvePhoto.getPoints();
-                showReponseImage();
-
-                mButton.setText(R.string.ok);
-                mPhotoPrise = true;
-            }
-        });
-
-        help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                help.setEnabled(false);
-                mPointsAEnlever = (mEpreuve.getPoints() / 2);
-                showReponseImage();
-
-                /* Efface l'image après 5secondes */
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPhoto.setImageBitmap(null);
-                    }
-                }, 5000);
-
-            }
-        });
+        initCheatButton();
+        initgetHelpButton();
     }
 
     /**
@@ -198,4 +167,22 @@ public class PhotoActivity extends BasicActivity {
         }
     }
 
+    @Override
+    public void doHelp() {
+        showReponseImage();
+                /* Efface l'image après 5secondes */
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPhoto.setImageBitmap(null);
+            }
+        }, 5000);
+    }
+
+    @Override
+    public void doCheat() {
+        showReponseImage();
+        mButton.setText(R.string.ok);
+        mPhotoPrise = true;
+    }
 }

@@ -19,10 +19,9 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveATrou;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveOuverte;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Reponse;
 
-public class TrouActivity extends BasicActivity {
+public class TrouActivity extends EpreuveActivity {
 
     private EpreuveATrou mEpreuveATrou;
-    private int pointsAEnlever=0;
     private EditText mReponse;
 
     @Override
@@ -37,8 +36,6 @@ public class TrouActivity extends BasicActivity {
         mEpreuveATrou = (EpreuveATrou) mEpreuve;
 
         Button repondre = (Button) findViewById(R.id.reponse_btn);
-        final Button cheat = (Button) findViewById(R.id.cheat_btn);
-        final Button help = (Button) findViewById(R.id.help_btn);
         mReponse = (EditText) findViewById(R.id.question_trou_edit);
 
         /* Permet de répondre à la question en cliquant sur entré */
@@ -67,33 +64,8 @@ public class TrouActivity extends BasicActivity {
                 verifierReponse();
             }
         });
-        cheat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cheat.setEnabled(false);
-                help.setEnabled(false);
-                mReponse.setText("");
-                for(String rep: mEpreuveATrou.getMots()){
-                    mReponse.setText(mReponse.getText().toString()+rep+",");
-                }
-                mReponse.setText(mReponse.getText().toString().substring(0,mReponse.getText().toString().length()-1));
-                mReponse.setEnabled(false);
-                pointsAEnlever=mEpreuveATrou.getPoints();
-            }
-        });
-
-        help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                help.setEnabled(false);
-                for(String rep: mEpreuveATrou.getMots()){
-                    mReponse.setText(mReponse.getText().toString()+rep.substring(0,1)+",");
-                }
-                mReponse.setText(mReponse.getText().toString().substring(0,mReponse.getText().toString().length()-1));
-                pointsAEnlever=(mEpreuve.getPoints()/2);
-                //TODO empêcher l'utilisateur de delete la première lettre ainsi révélée + ajouter premiere lettre aux mots
-            }
-        });
+        initCheatButton();
+        initgetHelpButton();
     }
 
     /**
@@ -124,5 +96,23 @@ public class TrouActivity extends BasicActivity {
 
             getDialogExplicatif(title,mEtape, mEpreuve, res.getString(R.string.duree_finale, heures, minutes, secondes));
         }
+    }
+
+    @Override
+    public void doHelp() {
+        for(String rep: mEpreuveATrou.getMots()){
+            mReponse.setText(mReponse.getText().toString()+rep.substring(0,1)+",");
+        }
+        mReponse.setText(mReponse.getText().toString().substring(0,mReponse.getText().toString().length()-1));
+    }
+
+    @Override
+    public void doCheat() {
+        mReponse.setText("");
+        for(String rep: mEpreuveATrou.getMots()){
+            mReponse.setText(mReponse.getText().toString()+rep+",");
+        }
+        mReponse.setText(mReponse.getText().toString().substring(0,mReponse.getText().toString().length()-1));
+        mReponse.setEnabled(false);
     }
 }
