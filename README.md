@@ -1,3 +1,5 @@
+<img src="logo.png" alt="Logo HistoryPub" width="250px"/>
+
 # History Pub [![Build Status](https://magnum.travis-ci.com/Crapoo/HistoryPub.svg?token=yJBmbVBshhaMztbgxQd2&branch=master)](https://magnum.travis-ci.com/Crapoo/HistoryPub)
 > Découvrez Soignies en boisson.
 
