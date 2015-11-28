@@ -96,9 +96,9 @@ public class QuestionOuverteActivity extends EpreuveActivity {
             Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
             if (mEpreuveOuverte.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
-                augmenterPoints(mEpreuve.getPoints()-pointsAEnlever);
-                title = "Bonne réponse! +" + (mEpreuve.getPoints()-pointsAEnlever) + " points.";
-                pointsAEnlever=0;
+                augmenterPoints(mEpreuve.getPoints()-mPointsAEnlever);
+                title = "Bonne réponse! +" + (mEpreuve.getPoints()-mPointsAEnlever) + " points.";
+                mPointsAEnlever=0;
             } else {
                title = "Mauvaise réponse! La bonne réponse était " + mEpreuveOuverte.getReponse().getReponse();
             }

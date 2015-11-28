@@ -44,7 +44,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuvePhoto;
-
+/*La gestion de prise de photo est grâcieusement expliquée et disponible sur developer.android.com*/
 /**
  * Activité reprenant une épreuve de photographie.
  */
@@ -81,8 +81,8 @@ public class PhotoActivity extends EpreuveActivity {
                 if (!mPhotoPrise) {
                     startActivityForResult(i, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
                 } else {
-                    String title = "Bonne réponse! +" + (mEpreuve.getPoints() - pointsAEnlever) + " points.";
-                    augmenterPoints((mEpreuve.getPoints() - pointsAEnlever));
+                    String title = "Bonne réponse! +" + (mEpreuve.getPoints() - mPointsAEnlever) + " points.";
+                    augmenterPoints((mEpreuve.getPoints() - mPointsAEnlever));
                     int[] duree = getDuree();
                     Resources res = getResources();
 

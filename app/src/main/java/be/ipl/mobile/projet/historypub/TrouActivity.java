@@ -79,8 +79,8 @@ public class TrouActivity extends EpreuveActivity {
             String title;
             List<String> mots = Arrays.asList(mReponse.getText().toString().split(",[ ]*"));
             if(mEpreuveATrou.estRéponseCorrecte(mots)) {
-                augmenterPoints((mEpreuve.getPoints()-pointsAEnlever));
-                title = "Bonnes réponses! +" + (mEpreuve.getPoints()-pointsAEnlever) + " points.";
+                augmenterPoints((mEpreuve.getPoints()-mPointsAEnlever));
+                title = "Bonnes réponses! +" + (mEpreuve.getPoints()-mPointsAEnlever) + " points.";
             } else {
                 title = "Mauvaise réponse! Les bonnes réponses était ";
                 for (String mot: mEpreuveATrou.getMots())

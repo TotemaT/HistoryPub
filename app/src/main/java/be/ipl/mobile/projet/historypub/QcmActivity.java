@@ -150,8 +150,8 @@ public class QcmActivity extends EpreuveActivity {
             }
 
             if (mEpreuveQCM.getReponses().get(reponseChoisie).estBonne()) {
-                title = "Bonne réponse! +" +(mEpreuve.getPoints()-pointsAEnlever) + " points.";
-                augmenterPoints((mEpreuve.getPoints()-pointsAEnlever));
+                title = "Bonne réponse! +" +(mEpreuve.getPoints()-mPointsAEnlever) + " points.";
+                augmenterPoints((mEpreuve.getPoints()-mPointsAEnlever));
             } else {
                 title = "Mauvaise réponse! La bonne réponse était : " + bonneReponse;
             }

@@ -50,9 +50,6 @@ abstract class BasicActivity extends AppCompatActivity {
 
     protected Etape mEtape;
     protected Epreuve mEpreuve;
-    protected Button mCheatButton;
-    protected Button mHelpButton;
-    protected int pointsAEnlever=0;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
