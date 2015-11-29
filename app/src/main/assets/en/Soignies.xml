@@ -9,19 +9,17 @@
         <Epreuves>
             <Epreuve num="1" points="3" type="OUVERTE"
                      uri="http://epreuve1.historypub.mobile.ipl.be/">
-                <Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de
-                    Scarmure?
+                <Question>What is the name of the bookstore close to the Chanoine de Scarmure street?
                 </Question>
                 <Reponse>Cordovero</Reponse>
                 <Reponse>Le Cordovero</Reponse>
-                <Explication>Ceci est une librairie. Rien d'intéressant, c'est juste pour que vous
-                    puissiez avoir un aperçu du fonctionnement de l'application.
+                <Explication>This is a bookstore, nothing interesting to say about it. It was purely to show you how this app worked.
                 </Explication>
             </Epreuve>
 
             <Epreuve num="2" points="3" type="PHOTO"
                      uri="http://epreuve2.historypub.mobile.ipl.be/">
-                <Question>Prenez une photo de la librairie mentionnée à l'épreuve précédente.
+                <Question>Take a picture of the bookstore mentionned previously.
                 </Question>
                 <Zone>
                     <Latitude>50.34477</Latitude>
@@ -33,15 +31,12 @@
 
             <Epreuve num="3" points="4" type="OUVERTE"
                      uri="http://epreuve3.historypub.mobile.ipl.be/">
-                <Question>En face du Cordovero se trouve une école. Donnez son nom.</Question>
+                <Question>In front of the Cordovero is a school. Give its name.</Question>
                 <Reponse>DOA</Reponse>
                 <Reponse>Le DOA</Reponse>
                 <Reponse>Le Premier degré d'Observation Autonome</Reponse>
                 <Reponse>Premier degré d'Observation Autonome</Reponse>
-                <Explication>Le Premier degré d'Observation Autonome constitue la base des deux
-                    autres établissements scolaires du CES Saint-Vincent de Soignies qui en sont les
-                    deux "cheminées". Il se déploie sur deux implantations situées à quelques
-                    centaines de mètres du centre-ville sonnégien.
+                <Explication> The Premier degré d'Observation Autonome (First Degree of Autonomous Observation) is the basis of both other parts of the CES Saint-Vincent. It is deployed over two areas a few hundred metres from the city center.
                 </Explication>
             </Epreuve>
 
@@ -57,38 +52,31 @@
 
         <Epreuves>
             <Epreuve num="1" points="5" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
-                <Question>Vous êtes et serez en train de suivre l'itinéraire du Tour Saint Vincent,
-                    qui porte également comme nom ...
+                <Question>You are following the path of the Saint Vincent Tour which is also known as...
                 </Question>
                 <Reponse bonne="false">Le Demi Tour</Reponse>
                 <Reponse bonne="false">Le Petit Tour</Reponse>
                 <Reponse bonne="true">Le Grand Tour</Reponse>
-                <Explication>Le Petit Tour, qui existe également dans la même procession, est un
-                    prélude au Grand Tour.
+                <Explication> Le Petit Tour (The Small Tour), which also exists in the same procession, is a prelude to the Grand Tour (The Big Tour).
                 </Explication>
             </Epreuve>
             <Epreuve num="2" points="2" type="OUVERTE"
                      uri="http://epreuve5.historypub.mobile.ipl.be/">
-                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur
-                    de Soignies. Lequel?
+                <Question>This procession first of all honour a Saint, which founded Soignies. Which Saint?
                 </Question>
                 <Reponse>Saint Vincent</Reponse>
                 <Reponse>St Vincent</Reponse>
                 <Reponse>Vincent</Reponse>
-                <Explication>Saint-Vincent, est le fondateur de la ville qui allait devenir
-                    Soignies, il s'appelait Madelgaire de Famars de Hainaut. Il était le fils de
-                    Mauger et d'Onugerra (Omigère)
+                <Explication>Saint-Vincent is the founder of the city that would become Soignies. He was called Madelgaire de Famars de Hainaut and was the son of Mauger and Onugerra (Omigère).
                 </Explication>
             </Epreuve>
             <Epreuve num="3" points="3" type="QCM"
                      uri="http://epreuve6.historypub.mobile.ipl.be/">
-                <Question>Quel est le nom complet de Saint Vincent?</Question>
+                <Question>What is Saint Vincent's full name?</Question>
                 <Reponse bonne="true">Saint Vincent Madelgaire</Reponse>
                 <Reponse bonne="false">Saint Vincent Madelon</Reponse>
                 <Reponse bonne="false">Saint Vincent Madère</Reponse>
-                <Explication>Issu de l'aristocratie franque, il est né vers l'an 607 au château de
-                    Sotteville à Strépy et est décédé à Soignies, le 14 juillet 677. Mauger, son
-                    père, était l'un des leudes les plus puissants du royaume d'Austrasie
+                <Explication>From the Frankish aristocracy, he was born in 607 at the Sotteville castle, in Strépy, and died in Soignies, the 14th of July 677. Mauger, his father, was one of the most powerful leud of the Austrasia kingdom.
                 </Explication>
             </Epreuve>
         </Epreuves>
@@ -105,49 +93,35 @@
         <Epreuves>
             <Epreuve num="1" points="2" type="OUVERTE"
                      uri="http://epreuve7.historypub.mobile.ipl.be/">
-                <Question>En face de vous se trouve une Collégiale. Quel est le nom de celle-ci?
+                <Question>In front of you is a Collegiate. What is its name?
                 </Question>
-                <Reponse>Collégiale Saint Vincent</Reponse>
-                <Reponse>Collegiale Saint Vincent</Reponse>
-                <Reponse>La Collégiale Saint Vincent</Reponse>
-                <Reponse>La Collegiale Saint Vincent</Reponse>
-                <Reponse>Collégiale St Vincent</Reponse>
-                <Reponse>Collegiale St Vincent</Reponse>
-                <Reponse>La Collégiale St Vincent</Reponse>
-                <Reponse>La Collegiale St Vincent</Reponse>
+                <Reponse>Collegiate Saint Vincent</Reponse>
+                <Reponse>The Collegiate Saint Vincent</Reponse>
+                <Reponse>Collegiate St Vincent</Reponse>
+                <Reponse>The Collegiate St Vincent</Reponse>
                 <Reponse>Saint Vincent</Reponse>
                 <Reponse>St Vincent</Reponse>
-                <Explication>L'histoire de cette collégiale débute par la construction d'une église
-                    primitive sur le site même de la collégiale au 5ème siècle. La véritable
-                    collégiale fut probablement construite au dessus de l'ancienne.
+                <Explication>The story of this collegiate starts with the building of a church, in the very site of the Collegiate during the Vth century. The Collegiate itself was most likely built on top of the church.
                 </Explication>
             </Epreuve>
 
             <Epreuve num="2" points="5" type="QCM" uri="http://epreuve8.historypub.mobile.ipl.be/">
-                <Question>A quel type d'art appartient la Collégiale de Soignies?</Question>
-                <Reponse bonne="false">l'art gothique</Reponse>
-                <Reponse bonne="true">l'art roman</Reponse>
-                <Reponse bonne="false">l'art baroque</Reponse>
-                <Explication>Il est possible de la caractériser par la réinterprétation de la voûte
-                    romaine antique, généralement en plein cintre. Les colonnes qui supportent les
-                    arcs sont typiquement cylindriques et surmontées de chapiteaux souvent sculptés
-                    avec des représentations d'animaux, de plantes ou encore de symboles plus ou
-                    moins géométriques.
+                <Question>What kind of art is the Collegiate?</Question>
+                <Reponse bonne="false">Gothic art</Reponse>
+                <Reponse bonne="true">Roman art</Reponse>
+                <Reponse bonne="false">Baroque art</Reponse>
+                <Explication>It is easy to tell thanks to the ancient Roman arch, generally in the centre. The columns supportint the arch are generally cylindrical and often topped with carved representation of animals, plants or more or less geometric symbols.
                 </Explication>
             </Epreuve>
 
             <Epreuve num="3" points="3" type="QCM" uri="http://epreuve9.historypub.mobile.ipl.be/">
-                <Question>Sur la place du jeu de balle se déroule un évenement lors du mardi suivant
-                    le 3ème dimanche d'octobre.Lequel?
+                <Question>An event takes place on the Jeu de Balle square during the Tuesday folowing the 3rd Sunday of Octobre. Which one?
                 </Question>
-                <Reponse bonne="false">l'Oktoberfest</Reponse>
-                <Reponse bonne="true">le brûlage de Simpélourd</Reponse>
+                <Reponse bonne="false">The Oktoberfest</Reponse>
+                <Reponse bonne="true">The Simpélour burning</Reponse>
                 <Reponse bonne="false">Tomorrowland</Reponse>
-                <Explication>Lors de la fin du cortège de Simpélourd, celui-ci est remplacé par un
-                    mannequin qui restera pendant 3 jours sur son balcon. Par la suite, ce mannequin
-                    est brûlé en autodafé le mardi où les Sonégiens peuvent chanter: "Vive Sougnies,
-                    vive Sougnies Simpélourd ess’t’a s’guernie", ce qui peut se traduire par: "Vive
-                    Soignies, vive Soignies, Simpélourd est à son grenier".
+                <Explication>At the end of the Simpélourd procession, he is replaced by a mannequin which stays 3 days in its balcon. Afterward, the mannequin is burnt during the Tuesday and citizens from Soignies sing "Vive Sougnies, vive Sougnies, Simpélourd ess’t’a s’guernie" which can be translated to "Vive
+                Soignies, vive Soignies, Simpélourd is at his attic".
                 </Explication>
             </Epreuve>
         </Epreuves>
@@ -165,48 +139,35 @@
         <Epreuves>
             <Epreuve num="1" points="3" type="OUVERTE"
                      uri="http://epreuve10.historypub.mobile.ipl.be/">
-                <Question>Dans cette Collégiale se trouve un musée. Donnez son nom</Question>
-                <Reponse>Le musée du Chapitre</Reponse>
-                <Reponse>musée du Chapitre</Reponse>
-                <Reponse>Le musee du Chapitre</Reponse>
-                <Reponse>musee du Chapitre</Reponse>
+                <Question>In this collegiate is a museum, what is its name?</Question>
+                <Reponse>The museum of the Chapitre</Reponse>
+                <Reponse>The museum of the Chapter</Reponse>
+                <Reponse>museum of the Chapitre</Reponse>                <Reponse>museum of the Chapter</Reponse>
                 <Reponse>Chapitre</Reponse>
-                <Explication>le musée du chapitre fait revivre les trésors des chanoines. Il propose
-                    une collection d'œuvres variées datant du Xe siècle au XVIIIe siècle
+                <Reponse>Chapter</Reponse>
+                <Explication>The museum of the Chapitre shows the Canons' treasures. It shows a collection of various arts coming from the Xth century to the XVIIIrd century.
                 </Explication>
             </Epreuve>
 
             <Epreuve num="2" points="4" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
-                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons
-                    auraient été trouvés dans la charpente d'un clocher laissant par là présager de
-                    l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa
-                    place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom
-                    donné à cette araignée?
+                <Question>The legend says tens of pigeon bodies were found in the bell tower, which are said to have been left there by a gigantic spider. THis spider is now part of the SImpélourd procession. What is its name?
                 </Question>
                 <Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
                 <Reponse bonne="false">Araneae Sonegiensis</Reponse>
                 <Reponse bonne="false">Migidae Sonegiensis</Reponse>
-                <Explication>Dès 1987, la population sonégienne et les nombreux visiteurs venant de
-                    l'extérieur auront l'occasion de voir défiler dans les rues de Soignies, alors
-                    que le soir est tombé et que les lumières se font faiblardes, une gigantesque
-                    araignée qui asperge les badauds de son venin tout en distribuant des friandises
-                    aux plus petits.
+                <Explication>Starting as early as 1987, citizens of Soignies and visitors have been said to see a gigantic spider in the streets after dark. This spider spits venom at people but also gives sweets to kids.
                 </Explication>
             </Epreuve>
 
             <Epreuve num="3" points="3" type="QCM"
                      uri="http://epreuve12.historypub.mobile.ipl.be/">
-                <Question>Soignies n'est pas connue que pour ses festivités et ses constructions.
-                    Elle est également la capitale européenne de...
+                <Question>Soignies is not only known for its festivities and buildings. It is also the European center of..
                 </Question>
-                <Reponse bonne="true">La Pierre Bleue</Reponse>
-                <Reponse bonne="false">La Pierre Noire</Reponse>
-                <Reponse bonne="false">La Pierre Blanche</Reponse>
-                <Explication>La pierre bleue est une roche sédimentaire de couleur bleu gris
-                    provenant des provinces du Hainaut, de Namur et de Liège (Belgique),utilisée en
-                    architecture depuis la fin du Moyen Âge. Son extraction se fait exclusivement en
-                    Belgique dans les régions de Soignies, Écaussinnes, Sprimont et Spontin.
+                <Reponse bonne="true">blue stone</Reponse>
+                <Reponse bonne="false">black stone</Reponse>
+                <Reponse bonne="false">white stone</Reponse>
+                <Explication>The blue stone is a blue-gray sedimentary stone found in the province of Hainaut, Namur and Liege in Belgium. It is used in buildings since the Middle Age.
                 </Explication>
             </Epreuve>
         </Epreuves>
@@ -222,40 +183,30 @@
         <Epreuves>
             <Epreuve num="1" points="3" type="QCM"
                      uri="http://epreuve13.historypub.mobile.ipl.be/">
-                <Question>Lors de la Simpélourd, un évenement est organisé sur la place verte.
-                    Lequel?
+                <Question>During the Simpélourd, an event takes place in the Green Square. What is it?
                 </Question>
-                <Reponse bonne="true">La Ducasse, également appellée Kermess</Reponse>
-                <Reponse bonne="false">La foire agricole</Reponse>
-                <Reponse bonne="false">Le Grand Tour</Reponse>
-                <Explication>La ducasse est une fête populaire annuelle de villages et petites
-                    villes, en Belgique et dans le nord de la France, organisée généralement le jour
-                    de la fête du saint patron de l'entité. Les régions davantage influencées par la
-                    langue flamande parlent équivalemment de « Kermesse ». Dans le nord de la France
-                    ducasse se traduit aujourd'hui par Fête Foraine
+                <Reponse bonne="true">The "Ducasse", also known as "Kermesse"</Reponse>
+                <Reponse bonne="false">The agricultural show</Reponse>
+                <Reponse bonne="false">The Grand Tour</Reponse>
+                <Explication>The ducasse is a popular annual event in villages and small towns, in Belgium and northern France. It usually takes place during the day of the town Saint. In parts more influenced by the Dutch language, the ducasse is called "Kermesse" while in Northern France, it is now called "Fête foraine".
                 </Explication>
             </Epreuve>
 
             <Epreuve num="2" points="3" type="QCM"
                      uri="http://epreuve14.historypub.mobile.ipl.be/">
-                <Question>De quelle contraction provient le nom Simpélourd?</Question>
+                <Question>Simpélourd is a portmanteau word. But what is its origins?</Question>
                 <Reponse bonne="true">Simple et lourd</Reponse>
                 <Reponse bonne="false">Saint Pélourd</Reponse>
                 <Reponse bonne="false">Simplet lourd</Reponse>
-                <Explication>Les origines de Simpélourd ne sont pas à rechercher dans un quelconque
-                    dictionnaire. Le « Saint Pélourd » tant apprécié des touristes mal informés n’a,
-                    en effet, rien d’un personnage vertueux digne des plus grands hommages. Celui
-                    dont on célèbre la simplicité et la lourdeur n’est en fait que la victime d’un
-                    vaste canular qui tend à démentir la morosité et la froideur du peuple de «
-                    Sougnies »
+                <Explication>The origins of Simpélourd cannot be found in a simple dictionnary. The "Saint Pélourd", so liked by tourists indeed doesn not exist.The one whose simplicity (simple) and heaviness (lourd) are celebrated is no more than the victim of a joke that tends to belie the gloom and coldness of the citizen of "Sougnies".
                 </Explication>
             </Epreuve>
 
             <Epreuve num="3" points="4" type="OUVERTE"
                      uri="http://epreuve15.historypub.mobile.ipl.be/">
-                <Question>Quel est le surnom de Simpélourd?</Question>
+                <Question>What is Simpélourd's nickname?/Question>
                 <Reponse>Mononk</Reponse>
-                <Explication>En wallon, Mononk signifie mon oncle.</Explication>
+                <Explication>In Walloon, Mononk means "mon oncle" which means "my uncle".</Explication>
             </Epreuve>
 
         </Epreuves>
@@ -270,37 +221,24 @@
         <Epreuves>
             <Epreuve num="1" points="4" type="QCM"
                      uri="http://epreuve16.historypub.mobile.ipl.be/">
-                <Question>Lors du cortège de Simpélourd, celui-ci distribue des bonbons. Quel est le
-                    nom de ce bonbon?
+                <Question>During the Simpélourd procession, sweets are given away. What is the name of this sweet?
                 </Question>
-                <Reponse bonne="false">Le Carambar</Reponse>
-                <Reponse bonne="false">Le Caramel</Reponse>
-                <Reponse bonne="true">Le Carabibi</Reponse>
-                <Explication>la réalisation de ce caramel un peu particulier nécessite un véritable
-                    savoir-faire et beaucoup de patience. La pâte très chaude, faite à base de
-                    sucre, est lancée sur un crochet et étirée plusieurs fois jusqu'à ce qu'elle
-                    obtienne sa couleur claire. Une fois cette étape réussie, il faut ensuite en
-                    rouler de longs boudins qu'on coupe aux ciseaux avant de les emballer dans un
-                    papier spécial pour les empêcher de fondre. Schez cependant que les carabibis
-                    distribués lors du cortège sont plus traditionnels que les originaux. Seul une
-                    pâtisserie réalise encore à Soignies les carabibis originaux.
+                <Reponse bonne="false">Carambar</Reponse>
+                <Reponse bonne="false">Caramel</Reponse>
+                <Reponse bonne="true">Carabibi</Reponse>
+                <Explication>The making of this caramel a bit particular takes a lot of knowledge and a lot of patience. The really warm dough is made from sugar and thrown on a hook which helps stretch it several times until it become clear enough. Once this step is done, it is rolled and cut with scissors before wrapping them in a special paper to prevent them from melting. The carabibis given away during the Simpélourd are more "original" than the ones you can find everywhere because a single pastry still makes them using the original recipe.
                 </Explication>
             </Epreuve>
 
             <Epreuve num="2" points="6" type="ATROU"
                      uri="http://epreuve17.historypub.mobile.ipl.be/">
-                <Question>Dans ce même cortège, les géants de Soignies sont de sortie. Il y a tout
-                    d'abord ..., qui est un ouvrier dans les carrières, avec le maillet dans une
-                    main et le burin de l'autre. Il y a aussi ..., qui est l'épouse de ce dernier.
-                    Leur union donna enfin naissance à une fille, ... et un garçon, ... .
+                <Question>In the same procession, the giants of Soignies are out. There is ... , who works in the quarries, with his mallet and chisel. There is also ... , who is his wife. Their union gave birth to a daughter, ... , and a boy, ... .
                 </Question>
                 <Mot>Dudule</Mot>
                 <Mot>Josephine</Mot>
                 <Mot>Charlotte</Mot>
                 <Mot>Nenesse</Mot>
-                <Explication>La petite famille est régulièrement invitée lors des différents
-                    cortèges en Belgique et dans le nord de la France. Les amis qu'elle se fait sont
-                    à leur tour invités lors de la fête de Soignies, la Simpélourd.
+                <Explication>The little family is regularly invited during the various processions in Belgium and northern France. The friends they make during those processions are then invited back to Soignies, during the Simpélourd.
                 </Explication>
             </Epreuve>
         </Epreuves>
@@ -310,7 +248,7 @@
             Appartient à l'étape 3
             <Epreuve num="2" points="2" type="PHOTO"
                      uri="http://epreuve7.historypub.mobile.ipl.be/">
-                <Question>Prenez une photo de la Collégiale.</Question>
+                <Question>Take a picture of the Simpélourd.</Question>
                 <Zone>
                     <Latitude>50.579399</Latitude>
                     <Longitude>4.071242</Longitude>
@@ -322,8 +260,7 @@
             Appartient à l'étape 5
             <Epreuve num="2" points="2" type="PHOTO"
                      uri="http://epreuve13.historypub.mobile.ipl.be/">
-                <Question>Sur la place verte se trouve une statue représentant Simpélourd.
-                    Prenez-la en photo.
+                <Question>In the Green Square is a statue of Simpélourd. Take a picture of it.
                 </Question>
                 <Zone>
                     <Latitude>50.579297</Latitude>
