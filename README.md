@@ -5,6 +5,8 @@
 
 Projet Mobile du Bloc3 de l'année académique 2015-2016 à l'Institut Paul Lambin.
 
+Vous pouvez télécharger l'application en suivant ce [lien](https://github.com/Crapoo/HistoryPub/releases/download/v1.0.0/HistoryPub.apk)
+
 ## Qu'est ce que c'est quoi que cette app?
 Comme son slogan le laisse entendre, **History Pub** vous fera découvrir la ville de Soignies en passant par les différents bar que la ville offre.
 
