@@ -80,7 +80,11 @@
     \chapter{Mode d'emploi}
     L'utilisation de \textsc{History Pub} est très facile. Une fois l'application lancée, vous recevez les indications vous permettant de trouver la zone de la première étape du jeu.
 
-    % Afficher une screenshot de EtapeActivité demandant de se déplacer dans la zone
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=.15]{images/location.png}
+        \caption{Exemple d'écran indiquant à l'utilisateur où se déplacer pour commencer une étape.}
+    \end{figure}
 
     Une fois dans la zone, et après avoir lu une courte description de l'endroit et où de son histoire, vous vous retrouverez devant une épreuve qui peut prendre différentes formes. Ces épreuves sont décrites ci-dessous.
 
@@ -95,16 +99,16 @@
 
     De plus, 2 autres boutons sont également présents. Ceux-ci sont communs à toutes les épreuves, réalisent les mêmes actions mais de manières différentes en fonction du type d'épreuve. (Voir sections 2.2 à 2.5)
     \begin{description}[style=nextline]
-        \item[Bouton de triche]Ce bouton sert à obtenir la réponse de l'épreuve. Aucun point ne sera accordé à l'utilisateur si ce bouton est pressé. L'aide et la triche ne seront plus disponibles. \textit{Remarque: } le message affiché reste "Bonne réponse", bien que ce message soit inadapté.
+        \item[Bouton de triche]Ce bouton sert à obtenir la réponse de l'épreuve. Aucun point ne sera accordé à l'utilisateur si ce bouton est pressé. L'aide et la triche ne seront plus disponibles. \textit{Remarque: } le message affiché reste \og Bonne réponse\fg, bien que ce message soit inadapté.
         \item[Bouton d'aide]Ce bouton sert à obtenir un indice. La moitié des points sera accordé à l'utilisateur si ce bouton est pressé. L'aide ne sera plus disponible.
     \end{description}
 
     \section{Epreuve Question à Choix Multiple}
     \begin{figure}[H]
         \centering
-        \mbox{\subfigure{\includegraphics[scale=.25]{images/qcm1.png}}\quad\quad\quad
-        \subfigure{\includegraphics[scale=.25]{images/qcm2.png}}}
-        \caption{Exemple de question à choix multiple, avant et après avoir sélectionné une réponse}
+        \mbox{\subfigure{\includegraphics[scale=.15]{images/qcm1.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.15]{images/qcm2.png}}}
+        \caption{Exemple de question à choix multiple, avant et après avoir triché}
     \end{figure}
 
     Pour répondre à une question à choix multiples, il vous suffit de cliquer sur la réponse que vous pensez correcte. Vous pouvez cliquer n'importe où sur la ligne de ce choix, que ce soit sur la checkbox ou sur le texte de la réponse proposée.\\
@@ -120,9 +124,9 @@
     \section{Epreuve de texte à trous}
     \begin{figure}[H]
         \centering
-        \mbox{\subfigure{\includegraphics[scale=.25]{images/trou1.png}}\quad\quad\quad
-        \subfigure{\includegraphics[scale=.25]{images/trou2.png}}}
-        \caption{Question à trous, avant et après avoir entré une réponse}
+        \mbox{\subfigure{\includegraphics[scale=.15]{images/trou1.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.15]{images/trou2.png}}}
+        \caption{Question à trous, avant et après avoir triché}
     \end{figure}
     Pour réponse à une question de texte à trous, il vous suffit d'entrer les différents mots manquants dans l'unique champs de texte. Ces différents mots doivent être séparés par une virgule. Seules les réponses comprenant tous les mots corrects sont acceptées.
 
@@ -135,22 +139,27 @@
     \section{Epreuve Question Ouverte}
     \begin{figure}[H]
         \centering
-        \mbox{\subfigure{\includegraphics[scale=.25]{images/ouverte1.png}}\quad\quad\quad
-        \subfigure{\includegraphics[scale=.25]{images/ouverte2.png}}}
-        \caption{Question ouverte, avant et après avoir entré une réponse}
+        \mbox{\subfigure{\includegraphics[scale=.15]{images/ouverte1.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.15]{images/ouverte2.png}}}
+        \caption{Question ouverte, avant et après avoir triché}
     \end{figure}
     Pour répondre à une question ouverte, il vous suffit d'écrire la réponse demandée dans la zone prévue à cet effet. Cette réponse est unique mais peut être entrée de différente manière. Par exemple pour une question dont la réponse attendu serait \og Institut Paul Lambin\fg, la réponse \og IPL\fg serait aussi acceptée.\\
 
     Une fois la réponse entrée, vous pouvez confirmer votre solution avec le bouton entrée de votre clavier virtuel ou après avoir quitté ce clavier, avec la bouton OK.
 
     Pour ce type d'épreuve:
-        \begin{description}[style=nextline]
-            \item[Bouton de triche]Il remplit automatiquement le champs de réponse avec la bonne réponse. Aucune modification ne sera alors possible dans cet EditText. Il faut ensuite appuyer sur le bouton OK.
-            \item[Bouton d'aide]Il remplit automatiquement le champs de réponse avec la première lettre de la réponse. Il faudra cependant compléter la réponse.
-        \end{description}
+    \begin{description}[style=nextline]
+        \item[Bouton de triche]Il remplit automatiquement le champs de réponse avec la bonne réponse. Aucune modification ne sera alors possible dans cet EditText. Il faut ensuite appuyer sur le bouton OK.
+        \item[Bouton d'aide]Il remplit automatiquement le champs de réponse avec la première lettre de la réponse. Il faudra cependant compléter la réponse.
+    \end{description}
 
     \section{Epreuve Photographique}
-    % mettre un screenshot
+    \begin{figure}[H]
+        \centering
+        \mbox{\subfigure{\includegraphics[scale=.15]{images/qcm1.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.15]{images/qcm2.png}}}
+        \caption{Exemple de question photographique, avant et après avoir triché}
+    \end{figure}
 
     Pour répondre à une question phorotgaphique, il vous suffit de vous trouver dans la zone requise et de prendre une photo du batiment ou autre objet demandé. Une fois la photo prise, vous avez un aperçu de l'image et il ne vous reste plus qu'à accepter cette photo.\\
 
@@ -167,7 +176,7 @@
     \section{Fin du jeu}
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=.25]{images/final.png}
+        \includegraphics[scale=.15]{images/final.png}
         \caption{Ecran final}
     \end{figure}
 
@@ -178,8 +187,8 @@
     \section{Informations générales}
     \begin{figure}[H]
         \centering
-        \mbox{\subfigure{\includegraphics[scale=.25]{images/menu.png}}\quad\quad\quad
-        \subfigure{\includegraphics[scale=.25]{images/avancement.png}}}
+        \mbox{\subfigure{\includegraphics[scale=.15]{images/menu.png}}\quad\quad\quad
+        \subfigure{\includegraphics[scale=.15]{images/avancement.png}}}
         \caption{Menu de la barre d'action et popup d'avancement}
     \end{figure}
 
@@ -213,14 +222,14 @@
     Nous avons bien conscience que le pattern Singleton n'est plus vu comme une bonne pratique voire même comme un anti-pattern, mais n'ayant aucune connaissance en injection de dépendance sur la plateforme d'Android, nous avons finalement opté pour ce pattern.
 
     \chapter{Bugs connus}
-    Le seul bug connu à ce jour réside dans l'affichage des questions & propositions de réponses sur les petits écrans. En effet, ceux-ci sont hachés (entendez par là que le texte dépasse de l'emplacement prévu) et il est donc impossible de les lire dans leur entièreté.
+    Le seul bug connu à ce jour réside dans l'affichage des questions et propositions de réponses sur les petits écrans. En effet, ceux-ci sont hachés (entendez par là que le texte dépasse de l'emplacement prévu) et il est donc impossible de les lire dans leur entièreté.
     Nous avons cependant plusieurs pistes pour le résoudre:
-     \begin{itemize}
-         \item Ajout d'un ScrollView pour les questions. Dans ce cas, les questions nécessitant trop de place seront lisibles en scrollant.
-         \item Créer un dossier values pour petits écrans. Dans ce cas, les styles (donc la taille de la police, des layouts, ...) seraient adaptés en fonction de la taille de l'écran.
-         \item Combinaison des 2 solutions ci-dessus.
-     \end{itemize}
-     Dans notre cas, nous avions opté pour la solution n°2 (la solution n°1 ne nous convenait pas et la solution n°3 était trop ambitieuse dans le temps imparti). Cependant, par manque de temps, nous n'avonc pas réussi à mettre cette solution en place.
+    \begin{itemize}
+        \item Ajout d'un ScrollView pour les questions. Dans ce cas, les questions nécessitant trop de place seront lisibles en scrollant.
+        \item Créer un dossier values pour petits écrans. Dans ce cas, les styles (donc la taille de la police, des layouts, ...) seraient adaptés en fonction de la taille de l'écran.
+        \item Combinaison des 2 solutions ci-dessus.
+    \end{itemize}
+    Dans notre cas, nous avions opté pour la deuxième solution (la première ne nous convenant pas et la troisième étant trop ambitieuse dans le temps imparti). Cependant, par manque de temps, nous n'avonc pas réussi à mettre cette solution en place.
 
     \chapter{Utilisation de code open-source}
     Le code de \textsc{History Pub} reprend, à certains endroits précis, du code open-source. Ces parties de code open-source se retrouvent ci-dessous :
