@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.activites;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -43,7 +43,10 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import be.ipl.mobile.projet.historypub.R;
+import be.ipl.mobile.projet.historypub.config.Config;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuvePhoto;
+import be.ipl.mobile.projet.historypub.ucc.GestionEtapes;
 /*La gestion de prise de photo est grâcieusement expliquée et disponible sur developer.android.com*/
 
 /**

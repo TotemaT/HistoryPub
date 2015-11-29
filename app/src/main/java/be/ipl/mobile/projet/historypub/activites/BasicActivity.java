@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.activites;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,14 +37,17 @@ import android.widget.TextView;
 
 import java.util.Date;
 
+import be.ipl.mobile.projet.historypub.R;
+import be.ipl.mobile.projet.historypub.config.Config;
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
+import be.ipl.mobile.projet.historypub.ucc.GestionEtapes;
 
 /**
  * Classe reprenant différentes méthodes utilisées dans les différentes activités épreuve ou étape.
  */
-abstract class BasicActivity extends AppCompatActivity {
+public abstract class BasicActivity extends AppCompatActivity {
     private static final String TAG = "BasicActivity";
 
     protected Etape mEtape;

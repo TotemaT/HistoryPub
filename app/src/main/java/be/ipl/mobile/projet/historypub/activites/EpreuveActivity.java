@@ -1,7 +1,9 @@
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.activites;
 
 import android.view.View;
 import android.widget.Button;
+
+import be.ipl.mobile.projet.historypub.R;
 
 /**
  * Classe reprenant différentes méthodes utilisées dans les différentes activités épreuve uniquement.

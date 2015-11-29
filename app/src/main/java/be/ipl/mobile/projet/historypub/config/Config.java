@@ -17,12 +17,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.config;
 
 /**
  * Interface contenant les différentes constantes utilisée dans le programme.
  */
-interface Config {
+public interface Config {
     /* Fichier de préférences */
     String PREFERENCES = "HistoryPub_prefs";
 

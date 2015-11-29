@@ -3,14 +3,13 @@
         <Zone>
             <Latitude>50.850499</Latitude>
             <Longitude>4.445349</Longitude>
-            <Rayon>100</Rayon>
+            <Rayon>10000</Rayon>
         </Zone>
 
         <Epreuves>
             <Epreuve num="1" points="3" type="OUVERTE"
                      uri="http://epreuve1.historypub.mobile.ipl.be/">
-                <Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de
-                    Scarmure?
+                <Question>Quel est le nom de la librairire se trouvant près de Rue Chanoine de Scarmure?
                 </Question>
                 <Reponse>Cordovero</Reponse>
                 <Reponse>Le Cordovero</Reponse>

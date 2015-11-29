@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.activites;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -30,6 +30,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import be.ipl.mobile.projet.historypub.R;
+import be.ipl.mobile.projet.historypub.ucc.GestionEtapes;
 
 /**
  * Activité présentant un résumé de la partie à l'utilisateur.

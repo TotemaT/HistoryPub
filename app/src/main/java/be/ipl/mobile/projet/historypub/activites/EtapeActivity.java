@@ -17,9 +17,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.activites;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
@@ -40,7 +39,10 @@ import com.google.android.gms.location.LocationServices;
 import java.io.File;
 import java.util.Date;
 
+import be.ipl.mobile.projet.historypub.R;
+import be.ipl.mobile.projet.historypub.config.Config;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
+import be.ipl.mobile.projet.historypub.ucc.GestionEtapes;
 
 /**
  * Activité présentant une étape du jeu à l'utilisateur.
@@ -152,7 +154,7 @@ public class EtapeActivity extends BasicActivity implements ConnectionCallbacks,
         } else {
             intent = new Intent(EtapeActivity.this, PhotoActivity.class);
         }
-        SharedPreferences prefs = getSharedPreferences(Config.PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE);
         /* Si pas dans les préférences, premier lancement ou premier lancement après un reset */
         if (!prefs.contains(Config.PREF_TEMPS_DEBUT)) {
             getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE)
@@ -204,18 +206,23 @@ public class EtapeActivity extends BasicActivity implements ConnectionCallbacks,
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        String message = "";
-        switch (connectionResult.getErrorCode()) {
-            case ConnectionResult.SUCCESS:
-                return;
-            case ConnectionResult.SERVICE_MISSING:
-                message = getString(R.string.gps_service_missing);
-                break;
-            case ConnectionResult.NETWORK_ERROR:
-                message = getString(R.string.gps_network_error);
-                break;
+        if (connectionResult.getErrorCode() != ConnectionResult.SUCCESS) {
+            String message;
+            switch (connectionResult.getErrorCode()) {
+                case ConnectionResult.SUCCESS:
+                    return;
+                case ConnectionResult.SERVICE_MISSING:
+                    message = getString(R.string.gps_service_missing);
+                    break;
+                case ConnectionResult.NETWORK_ERROR:
+                    message = getString(R.string.gps_network_error);
+                    break;
+                default:
+                    message = "Erreur de connexion aux services Google Play.";
+                    break;
+            }
+            Toast.makeText(EtapeActivity.this, message, Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(EtapeActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void createLocationRequest() {

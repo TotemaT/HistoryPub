@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.ucc;
 
 import android.content.Context;
 import android.util.Log;
@@ -34,6 +34,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.ipl.mobile.projet.historypub.config.Config;
+import be.ipl.mobile.projet.historypub.R;
 import be.ipl.mobile.projet.historypub.pojo.Etape;
 import be.ipl.mobile.projet.historypub.pojo.Zone;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;

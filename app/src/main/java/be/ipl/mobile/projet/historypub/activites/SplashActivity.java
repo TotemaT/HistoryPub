@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.activites;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,8 +29,11 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import be.ipl.mobile.projet.historypub.R;
+import be.ipl.mobile.projet.historypub.config.Config;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
+import be.ipl.mobile.projet.historypub.ucc.GestionEtapes;
 
 /**
 * Activité de SplashScreen affichant le logo et le nom de l'application

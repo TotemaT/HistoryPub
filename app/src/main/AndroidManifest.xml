@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashActivity"
+            android:name=".activites.SplashActivity"
             android:theme="@style/SplashTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,12 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EtapeActivity" />
-        <activity android:name=".QcmActivity" />
-        <activity android:name=".PhotoActivity" />
-        <activity android:name=".QuestionOuverteActivity" />
-        <activity android:name=".TrouActivity" />
-        <activity android:name=".FinalActivity" />
+        <activity android:name=".activites.EtapeActivity" />
+        <activity android:name=".activites.QcmActivity" />
+        <activity android:name=".activites.PhotoActivity" />
+        <activity android:name=".activites.QuestionOuverteActivity" />
+        <activity android:name=".activites.TrouActivity" />
+        <activity android:name=".activites.FinalActivity" />
     </application>
 
 </manifest>

@@ -3,7 +3,7 @@
         <Zone>
             <Latitude>50.579905</Latitude>
             <Longitude>4.073490</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>50000000</Rayon>
         </Zone>
 
         <Epreuves>
@@ -204,7 +204,7 @@
 
             <Epreuve num="3" points="4" type="OUVERTE"
                      uri="http://epreuve15.historypub.mobile.ipl.be/">
-                <Question>What is Simpélourd's nickname?/Question>
+                <Question>What is Simpélourd's nickname?</Question>
                 <Reponse>Mononk</Reponse>
                 <Explication>In Walloon, Mononk means "mon oncle" which means "my uncle".</Explication>
             </Epreuve>

@@ -1,4 +1,26 @@
-package be.ipl.mobile.projet.historypub;
+/*
+    History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
+    en parcourant cette dernière de bar en bar.
+
+    Copyright (C) 2015
+        Matteo Taroli <contact@matteotaroli.be>
+        Nathan Raspe <raspe_nathan@live.be>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+package be.ipl.mobile.projet.historypub.activites;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -9,29 +31,33 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Arrays;
-import java.util.List;
+import be.ipl.mobile.projet.historypub.R;
+import be.ipl.mobile.projet.historypub.config.Config;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveOuverte;
+import be.ipl.mobile.projet.historypub.pojo.epreuves.Reponse;
+import be.ipl.mobile.projet.historypub.ucc.GestionEtapes;
 
-import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveATrou;
+/**
+ * Activité reprenant une épreuve de question ouverte.
+ */
+public class QuestionOuverteActivity extends EpreuveActivity {
 
-public class TrouActivity extends EpreuveActivity {
-
-    private EpreuveATrou mEpreuveATrou;
+    private EpreuveOuverte mEpreuveOuverte;
     private EditText mReponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trou);
+        setContentView(R.layout.activity_question_ouverte);
 
         GestionEtapes gestionEtapes = GestionEtapes.getInstance(this);
 
         mEtape = gestionEtapes.getEtape(getIntent().getIntExtra(Config.EXTRA_ETAPE, 0));
         mEpreuve = mEtape.getEpreuve(getIntent().getStringExtra(Config.EXTRA_EPREUVE));
-        mEpreuveATrou = (EpreuveATrou) mEpreuve;
+        mEpreuveOuverte = (EpreuveOuverte) mEpreuve;
 
         Button repondre = (Button) findViewById(R.id.reponse_btn);
-        mReponse = (EditText) findViewById(R.id.question_trou_edit);
+        mReponse = (EditText) findViewById(R.id.question_ouverte_edit);
 
         /* Permet de répondre à la question en cliquant sur entré */
         mReponse.setOnKeyListener(new View.OnKeyListener() {
@@ -51,7 +77,7 @@ public class TrouActivity extends EpreuveActivity {
             }
         });
 
-        TextView question = (TextView) findViewById(R.id.question_trou_textView);
+        TextView question = (TextView) findViewById(R.id.question_textView);
         question.setText(mEpreuve.getQuestion());
         repondre.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,19 +94,16 @@ public class TrouActivity extends EpreuveActivity {
      * Préviens l'utilisateur si la réponse est correcte ou non et lance l'épreuve ou étape suivante
      */
     private void verifierReponse() {
+        String title;
         if (mReponse.getText().toString().isEmpty() || mReponse.getText().toString().equals("")) {
-            Toast.makeText(TrouActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(QuestionOuverteActivity.this, "Répondez à la question :)", Toast.LENGTH_SHORT).show();
         } else {
-            String title;
-            List<String> mots = Arrays.asList(mReponse.getText().toString().split(",[ ]*"));
-            if (mEpreuveATrou.estRéponseCorrecte(mots)) {
-                augmenterPoints((mEpreuve.getPoints() - mPointsAEnlever));
-                title = "Bonnes réponses! +" + (mEpreuve.getPoints() - mPointsAEnlever) + " points.";
+            if (mEpreuveOuverte.estReponseCorrecte(new Reponse(mReponse.getText().toString()))) {
+                augmenterPoints(mEpreuve.getPoints() - mPointsAEnlever);
+                title = "Bonne réponse! +" + (mEpreuve.getPoints() - mPointsAEnlever) + " points.";
+                mPointsAEnlever = 0;
             } else {
-                title = "Mauvaise réponse! Les bonnes réponses était ";
-                for (String mot : mEpreuveATrou.getMots())
-                    title += mot + ",";
-                title = title.substring(0, title.length() - 1);
+                title = "Mauvaise réponse! La bonne réponse était " + mEpreuveOuverte.getReponse().getReponse();
             }
             int[] duree = getDuree();
             Resources res = getResources();
@@ -95,19 +118,12 @@ public class TrouActivity extends EpreuveActivity {
 
     @Override
     public void doHelp() {
-        for (String rep : mEpreuveATrou.getMots()) {
-            mReponse.setText(mReponse.getText().toString() + rep.substring(0, 1) + ",");
-        }
-        mReponse.setText(mReponse.getText().toString().substring(0, mReponse.getText().toString().length() - 1));
+        mReponse.setText(mEpreuveOuverte.getReponse().getReponse().substring(0, 1));
     }
 
     @Override
     public void doCheat() {
-        mReponse.setText("");
-        for (String rep : mEpreuveATrou.getMots()) {
-            mReponse.setText(mReponse.getText().toString() + rep + ",");
-        }
-        mReponse.setText(mReponse.getText().toString().substring(0, mReponse.getText().toString().length() - 1));
+        mReponse.setText(mEpreuveOuverte.getReponse().getReponse());
         mReponse.setEnabled(false);
     }
 }

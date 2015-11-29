@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package be.ipl.mobile.projet.historypub;
+package be.ipl.mobile.projet.historypub.activites;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -34,8 +34,11 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.Random;
 
+import be.ipl.mobile.projet.historypub.R;
+import be.ipl.mobile.projet.historypub.config.Config;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
+import be.ipl.mobile.projet.historypub.ucc.GestionEtapes;
 
 /**
  * Activité reprenant une épreuve de question à choix multiples.
