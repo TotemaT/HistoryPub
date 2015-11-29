@@ -1,23 +1,23 @@
 /*
-    History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
-    en parcourant cette dernière de bar en bar.
+History Pub est une application de jeu de piste proposant de découvrir la ville de Soignies,
+en parcourant cette dernière de bar en bar.
 
-    Copyright (C) 2015
-        Matteo Taroli <contact@matteotaroli.be>
-        Nathan Raspe <raspe_nathan@live.be>
+Copyright (C) 2015
+Matteo Taroli <contact@matteotaroli.be>
+Nathan Raspe <raspe_nathan@live.be>
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 package be.ipl.mobile.projet.historypub;
@@ -33,9 +33,9 @@ import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 
 /**
- * Activité de SplashScreen affichant le logo et le nom de l'application
- * pendant le chargement du fichier XML
- */
+* Activité de SplashScreen affichant le logo et le nom de l'application
+* pendant le chargement du fichier XML
+*/
 public class SplashActivity extends AppCompatActivity {
 
     private static final long SPLASH_TIMEOUT = 0;
@@ -77,10 +77,8 @@ public class SplashActivity extends AppCompatActivity {
                     intent.putExtra(Config.EXTRA_ETAPE, etape);
                     intent.putExtra(Config.EXTRA_EPREUVE, epreuve);
                 }
-
                 startActivity(intent);
                 finish();
-
             }
         }, SPLASH_TIMEOUT);
 

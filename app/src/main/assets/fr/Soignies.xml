@@ -1,9 +1,9 @@
 <Jeu name="Soignies en boisson">
     <Etape num="1" url="etape1.html">
         <Zone>
-            <Latitude>50.579905</Latitude>
-            <Longitude>4.073490</Longitude>
-            <Rayon>5</Rayon>
+            <Latitude>50.850499</Latitude>
+            <Longitude>4.445349</Longitude>
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -53,8 +53,7 @@
 
         <Epreuves>
             <Epreuve num="1" points="5" type="QCM" uri="http://epreuve4.historypub.mobile.ipl.be/">
-                <Question>Vous êtes et serez en train de suivre l'itinéraire du Tour Saint Vincent,
-                    qui porte également comme nom ...
+                <Question>Vous êtes et serez en train de suivre l'itinéraire du Tour Saint Vincent, qui porte également comme nom ...
                 </Question>
                 <Reponse bonne="false">Le Demi Tour</Reponse>
                 <Reponse bonne="false">Le Petit Tour</Reponse>
@@ -64,7 +63,8 @@
             </Epreuve>
             <Epreuve num="2" points="2" type="OUVERTE"
                      uri="http://epreuve5.historypub.mobile.ipl.be/">
-                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?
+                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur
+                    de Soignies. Lequel?
                 </Question>
                 <Reponse>Saint Vincent</Reponse>
                 <Reponse>St Vincent</Reponse>
@@ -156,7 +156,11 @@
 
             <Epreuve num="2" points="4" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
-                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?
+                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons
+                    auraient été trouvés dans la charpente d'un clocher laissant par là présager de
+                    l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa
+                    place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom
+                    donné à cette araignée?
                 </Question>
                 <Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
                 <Reponse bonne="false">Araneae Sonegiensis</Reponse>
