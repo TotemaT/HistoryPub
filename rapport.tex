@@ -114,7 +114,7 @@
     Pour ce type d'épreuve:
     \begin{description}[style=nextline]
         \item[Bouton de triche]Il retire toutes les réponses incorrectes et coche automatiquement la bonne réponse. Il faut ensuite appuyer sur le bouton OK.
-        \item[Bouton d'aide]Il enlève une mauvaise réponse.
+        \item[Bouton d'aide]Il enlève aléatoirement une mauvaise réponse.
     \end{description}
 
     \section{Epreuve de texte à trous}
@@ -149,7 +149,7 @@
             \item[Bouton d'aide]Il remplit automatiquement le champs de réponse avec la première lettre de la réponse. Il faudra cependant compléter la réponse.
         \end{description}
 
-    \section{Epreuve Photographie}
+    \section{Epreuve Photographique}
     % mettre un screenshot
 
     Pour répondre à une question phorotgaphique, il vous suffit de vous trouver dans la zone requise et de prendre une photo du batiment ou autre objet demandé. Une fois la photo prise, vous avez un aperçu de l'image et il ne vous reste plus qu'à accepter cette photo.\\
@@ -161,6 +161,10 @@
         \item[Bouton de triche]Il affiche automatiquement la bonne image dans la zone de prévisualisation. Il faut ensuite appuyer sur le bouton OK.
         \item[Bouton d'aide]Il affiche automatiquement la bonne image dans la zone de prévisualisation pendant 5 secondes. Il faudra cependant prendre une photo.
     \end{description}
+
+    \begin{remarque}
+    Les épreuves photographiques ne sont pas géolocalisées, bien que cela le devrait.
+    \end{remarque}
 
     \section{Fin du jeu}
     \begin{figure}[H]
@@ -188,7 +192,7 @@
     \chapter{Architecture}
     L'architecture de l'application suit, autant que faire se peut, les règles énoncées par \textsc{Google}.\\
 
-    Les messages et autres chaines de caractères affichées à l'utilisateur sont reprises dans le fichier \textit{string.xml}, permettant une traduction et donc une localisation aisée. Certains éléments visuels ont un style et des caractéristiques communs repris dans le fichier \textit{styles.xml}, permettant de mettre à jour le design de l'application de façon simple et sans devoir fouiller dans les différents fichiers de layout.\\
+    Les messages et autres chaines de caractères affichés à l'utilisateur sont repris dans le fichier \textit{string.xml}, permettant une traduction et donc une localisation aisée. Certains éléments visuels ont un style et des caractéristiques communs repris dans le fichier \textit{styles.xml}, permettant de mettre à jour le design de l'application de façon simple et sans devoir rechercher dans les différents fichiers de layout.\\
 
     Concernant le code java, nous avons suivi les conventions de nommage des attributs énoncés par l' \textsc{Android Open Source.Project}. C'est à dire que :
     \begin{itemize}
@@ -200,18 +204,29 @@
 
     Le code est de plus, bien entendu, commenté et contient de la javadoc la plus compréhensible possible.\\
 
-    Concernant les classes java, nous avons séparé les classes dite \og POJO\fg, qui sont de simples objets Java de classes relative à \textsc{Android}, c'est à dire les activités ainsi que des \og User Case Controller\fg{} \textbf{???????} , correspondant ici à la classe gérant le fichier XML et par la même le déroulement du jeu.
+    Concernant les classes java, nous avons séparé les classes dite \og POJO\fg, qui sont de simples objets Java de classes relative à \textsc{Android}, c'est à dire les activités ainsi que des \og User Case Controller\fg{} (Correspondant ici à la classe gérant le fichier XML et également le déroulement du jeu).
 
-    Dans les POJO, nous avons différentes classes, correspondantes aux différentes épreuves, aux étapes ainsi qu'à une zone autour d'un point géographique.
+    Dans les POJO, nous avons différentes classes, correspondant aux différentes épreuves, aux étapes ainsi qu'à une zone autour d'un point géographique.
 
-    Les activités elles correspondent chacune à une étape, épreuve ou autre écran affiché à l'écran. Elles gèrent donc l'interaction entre l'utilisateur et l'interface visuelle. L'interface en elle-même étant gérées par les fichier XML du dossier layout.
+    Les activités elles correspondent chacune à une étape, épreuve ou autre écran affiché à l'utilisateur. Elles gèrent donc l'interaction entre l'utilisateur et l'interface visuelle. L'interface en elle-même étant gérées par les fichier XML du dossier layout.
 
-    L'UCC gère le chargement du fichier XML et est implémenté en tant que \textbf{singleton}. Celà permet de charger une fois le jeu complet (comprenez les différentes étapes, épreuves et tout ce qui les compose) et de permettre par la suite à toutes les activités de piocher l'étape et/ou l'épreuve qui lui est nécessaire.
+    L'UCC gère le chargement du fichier XML et est implémenté en tant que \textbf{singleton}. Celà permet de charger le jeu complet en une seule fois (comprenez les différentes étapes, épreuves et tout ce qui les compose) et de permettre par la suite à toutes les activités de piocher l'étape et/ou l'épreuve qui lui est nécessaire.
 
-    Nous avons bien conscience que le pattern Singletonn'est plus vu comme une bonne pratique voire même comme un anti-pattern, mais n'ayant aucune connaissance en injection de dépendance sur la plateforme d'Android, nous avons finalement opté pour ce pattern.
+    Nous avons bien conscience que le pattern Singleton n'est plus vu comme une bonne pratique voire même comme un anti-pattern, mais n'ayant aucune connaissance en injection de dépendance sur la plateforme d'Android, nous avons finalement opté pour ce pattern.
 
     \chapter{Bugs connus}
-    % Aucun bug connu pour le moment :P
+    Le seul bug connu à ce jour réside dans l'affichage des questions & propositions de réponses sur les petits écrans. En effet, ceux-ci sont hachés (entendez par là que le texte dépasse de l'emplacement prévu) et il est donc impossible de les lire dans leur entièreté.
+    Nous avons cependant plusieurs pistes pour le résoudre:
+     \begin{itemize}
+         \item Ajout d'un ScrollView pour les questions. Dans ce cas, les questions nécessitant trop de place seront lisibles en scrollant.
+         \item Créer un dossier values pour petits écrans. Dans ce cas, les styles (donc la taille de la police, des layouts, ...) seraient adaptés en fonction de la taille de l'écran.
+         \item Combinaison des 2 solutions ci-dessus. Cela permettrait d'éviter 2 problèmes:
+            \begin{itemize}
+                     \item Si l'on applique uniquement la solution n°1, il est possible que l'utilisateur scrollera caractère par caractère si la taille de la police (entre-autre) n'est pas adaptée à la taille de l'écran.
+                     \item Si l'on applique uniquement la solution n°2, la taille de police (entre-autre) pourrait être si petite qu'il serait impossible de lire.
+                 \end{itemize}
+     \end{itemize}
+     Dans notre cas, nous avions opté pour la solution n°2 (la solution n°1 ne nous convenait pas et la solution n°3 était trop ambitieuse dans le temps imparti). Cependant, par manque de temps, nous n'avonc pas réussi à mettre cette solution en place.
 
     \chapter{Utilisation de code open-source}
     Le code de \textsc{History Pub} reprend, à certains endroits précis, du code open-source. Ces parties de code open-source se retrouvent ci-dessous :
