@@ -236,7 +236,7 @@ public class EtapeActivity extends BasicActivity implements ConnectionCallbacks,
     private void lancerEtape() {
         stopLocationUpdates();
         Toast.makeText(EtapeActivity.this, R.string.location_ok, Toast.LENGTH_SHORT).show();
-        mWebView.loadUrl(mEtape.getUrl());
+        mWebView.loadUrl(getUrl(mEtape.getUrl()));
     }
 
     public String getUrl(String url) {
