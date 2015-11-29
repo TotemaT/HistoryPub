@@ -93,6 +93,12 @@
     \end{description}
     Dans les deux cas où une réponse est donnée, la fenêtre popup donne de plus ample informations par rapport à la réponse à la question, comme vous pouvez le voir sur la capture d'écran suivante. Cette fenêtre permet aussi de partager l'avancement dans le jeu.
 
+    De plus, 2 autres boutons sont également présents. Ceux-ci sont communs à toutes les épreuves, réalisent les mêmes actions mais de manières différentes en fonction du type d'épreuve. (Voir sections 2.2 à 2.5)
+    \begin{boutons}[style=nextline]
+        \item[Bouton de triche]Ce bouton sert à obtenir la réponse de l'épreuve. Aucun point ne sera accordé à l'utilisateur si ce bouton est pressé. L'aide et la triche ne seront plus disponibles.
+        \item[Bouton d'aide]Ce bouton sert à obtenir un indice. La moitié des points sera accordé à l'utilisateur si ce bouton est pressé. L'aide n'est plus disponible.
+    \end{boutons}
+
     \section{Epreuve Question à Choix Multiple}
     \begin{figure}[H]
         \centering
@@ -105,6 +111,12 @@
 
     Un symbole $\surd$ s'affiche dans la checkbox de la réponse sélectionnée. Si celle ci vous convient, vous pouvez confirmer votre choix grâce au bouton OK. Sinon, vous êtes libre de changer ce choix autant de fois que vous le désirez.\\
 
+    Pour ce type d'épreuve:
+    \begin{boutons}[style=nextline]
+        \item[Bouton de triche]Il retire toutes les réponses incorrectes et coche automatiquement la bonne réponse. Il faut ensuite appuier sur le bouton OK.
+        \item[Bouton d'aide]Il enlève une mauvaise réponse.
+    \end{boutons}
+
     \section{Epreuve de texte à trous}
     \begin{figure}[H]
         \centering
@@ -113,6 +125,12 @@
         \caption{Question à trous, avant et après avoir entré une réponse}
     \end{figure}
     Pour réponse à une question de texte à trous, il vous suffit d'entrer les différents mots manquants dans l'unique champs de texte. Ces différents mots doivent être séparés par une virgule. Seules les réponses comprenant tous les mots corrects sont acceptées.
+
+    Pour ce type d'épreuve:
+    \begin{boutons}[style=nextline]
+        \item[Bouton de triche]Il remplit automatiquement l'EditText avec la ou les bonne(s) réponse(s). Aucune modification ne sera alors possible dans cet EditText. Il faut ensuite appuier sur le bouton OK.
+        \item[Bouton d'aide]Il remplit automatiquement l'EditText avec la première lettre de chaque mot, et une virgule entre les différentes lettres ainsi révélées. Il faudra cependant compléter la réponse.
+    \end{boutons}
 
     \section{Epreuve Question Ouverte}
     \begin{figure}[H]
@@ -125,12 +143,24 @@
 
     Une fois la réponse entrée, vous pouvez confirmer votre solution avec la bouton entré de votre clavier virtual ou, après avoir quitté ce clavier, avec la bouton OK.
 
+    Pour ce type d'épreuve:
+        \begin{boutons}[style=nextline]
+            \item[Bouton de triche]Il remplit automatiquement l'EditText avec la bonne réponse. Aucune modification ne sera alors possible dans cet EditText. Il faut ensuite appuier sur le bouton OK.
+            \item[Bouton d'aide]Il remplit automatiquement l'EditText avec la première lettre de la réponse. Il faudra cependant compléter la réponse.
+        \end{boutons}
+
     \section{Epreuve Photographie}
     % mettre un screenshot
 
     Pour répondre à une question phorotgaphique, il vous suffit de vous trouver dans la zone requise et de prendre une photo du batiment ou autre objet demandé. Une fois la photo prise, vous avez un aperçu de l'image et il ne vous reste plus qu'à accepter cette photo.\\
 
     Aucune vérification n'est faite sur ce type d'épreuve. Faites donc de votre mieux, on compte sur vous!
+
+    Pour ce type d'épreuve:
+    \begin{boutons}[style=nextline]
+        \item[Bouton de triche]Il affiche automatiquement la bonne image dans la zone de prévisualisation. Il faut ensuite appuier sur le bouton OK.
+        \item[Bouton d'aide]Il affiche automatiquement la bonne image dans la zone de prévisualisation pendant 5 secondes. Il faudra cependant prendre une photo.
+    \end{boutons}
 
     \section{Fin du jeu}
     \begin{figure}[H]
