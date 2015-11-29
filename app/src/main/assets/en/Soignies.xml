@@ -3,7 +3,7 @@
         <Zone>
             <Latitude>50.579905</Latitude>
             <Longitude>4.073490</Longitude>
-            <Rayon>50000000</Rayon>
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -24,7 +24,7 @@
                 <Zone>
                     <Latitude>50.34477</Latitude>
                     <Longitude>4.04244</Longitude>
-                    <Rayon>5</Rayon>
+                    <Rayon>20</Rayon>
                 </Zone>
                 <Reponse>cordovero.jpg</Reponse>
             </Epreuve>
@@ -47,7 +47,7 @@
         <Zone>
             <Latitude>50.579794</Latitude>
             <Longitude>4.072846</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -87,7 +87,7 @@
         <Zone>
             <Latitude>50.579399</Latitude>
             <Longitude>4.071242</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -132,7 +132,7 @@
         <Zone>
             <Latitude>50.579663</Latitude>
             <Longitude>4.070570</Longitude>
-            <Rayon>8</Rayon>
+            <Rayon>100</Rayon>
             <!-- Car il y a plusieurs bars repris dans la même étape -->
         </Zone>
 
@@ -142,7 +142,8 @@
                 <Question>In this collegiate is a museum, what is its name?</Question>
                 <Reponse>The museum of the Chapitre</Reponse>
                 <Reponse>The museum of the Chapter</Reponse>
-                <Reponse>museum of the Chapitre</Reponse>                <Reponse>museum of the Chapter</Reponse>
+                <Reponse>museum of the Chapitre</Reponse>
+                <Reponse>museum of the Chapter</Reponse>
                 <Reponse>Chapitre</Reponse>
                 <Reponse>Chapter</Reponse>
                 <Explication>The museum of the Chapitre shows the Canons' treasures. It shows a collection of various arts coming from the Xth century to the XVIIIrd century.
@@ -177,7 +178,7 @@
         <Zone>
             <Latitude>50.579269</Latitude>
             <Longitude>4.069147</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -216,7 +217,7 @@
         <Zone>
             <Latitude>50.578989</Latitude>
             <Longitude>4.067862</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>100</Rayon>
         </Zone>
         <Epreuves>
             <Epreuve num="1" points="4" type="QCM"

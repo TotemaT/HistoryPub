@@ -1,9 +1,9 @@
 <Jeu name="Soignies en boisson">
     <Etape num="1" url="etape1.html">
         <Zone>
-            <Latitude>50.850499</Latitude>
-            <Longitude>4.445349</Longitude>
-            <Rayon>10000</Rayon>
+            <Latitude>50.579905</Latitude>
+            <Longitude>4.073490</Longitude>
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -24,7 +24,7 @@
                 <Zone>
                     <Latitude>50.34477</Latitude>
                     <Longitude>4.04244</Longitude>
-                    <Rayon>5</Rayon>
+                    <Rayon>20</Rayon>
                 </Zone>
                 <Reponse>cordovero.jpg</Reponse>
             </Epreuve>
@@ -47,7 +47,7 @@
         <Zone>
             <Latitude>50.579794</Latitude>
             <Longitude>4.072846</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -62,8 +62,7 @@
             </Epreuve>
             <Epreuve num="2" points="2" type="OUVERTE"
                      uri="http://epreuve5.historypub.mobile.ipl.be/">
-                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur
-                    de Soignies. Lequel?
+                <Question>Cette procession rend tout d'abord hommage à un Saint, également fondateur de Soignies. Lequel?
                 </Question>
                 <Reponse>Saint Vincent</Reponse>
                 <Reponse>St Vincent</Reponse>
@@ -88,7 +87,7 @@
         <Zone>
             <Latitude>50.579399</Latitude>
             <Longitude>4.071242</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -136,8 +135,7 @@
         <Zone>
             <Latitude>50.579663</Latitude>
             <Longitude>4.070570</Longitude>
-            <Rayon>8</Rayon>
-            <!-- Car il y a plusieurs bars repris dans la même étape -->
+            <Rayon>100</Rayon>
         </Zone>
 
         <Epreuves>
@@ -155,11 +153,7 @@
 
             <Epreuve num="2" points="4" type="QCM"
                      uri="http://epreuve11.historypub.mobile.ipl.be/">
-                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons
-                    auraient été trouvés dans la charpente d'un clocher laissant par là présager de
-                    l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa
-                    place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom
-                    donné à cette araignée?
+                <Question>Lors de la rénovation de la Collégiale, les restes de dizaines de pigeons auraient été trouvés dans la charpente d'un clocher laissant par là présager de l'existence d'une gigantesque araignée. Depuis, cette araignée à trouvée sa place dans le cortège folklorique de Simpélourd. Sauriez-vous trouver le nom donné à cette araignée?
                 </Question>
                 <Reponse bonne="true">Mygalomorpha Sonegiensis</Reponse>
                 <Reponse bonne="false">Araneae Sonegiensis</Reponse>
@@ -185,7 +179,7 @@
         <Zone>
             <Latitude>50.579269</Latitude>
             <Longitude>4.069147</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>1005</Rayon>
         </Zone>
 
         <Epreuves>
@@ -224,7 +218,7 @@
         <Zone>
             <Latitude>50.578989</Latitude>
             <Longitude>4.067862</Longitude>
-            <Rayon>5</Rayon>
+            <Rayon>100</Rayon>
         </Zone>
         <Epreuves>
             <Epreuve num="1" points="4" type="QCM"
