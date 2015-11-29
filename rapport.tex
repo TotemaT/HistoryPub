@@ -215,7 +215,7 @@
 
     Dans les POJO, nous avons différentes classes, correspondant aux différentes épreuves, aux étapes ainsi qu'à une zone autour d'un point géographique.
 
-    Les activités elles correspondent chacune à une étape, épreuve ou autre écran affiché à l'utilisateur. Elles gèrent donc l'interaction entre l'utilisateur et l'interface visuelle. L'interface en elle-même étant gérées par les fichier XML du dossier layout.
+    Les activités elles correspondent chacune à une étape, épreuve ou autre écran affiché à l'utilisateur. Elles gèrent donc l'interaction entre l'utilisateur et l'interface visuelle. L'interface en elle-même étant gérée par les fichier XML du dossier layout.
 
     L'UCC gère le chargement du fichier XML et est implémenté en tant que \textbf{singleton}. Celà permet de charger le jeu complet en une seule fois (comprenez les différentes étapes, épreuves et tout ce qui les compose) et de permettre par la suite à toutes les activités de piocher l'étape et/ou l'épreuve qui lui est nécessaire.
 
@@ -229,7 +229,9 @@
         \item Créer un dossier values pour petits écrans. Dans ce cas, les styles (donc la taille de la police, des layouts, ...) seraient adaptés en fonction de la taille de l'écran.
         \item Combinaison des 2 solutions ci-dessus.
     \end{itemize}
-    Dans notre cas, nous avions opté pour la deuxième solution (la première ne nous convenant pas et la troisième étant trop ambitieuse dans le temps imparti). Cependant, par manque de temps, nous n'avonc pas réussi à mettre cette solution en place.
+    Dans notre cas, nous avions opté pour la deuxième solution (la première ne nous convenant pas et la troisième étant trop ambitieuse dans le temps imparti). Cependant, par manque de temps, nous n'avonc pas réussi à mettre cette solution en place.\\
+
+    De plus, une fois le jeu terminé, l'utilisateur peut décider de réinitialiser le jeu, lui permettant de recommencer. Malheureusement, cette réinitialisation se fait aussi par défaut lorsque l'on quitte cette activité finale. De ce fait, le jeu est réinitialisé à deux reprise et la première activité du jeu se retrouve deux fois dans le stack, ce qui fait que si l'utilisateur appuie sur le touche de retour de son téléphone, il revient sur le \og même\fg{} écran (identique mais en réalité une autre activité) au lieu de quitter l'application.
 
     \chapter{Utilisation de code open-source}
     Le code de \textsc{History Pub} reprend, à certains endroits précis, du code open-source. Ces parties de code open-source se retrouvent ci-dessous :
