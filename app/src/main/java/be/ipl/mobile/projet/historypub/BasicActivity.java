@@ -227,8 +227,9 @@ abstract class BasicActivity extends AppCompatActivity {
      * @param points  Nombre de points gagné jusqu'à maintenant
      */
     public void partagerEpreuve(int epreuve, int etape, String duree, String points) {
+        /* Les étapes et épreuves sont numérotées à partir de zéro */
         partager(getString(R.string.titre_partage_epreuve),
-                getString(R.string.contenu_partage_epreuve, epreuve, etape, duree, points));
+                getString(R.string.contenu_partage_epreuve, epreuve + 1, etape + 1, duree, points));
     }
 
     /**
