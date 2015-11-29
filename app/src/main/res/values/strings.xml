@@ -13,8 +13,8 @@
     <string name="reset_parcours">Réinitialiser le jeu</string>
     <string name="photo_prise">Photo prise par l\'utilisateur</string>
     <string name="location_ok">Vous êtes dans la zone. Que l\'étape commence!</string>
-    <string name="gps_erreur">Impossible de trouver votre position. Votre GPS est-il activé?</string>
-
+    <string name="gps_network_error">Impossible de trouver votre position. Votre GPS est-il activé?</string>
+    <string name="gps_service_missing">Impossible de trouver les services Google Play. Cette application ne fonctionne malheureusement qu\'avec ces services.</string>
 
     <!-- Ecran final -->
     <string name="message_final">Félicitation, vous avez fini le parcours !</string>

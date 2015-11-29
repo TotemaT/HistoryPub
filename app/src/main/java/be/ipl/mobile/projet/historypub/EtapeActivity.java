@@ -43,8 +43,8 @@ import java.util.Date;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.Type;
 
 /**
-* Activité présentant une étape du jeu à l'utilisateur.
-*/
+ * Activité présentant une étape du jeu à l'utilisateur.
+ */
 public class EtapeActivity extends BasicActivity implements ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
 
     private static final String TAG = "EtapeActivity";
@@ -111,36 +111,17 @@ public class EtapeActivity extends BasicActivity implements ConnectionCallbacks,
 
     private void buildGoogleApiClient() {
         mApiClient = new GoogleApiClient.Builder(this)
-        .addConnectionCallbacks(this)
-        .addOnConnectionFailedListener(this)
-        .addApi(LocationServices.API)
-        .build();
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
         createLocationRequest();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_epreuve, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        (menu.findItem(R.id.score_menu)).setTitle(getResources().getString(R.string.score, util.getPoints()));
-        (menu.findItem(R.id.reinit_menu)).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                util.resetPartie();
-                return false;
-            }
-        });
-        return true;
-    }
 
     /**
-    * Charge le fichier HTML dans la webview et défini la gestion des liens.
-    */
+     * Charge le fichier HTML dans la webview et défini la gestion des liens.
+     */
     private void setupWebview() {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
@@ -153,10 +134,10 @@ public class EtapeActivity extends BasicActivity implements ConnectionCallbacks,
     }
 
     /**
-    * Lance l'épreuve correspondante au lien URL donné.
-    *
-    * @param url URL correspondant à l'épreuve
-    */
+     * Lance l'épreuve correspondante au lien URL donné.
+     *
+     * @param url URL correspondant à l'épreuve
+     */
     private void lanceEpreuveCorrespondante(String url) {
         Log.i("ET", mEtape.toString());
         Log.i("NB_EP", mEtape.getNombreEpreuves() + "");
@@ -175,9 +156,9 @@ public class EtapeActivity extends BasicActivity implements ConnectionCallbacks,
         /* Si pas dans les préférences, premier lancement ou premier lancement après un reset */
         if (!prefs.contains(Config.PREF_TEMPS_DEBUT)) {
             getSharedPreferences(Config.PREFERENCES, MODE_PRIVATE)
-            .edit()
-            .putLong(Config.PREF_TEMPS_DEBUT, new Date().getTime())
-            .apply();
+                    .edit()
+                    .putLong(Config.PREF_TEMPS_DEBUT, new Date().getTime())
+                    .apply();
         }
         intent.putExtra(Config.EXTRA_ETAPE, mEtape.getNum());
         intent.putExtra(Config.EXTRA_EPREUVE, mEtape.getEpreuve(url).getUri());
@@ -223,9 +204,18 @@ public class EtapeActivity extends BasicActivity implements ConnectionCallbacks,
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        if (!connectionResult.equals(ConnectionResult.SUCCESS)) {
-            Toast.makeText(EtapeActivity.this, R.string.gps_erreur, Toast.LENGTH_SHORT).show();
+        String message = "";
+        switch (connectionResult.getErrorCode()) {
+            case ConnectionResult.SUCCESS:
+                return;
+            case ConnectionResult.SERVICE_MISSING:
+                message = getString(R.string.gps_service_missing);
+                break;
+            case ConnectionResult.NETWORK_ERROR:
+                message = getString(R.string.gps_network_error);
+                break;
         }
+        Toast.makeText(EtapeActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void createLocationRequest() {

@@ -162,10 +162,6 @@ public class PhotoActivity extends EpreuveActivity {
                 mCheatButton.setEnabled(false);
                 mHelpButton.setEnabled(false);
                 mButton.setText(R.string.ok);
-            } else if (resultCode == RESULT_CANCELED) {
-
-            } else {
-                // Image capture failed, advise user
             }
         }
     }

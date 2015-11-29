@@ -34,7 +34,6 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.Random;
 
-import be.ipl.mobile.projet.historypub.pojo.epreuves.Epreuve;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.EpreuveQCM;
 import be.ipl.mobile.projet.historypub.pojo.epreuves.ReponseQCM;
 
@@ -169,12 +168,10 @@ public class QcmActivity extends EpreuveActivity {
 
     @Override
     public void doHelp() {
-        int nbRand = -1;
+        int nbRand;
         int nbRep = 0;
-        ReponseQCM repQcm;
         for (ReponseQCM rep : mEpreuveQCM.getReponses()) {
             if (rep.estBonne()) {
-                repQcm = rep;
                 break;
             }
             nbRep++;
