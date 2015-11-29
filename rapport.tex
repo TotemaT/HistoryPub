@@ -85,7 +85,7 @@
     Une fois dans la zone, et après avoir lu une courte description de l'endroit et où de son histoire, vous vous retrouverez devant une épreuve qui peut prendre différentes formes. Ces épreuves sont décrites ci-dessous.
 
     \section{Caractéristiques communes aux épreuves}
-    Lors des épreuves de question à choix multiples ou de question ouvertes, votre réponse doit être vérifiée. Cette vérification n'est faite qu'une fois la réponse validée par l'utilisateur, c'est à dire une fois que le bouton OK est pressé. Cette vérification peut mener à trois différents toast possibles :
+    Lors des épreuves de question à choix multiples ou de question ouvertes, votre réponse doit être vérifiée. Cette vérification n'est faite qu'une fois la réponse validée par l'utilisateur, c'est à dire une fois que le bouton OK est pressé. Cette vérification peut mener à :
     \begin{description}[style=nextline]
         \item[Pas de réponse donnée]Un toast invite l'utilisateur à répondre à la question.
         \item[Réponse correcte]Une fenêtre popup apparait pour féliciter l'utilisateur et afficher le nombre de points gagnés.
@@ -95,8 +95,8 @@
 
     De plus, 2 autres boutons sont également présents. Ceux-ci sont communs à toutes les épreuves, réalisent les mêmes actions mais de manières différentes en fonction du type d'épreuve. (Voir sections 2.2 à 2.5)
     \begin{description}[style=nextline]
-        \item[Bouton de triche]Ce bouton sert à obtenir la réponse de l'épreuve. Aucun point ne sera accordé à l'utilisateur si ce bouton est pressé. L'aide et la triche ne seront plus disponibles.
-        \item[Bouton d'aide]Ce bouton sert à obtenir un indice. La moitié des points sera accordé à l'utilisateur si ce bouton est pressé. L'aide n'est plus disponible.
+        \item[Bouton de triche]Ce bouton sert à obtenir la réponse de l'épreuve. Aucun point ne sera accordé à l'utilisateur si ce bouton est pressé. L'aide et la triche ne seront plus disponibles. \textit{Remarque: } le message affiché reste "Bonne réponse", bien que ce message soit inadapté.
+        \item[Bouton d'aide]Ce bouton sert à obtenir un indice. La moitié des points sera accordé à l'utilisateur si ce bouton est pressé. L'aide ne sera plus disponible.
     \end{description}
 
     \section{Epreuve Question à Choix Multiple}
@@ -139,9 +139,9 @@
         \subfigure{\includegraphics[scale=.25]{images/ouverte2.png}}}
         \caption{Question ouverte, avant et après avoir entré une réponse}
     \end{figure}
-    Pour répondre à une question ouverte, il vous suffit de taper la réponse demandée. Cette réponse est unique mais peut être entrée de différente manière. Par exemple pour une question dont la réponse attendu serait \og Institut Paul Lambin\fg, la réponse \og IPL\fg serait aussi acceptée.\\
+    Pour répondre à une question ouverte, il vous suffit d'écrire la réponse demandée dans la zone prévue à cet effet. Cette réponse est unique mais peut être entrée de différente manière. Par exemple pour une question dont la réponse attendu serait \og Institut Paul Lambin\fg, la réponse \og IPL\fg serait aussi acceptée.\\
 
-    Une fois la réponse entrée, vous pouvez confirmer votre solution avec la bouton entré de votre clavier virtual ou, après avoir quitté ce clavier, avec la bouton OK.
+    Une fois la réponse entrée, vous pouvez confirmer votre solution avec le bouton entrée de votre clavier virtuel ou après avoir quitté ce clavier, avec la bouton OK.
 
     Pour ce type d'épreuve:
         \begin{description}[style=nextline]
@@ -162,7 +162,7 @@
         \item[Bouton d'aide]Il affiche automatiquement la bonne image dans la zone de prévisualisation pendant 5 secondes. Il faudra cependant prendre une photo.
     \end{description}
 
-    \textit{Remarque: }Les épreuves photographiques ne sont pas géolocalisées, bien que cela le devrait.
+    \textit{Remarque: }Les épreuves photographiques ne sont pas géolocalisées, bien qu'elles devraient l'être.
 
     \section{Fin du jeu}
     \begin{figure}[H]
@@ -226,9 +226,9 @@
     Le code de \textsc{History Pub} reprend, à certains endroits précis, du code open-source. Ces parties de code open-source se retrouvent ci-dessous :
 
     \begin{description}[style=nextline]
-        \item[EtapeActivity.java et PhotoActivity.java] La partie géolocalisation reprends en grande partie du code fournis par \textsc{Google} sur leur plateforme \url{developer.android.com} ainsi que sur \textsc{Github} à cette adresse: \url{https://github.com/googlesamples/android-play-location}. Ce code est fourni sous la license \textbf{Apache}, permettant son inclusion dans un projet sous license \textbf{GPLv3}.
-        \item[PhotoActivity.java] La partie prise de photo reprends le code fournis par \textsc{Google} sur la plateforme précédemment citée, toujours sous la license \textbf{Apache}.
-        \item[PhotoActivity.java] La méthode permettant de charger et d'afficher une image depuis les assets (lors d'un cheat ou d'une aide), provient de \textsc{StakOverflow} à cette adresse : \url{http://stackoverflow.com/a/11734899}. Le code se trouvant sur \textsc{StackOverflow} est sous licence \textbf{Apache}, qui est donc compatible avec la \textbf{GPLv3}.
+        \item[EtapeActivity.java et PhotoActivity.java] La partie géolocalisation reprend en grande partie le code fourni par \textsc{Google} sur leur plateforme \url{developer.android.com} ainsi que sur \textsc{Github} à cette adresse: \url{https://github.com/googlesamples/android-play-location}. Ce code est fourni sous la license \textbf{Apache}, permettant son inclusion dans un projet sous license \textbf{GPLv3}.
+        \item[PhotoActivity.java] La partie prise de photo reprend le code fourni par \textsc{Google} sur la plateforme précédemment citée, toujours sous la license \textbf{Apache}.
+        \item[PhotoActivity.java] La méthode permettant de charger et d'afficher une image depuis les assets (lors d'un cheat ou d'une aide), provient de \textsc{StackOverflow} à cette adresse : \url{http://stackoverflow.com/a/11734899}. Le code se trouvant sur \textsc{StackOverflow} est sous licence \textbf{Apache}, qui est donc compatible avec la \textbf{GPLv3}.
         \item[Style.css] Le design des boutons, façon Material Design, est repris du \textsc{Codepen} créé par RayCh et trouvable à cette adresse : \url{http://codepen.io/iraycd/pen/dHrxv}. Le code posté sur \textsc{Codepen} est sous license \textbf{MIT}, elle aussi compatible avec la \textbf{GPLv3}.
     \end{description}
 
@@ -257,6 +257,6 @@
 
     \noindent Pour plus d'information, la license complète peut être trouvée à l'adresse suivante : \url{https://www.gnu.org/licenses/gpl.html}\\
 
-    Le code source de l'application peut quant à lui être trouvé sur \textsc{Github} à l'adresse suivant : \url{https://github.com/Crapoo/HistoryPub}. Le code remis avec ce rapport correspond au commit \textsc{hash du commit}.
+    Le code source de l'application peut quant à lui être trouvé sur \textsc{Github} à l'adresse suivant : \url{https://github.com/Crapoo/HistoryPub}. Le code remis avec ce rapport correspond à la release 1.0.0.
 
 \end{document}
